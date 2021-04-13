@@ -33,6 +33,7 @@ namespace ConstructoraModel.Model
         public Nullable<int> REMOVE_USER_ID { get; set; }
         public Nullable<int> CREATE_USER_ID { get; set; }
         public Nullable<int> UPDATE_USER_ID { get; set; }
+        public string DOCUMENT { get; set; }
     
         public virtual ICollection<SEC_SESSION> SEC_SESSION { get; set; }
         public virtual ICollection<SEC_USER_ROLE> SEC_USER_ROLE { get; set; }

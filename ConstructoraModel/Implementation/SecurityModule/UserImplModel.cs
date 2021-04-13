@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace ConstructoraModel.Implementation.SecurityModule
 {
@@ -61,6 +62,7 @@ namespace ConstructoraModel.Implementation.SecurityModule
 
                     record.NAME = dbModel.Name;
                     record.LASTNAME = dbModel.Lastname;
+                    record.DOCUMENT = dbModel.Document;
                     record.CELLPHONE = dbModel.Cellphone;
                     record.EMAIL = dbModel.Email;
                     record.USER_PASSWORD = dbModel.Password;
@@ -126,22 +128,67 @@ namespace ConstructoraModel.Implementation.SecurityModule
         {
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
-                //Método Lambda
-                var listaLambda = db.SEC_USER.Where(x => !x.REMOVED && x.NAME.ToUpper().Contains(filter.ToUpper())).ToList();
-               
-                //Método por Linq, similar a consultas SQL
-                var listaLinq = from role in db.SEC_USER
-                                where !role.REMOVED && role.NAME.ToUpper().Contains(filter.ToUpper())
-                                select role;
+                
+                var lista = from role in db.SEC_USER
+                            where !role.REMOVED && role.NAME.ToUpper().Contains(filter.ToUpper())
+                            select role;
 
                 UserModelMapper mapper = new UserModelMapper();
 
                 //El mapeo se puede realizar con cualquiera de los dos métodos.
-                var listaFinal = mapper.MapperT1T2(listaLambda);
+                var listaFinal = mapper.MapperT1T2(lista);
                
                 return listaFinal;
             }
         }
+
+        public UserDbModel Login(UserDbModel dbModel)
+        {
+            using(ConstructoraDBEntities db = new ConstructoraDBEntities())
+            {
+                var login = (from user in db.SEC_USER
+                            where user.EMAIL.Equals(dbModel.Email.ToUpper()) && user.USER_PASSWORD.Equals(dbModel.Password)
+                            select user).FirstOrDefault();
+
+                if(login == null)
+                {
+                    return null;
+                }
+
+                var date = dbModel.CurrentDate;
+                SEC_SESSION session = new SEC_SESSION()
+                {
+                    USERID = login.ID,
+                    LOGIN_DATE = date ,
+                    TOKEN_STATUS = true,
+                    TOKEN = this.GetToken(String.Concat(login.ID , date)),
+                    IP_ADDRESS = this.GetIpAddress()
+                };
+
+                db.SEC_SESSION.Add(session);
+                db.SaveChanges();
+                UserModelMapper mapper = new UserModelMapper();
+                return mapper.MapperT1T2(login);
+
+            }
+        }
+
+        private string GetToken(string key)
+        {
+            int HashCode = key.GetHashCode();
+            return HashCode.ToString();
+        }
+
+        private string GetIpAddress()
+        {
+            string hostName = Dns.GetHostName();
+            Console.WriteLine(hostName);
+            //Get the IP
+            string myIP = Dns.GetHostEntry(hostName).AddressList[0].ToString();
+            return myIP;
+        } 
+
+      
 
         
     }

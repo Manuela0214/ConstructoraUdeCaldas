@@ -32,7 +32,8 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LASTNAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LASTNAME" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="DOCUMENT" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CELLPHONE" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="EMAIL" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="USER_PASSWORD" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -139,7 +140,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LASTNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LASTNAME" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="CELLPHONE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="USER_PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
@@ -152,6 +153,7 @@
           <Property Name="REMOVE_USER_ID" Type="Int32" />
           <Property Name="CREATE_USER_ID" Type="Int32" />
           <Property Name="UPDATE_USER_ID" Type="Int32" />
+          <Property Name="DOCUMENT" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SEC_USER_ROLE">
           <Key>
@@ -249,6 +251,7 @@
           <EntitySetMapping Name="SEC_USER">
             <EntityTypeMapping TypeName="ConstructoraDBModel.SEC_USER">
               <MappingFragment StoreEntitySet="SEC_USER">
+                <ScalarProperty Name="DOCUMENT" ColumnName="DOCUMENT" />
                 <ScalarProperty Name="UPDATE_USER_ID" ColumnName="UPDATE_USER_ID" />
                 <ScalarProperty Name="CREATE_USER_ID" ColumnName="CREATE_USER_ID" />
                 <ScalarProperty Name="REMOVE_USER_ID" ColumnName="REMOVE_USER_ID" />

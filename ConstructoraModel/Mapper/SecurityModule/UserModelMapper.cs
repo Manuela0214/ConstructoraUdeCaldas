@@ -19,11 +19,13 @@ namespace ConstructoraModel.Mapper.SecurityModule
                 Id = input.ID,
                 Name = input.NAME,
                 Lastname = input.LASTNAME,
+                Document = input.DOCUMENT,
                 Cellphone = input.CELLPHONE,
                 Email = input.EMAIL,
                 Password = input.USER_PASSWORD,
-                Roles = roleMapper.MapperT1T2(roles)
-                };
+                Roles = roleMapper.MapperT1T2(roles),
+                Token = input.SEC_SESSION.Where(x => x.TOKEN_STATUS).OrderByDescending(d => d.LOGIN_DATE).Select(x => x.TOKEN).FirstOrDefault()
+            };
         }
 
         public override IEnumerable<UserDbModel> MapperT1T2(IEnumerable<SEC_USER> input)
@@ -41,6 +43,7 @@ namespace ConstructoraModel.Mapper.SecurityModule
                 ID = input.Id,
                 NAME = input.Name,
                 LASTNAME = input.Lastname,
+                DOCUMENT = input.Document,
                 CELLPHONE = input.Cellphone,
                 EMAIL = input.Email,
                 USER_PASSWORD = input.Password

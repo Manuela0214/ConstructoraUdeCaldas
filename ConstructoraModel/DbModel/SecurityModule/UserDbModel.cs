@@ -33,6 +33,14 @@ namespace ConstructoraModel.DbModel.SecurityModule
             set { lastname = value; }
         }
 
+        private string document;
+
+        public string Document
+        {
+            get { return document; }
+            set { document = value; }
+        }
+
         private string cellphone;
 
         public string Cellphone
@@ -65,6 +73,13 @@ namespace ConstructoraModel.DbModel.SecurityModule
             set { roles = value; }
         }
 
+        private string token;
+
+        public string Token
+        {
+            get { return token; }
+            set { token = value; }
+        }
 
 
     }
