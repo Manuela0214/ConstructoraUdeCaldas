@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConstructoraModel.Mappers
+namespace ConstructoraModel.Mapper
 {
-    public abstract class GeneralMapper<T1,T2>
+    public abstract class MapperBase<T1, T2>
     {
         public abstract T1 MapperT2T1(T2 input);
         public abstract T2 MapperT1T2(T1 input);

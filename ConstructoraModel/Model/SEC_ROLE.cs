@@ -22,6 +22,7 @@ namespace ConstructoraModel.Model
         public int ID { get; set; }
         public string NAME { get; set; }
         public bool REMOVED { get; set; }
+        public string DESCRIPTION { get; set; }
     
         public virtual ICollection<SEC_USER_ROLE> SEC_USER_ROLE { get; set; }
     }
