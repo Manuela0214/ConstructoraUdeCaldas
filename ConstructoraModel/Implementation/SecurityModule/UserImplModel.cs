@@ -142,7 +142,7 @@ namespace ConstructoraModel.Implementation.SecurityModule
             }
         }
 
-        public int PasswordReset(string currentPassword, string newPassword, int userId, out string email)
+        public int ChangePassword(string currentPassword, string newPassword, int userId, out string email)
         {
             email = string.Empty;
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
@@ -163,7 +163,30 @@ namespace ConstructoraModel.Implementation.SecurityModule
                 {
                     return 2;
                 }                
-            }            
+            }
+        }
+
+        public int PasswordReset(string email, string newPassword)
+        {
+            using (ConstructoraDBEntities db = new ConstructoraDBEntities())
+            {
+                try
+                {
+                    var user = db.SEC_USER.Where(x => x.EMAIL.Equals(email)).FirstOrDefault();
+                    if (user == null)
+                    {
+                        return 3;
+                    }
+                    user.USER_PASSWORD = newPassword;
+                    db.SaveChanges();
+                    email = user.EMAIL;
+                    return 1;
+                }
+                catch
+                {
+                    return 2;
+                }
+            }
         }
 
         public UserDbModel Login(UserDbModel dbModel)

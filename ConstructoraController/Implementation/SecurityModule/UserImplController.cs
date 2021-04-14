@@ -22,7 +22,11 @@ namespace ConstructoraController.Implementation.SecurityModule
         {
             UserDTOMapper mapper = new UserDTOMapper();
             UserDbModel dbModel = mapper.MapperT2T1(dto);
-            int response = model.RecordCreation(dbModel);
+            Encrypt enc = new Encrypt();
+            string randomPassword = enc.RandomString(10);
+            string newPassword = enc.CreateMD5(randomPassword);
+            dbModel.Password = newPassword;
+            int response = model.RecordCreation(dbModel);            
             //verifica si el usuario fue guardado para enviar un email
             if(response == 1)
             {
@@ -35,6 +39,7 @@ namespace ConstructoraController.Implementation.SecurityModule
         {
             UserDTOMapper mapper = new UserDTOMapper();
             UserDbModel dbModel = mapper.MapperT2T1(dto);
+            dbModel.Password = new Encrypt().CreateMD5(dbModel.Password);
             return model.RecordUpdate(dbModel);
         }
 
@@ -56,17 +61,31 @@ namespace ConstructoraController.Implementation.SecurityModule
         {
             UserDTOMapper mapper = new UserDTOMapper();
             UserDbModel dbModel = mapper.MapperT2T1(dto);
+            dbModel.Password = new Encrypt().CreateMD5(dbModel.Password);
             var obj = model.Login(dbModel);
             return mapper.MapperT1T2(obj);
         }
 
-        public int PasswordReset(string currentPassword, string newPassword, int userId)
+        public int PasswordReset(string email)
         {
-            String email = string.Empty;
-            var response =  model.PasswordReset(currentPassword,newPassword,userId,out email);
+            Encrypt enc = new Encrypt();
+            string randomPassword = enc.RandomString(10);
+            string newPassword = enc.CreateMD5(randomPassword);
+            var response =  model.PasswordReset(email, newPassword);
             if (response == 1)
             {
                 new Notifications().SendEmail("Password Reset", "Content...", email, "test@constructora.com");
+            }
+            return response;
+        }
+
+        public int ChangePassword(string currentPassword, string newPassword, int userId)
+        {
+            String email = string.Empty;
+            var response = model.ChangePassword(currentPassword, newPassword, userId, out email);
+            if (response == 1)
+            {
+                new Notifications().SendEmail("Password Change", "Content...", email, "test@constructora.com");
             }
             return response;
         }
