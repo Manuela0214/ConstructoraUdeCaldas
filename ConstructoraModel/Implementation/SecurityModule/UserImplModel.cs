@@ -142,6 +142,30 @@ namespace ConstructoraModel.Implementation.SecurityModule
             }
         }
 
+        public int PasswordReset(string currentPassword, string newPassword, int userId, out string email)
+        {
+            email = string.Empty;
+            using (ConstructoraDBEntities db = new ConstructoraDBEntities())
+            {
+                try
+                {
+                    var user = db.SEC_USER.Where(x => x.ID == userId && x.USER_PASSWORD.Equals(currentPassword)).FirstOrDefault();
+                    if (user == null)
+                    {
+                        return 3;
+                    }
+                    user.USER_PASSWORD = newPassword;
+                    db.SaveChanges();
+                    email = user.EMAIL;
+                    return 1;
+                }
+                catch
+                {
+                    return 2;
+                }                
+            }            
+        }
+
         public UserDbModel Login(UserDbModel dbModel)
         {
             using(ConstructoraDBEntities db = new ConstructoraDBEntities())
