@@ -113,7 +113,7 @@ namespace ConstructoraModel.Implementation.SecurityModule
         /// <summary>
         /// Se listan basandose en un filtro los registros de los roles
         /// </summary>
-        /// <param name="dbModel">Representa un objeto con informacion del rol</param>
+        /// <param name="filter">Representa un objeto con informacion del rol</param>
         /// <returns>Lista con los roles, teniendo su id y su nombre respectivo.</returns>
 
         public IEnumerable<RoleDbModel> RecordList(String filter)
@@ -121,19 +121,19 @@ namespace ConstructoraModel.Implementation.SecurityModule
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
                 //Método Lambda
-                var listaLambda = db.SEC_ROLE.Where(x => !x.REMOVED && x.NAME.ToUpper().Contains(filter.ToUpper())).ToList();
+                //var listaLambda = db.SEC_ROLE.Where(x => !x.REMOVED && x.NAME.ToUpper().Contains(filter.ToUpper())).ToList();
                
                 //Método por Linq, similar a consultas SQL
                 var listaLinq = from role in db.SEC_ROLE
-                                where !role.REMOVED && role.NAME.ToUpper().Contains(filter.ToUpper())
+                                where !role.REMOVED && role.NAME.ToUpper().Contains(filter)
                                 select role;
 
                 RoleModelMapper mapper = new RoleModelMapper();
 
                 //El mapeo se puede realizar con cualquiera de los dos métodos.
-                var listaFinal = mapper.MapperT1T2(listaLambda);
+                var listaFinal = mapper.MapperT1T2(listaLinq);
                
-                return listaFinal;
+                return listaFinal.ToList();
             }
         }
 
