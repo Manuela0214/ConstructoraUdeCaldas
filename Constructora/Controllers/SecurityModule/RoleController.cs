@@ -129,8 +129,7 @@ namespace Constructora.Controllers.SecurityModule
             return RedirectToAction("Index");
         }
 
-        /*
-
+        
         // GET: Role/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -138,32 +137,37 @@ namespace Constructora.Controllers.SecurityModule
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SEC_ROLE sEC_ROLE = capaNegocio.SEC_ROLE.Find(id);
-            if (sEC_ROLE == null)
+            RoleDTO dto = capaNegocio.RecordSearch(id.Value);
+            if (dto == null)
             {
                 return HttpNotFound();
             }
-            return View(sEC_ROLE);
+            RoleModelMapper mapper = new RoleModelMapper();
+            RoleModel model = mapper.MapperT1T2(dto);
+            return View(model);
         }
 
         // POST: Role/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed([Bind(Include = "Id,Name,Removed,Description")] RoleModel model)
         {
-            SEC_ROLE sEC_ROLE = capaNegocio.SEC_ROLE.Find(id);
-            capaNegocio.SEC_ROLE.Remove(sEC_ROLE);
-            capaNegocio.SaveChanges();
+            RoleModelMapper mapper = new RoleModelMapper();
+            RoleDTO dto = mapper.MapperT2T1(model);
+            int response = capaNegocio.RecordRemove(dto);
+            switch (response)
+            {
+                case 1:
+                    return RedirectToAction("Index");
+                case 2:
+                    ViewBag.Message = Messages.ExceptionMessage;
+                    return View(model);
+                case 3:
+                    ViewBag.Message = Messages.alreadyExistMessage;
+                    return View(model);
+            }
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                capaNegocio.Dispose();
-            }
-            base.Dispose(disposing);
-        }*/
     }
 }
