@@ -85,7 +85,7 @@ namespace ConstructoraController.Implementation.SecurityModule
             var response = model.ChangePassword(currentPassword, newPassword, userId, out email);
             if (response == 1)
             {
-                new Notifications().SendEmail("Password Change", "Content...", email, "test@constructora.com");
+                new Notifications().SendEmail("Password Changed", "Content...", email, "test@constructora.com");
             }
             return response;
         }

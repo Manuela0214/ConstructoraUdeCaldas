@@ -121,7 +121,7 @@ namespace ConstructoraModel.Implementation.SecurityModule
         /// <summary>
         /// Se listan basandose en un filtro los registros de los usuarios
         /// </summary>
-        /// <param name="dbModel">Representa un objeto con informacion del usuario</param>
+        /// <param name="dbModel">Representa un filtro</param>
         /// <returns>Lista con los usuarios</returns>
 
         public IEnumerable<UserDbModel> RecordList(String filter)
@@ -142,6 +142,14 @@ namespace ConstructoraModel.Implementation.SecurityModule
             }
         }
 
+        /// <summary>
+        /// Cambio de contraseña
+        /// </summary>
+        /// <param name="currentPassword">Representa la clave actual</param>
+        /// <param name="newPassword">Representa la nueva contraseña</param>
+        /// <param name="userId">Representa el Id del usuario</param>
+        /// <param name="email">Representa el correo del usuario</param>
+        /// <returns>1: Ok, 2: Excepción,3: No existe el usuario</returns>
         public int ChangePassword(string currentPassword, string newPassword, int userId, out string email)
         {
             email = string.Empty;
@@ -166,6 +174,12 @@ namespace ConstructoraModel.Implementation.SecurityModule
             }
         }
 
+        /// <summary>
+        /// Restablecer la contraseña
+        /// </summary>
+        /// <param name="email">Correo del usuario</param>
+        /// <param name="newPassword">Nueva contraseña del usuario</param>
+        /// <returns>1: Ok, 2: Excepción,3: No existe el usuario</returns>
         public int PasswordReset(string email, string newPassword)
         {
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
@@ -189,6 +203,11 @@ namespace ConstructoraModel.Implementation.SecurityModule
             }
         }
 
+        /// <summary>
+        /// Inicio de sesión del usuario
+        /// </summary>
+        /// <param name="dbModel">Representa un objeto con informacion del usuario</param>
+        /// <returns>null: Si no existe un login o si existe se retorna el mismo</returns>
         public UserDbModel Login(UserDbModel dbModel)
         {
             using(ConstructoraDBEntities db = new ConstructoraDBEntities())
@@ -220,12 +239,21 @@ namespace ConstructoraModel.Implementation.SecurityModule
             }
         }
 
+        /// <summary>
+        /// Obtención del token
+        /// </summary>
+        /// <param name="key">Representa la llave</param>
+        /// <returns>Un código hash</returns>
         private string GetToken(string key)
         {
             int HashCode = key.GetHashCode();
             return HashCode.ToString();
         }
 
+        /// <summary>
+        /// Obtención de la dirección Ip
+        /// </summary>
+        /// <returns>Un string con la ip</returns>
         private string GetIpAddress()
         {
             string hostName = Dns.GetHostName();

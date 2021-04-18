@@ -13,6 +13,7 @@ namespace ConstructoraController.Mapper.SecurityModule
     {
         public override RoleDTO MapperT1T2(RoleDbModel input)
         {
+            
             return new RoleDTO()
             {
                 Id = input.Id,

@@ -3,6 +3,7 @@ using ConstructoraModel.Mapper.SecurityModule;
 using ConstructoraModel.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,8 +63,10 @@ namespace ConstructoraModel.Implementation.SecurityModule
                     }
 
                     record.NAME = dbModel.Name;
+                    record.DESCRIPTION = dbModel.Description;
                     record.REMOVED = dbModel.Removed;
-
+                    
+                    db.Entry(record).State = EntityState.Modified;
                     db.SaveChanges();
                     return 1;
                 }
@@ -113,7 +116,7 @@ namespace ConstructoraModel.Implementation.SecurityModule
         /// <summary>
         /// Se listan basandose en un filtro los registros de los roles
         /// </summary>
-        /// <param name="filter">Representa un objeto con informacion del rol</param>
+        /// <param name="filter">Representa un filtro</param>
         /// <returns>Lista con los roles, teniendo su id y su nombre respectivo.</returns>
 
         public IEnumerable<RoleDbModel> RecordList(String filter)
@@ -137,6 +140,27 @@ namespace ConstructoraModel.Implementation.SecurityModule
             }
         }
 
-        
+        /// <summary>
+        /// Búsqueda de roles
+        /// </summary>
+        /// <param name="id">Representa el id del rol</param>
+        /// <returns>El registro.</returns>
+
+        public RoleDbModel RecordSearch(int id)
+        {
+            using (ConstructoraDBEntities db = new ConstructoraDBEntities())
+            {
+                //Método Lambda
+                var record = db.SEC_ROLE.Where(x => !x.REMOVED && x.ID == id).FirstOrDefault();
+                if(record != null)
+                {
+                    RoleModelMapper mapper = new RoleModelMapper();
+                    return mapper.MapperT1T2(record);
+                }
+                return null;
+            }
+        }
+
+
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Constructora.Helpers;
 using Constructora.Mapper.SecurityModule;
 using Constructora.Models.SecurityModule;
 using ConstructoraController.DTO.SecurityModule;
@@ -48,17 +49,17 @@ namespace Constructora.Controllers.SecurityModule
                     case 1:
                         return RedirectToAction("Index");
                     case 2:
-                        ViewBag.Message = "Ha ocurrido un error ejecunatndo la acción.";
+                        ViewBag.Message = Messages.ExceptionMessage;
                         return View(model);
                     case 3:
-                        ViewBag.Message = "Ya existe un rol con el nombre "+model.Name;
+                        ViewBag.Message = Messages.alreadyExistMessage;
                         return View(model);
                 }
             }
 
             return View(model);
         }
-        /*
+        
         // GET: Role/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -66,12 +67,15 @@ namespace Constructora.Controllers.SecurityModule
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SEC_ROLE sEC_ROLE = controller.SEC_ROLE.Find(id);
-            if (sEC_ROLE == null)
+            RoleDTO dto = capaNegocio.RecordSearch(id.Value);
+            if (dto == null)
             {
                 return HttpNotFound();
             }
-            return View(sEC_ROLE);
+            RoleModelMapper mapper = new RoleModelMapper();
+            RoleModel model = mapper.MapperT1T2(dto);
+            
+            return View(model);
         }
 
         // POST: Role/Edit/5
@@ -79,16 +83,53 @@ namespace Constructora.Controllers.SecurityModule
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,NAME,REMOVED,DESCRIPTION")] SEC_ROLE sEC_ROLE)
+        public ActionResult Edit([Bind(Include = "Id,Name,Removed,Description")] RoleModel model)
         {
             if (ModelState.IsValid)
             {
-                controller.Entry(sEC_ROLE).State = EntityState.Modified;
-                controller.SaveChanges();
-                return RedirectToAction("Index");
+                RoleModelMapper mapper = new RoleModelMapper();
+                RoleDTO dto = mapper.MapperT2T1(model);
+                int response = capaNegocio.RecordUpdate(dto);
+                //this.ProcessResponse(response, model);
+                switch (response)
+                {
+                    case 1:
+                        return RedirectToAction("Index");
+                    case 2:
+                        ViewBag.Message = Messages.ExceptionMessage;
+                        return View(model);
+                    case 3:
+                        ViewBag.Message = Messages.alreadyExistMessage;
+                        return View(model);
+                }
+
             }
-            return View(sEC_ROLE);
+            return View(model);
         }
+
+        /// <summary>
+        /// Procesamiento de las respuestas
+        /// </summary>
+        /// <param name="response">Representa la respuesta</param>
+        /// <param name="model">Representa un objeto con informacion del rol</param>
+        /// <returns>1: Ok, 2: Excepción, 3:Ya existe</returns>
+        private ActionResult ProcessResponse(int response,RoleModel model)
+        {
+            switch (response)
+            {
+                case 1:
+                    return RedirectToAction("Index");
+                case 2:
+                    ViewBag.Message = Messages.ExceptionMessage;
+                    return View(model);
+                case 3:
+                    ViewBag.Message = Messages.alreadyExistMessage;
+                    return View(model);
+            }
+            return RedirectToAction("Index");
+        }
+
+        /*
 
         // GET: Role/Delete/5
         public ActionResult Delete(int? id)
@@ -97,7 +138,7 @@ namespace Constructora.Controllers.SecurityModule
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SEC_ROLE sEC_ROLE = controller.SEC_ROLE.Find(id);
+            SEC_ROLE sEC_ROLE = capaNegocio.SEC_ROLE.Find(id);
             if (sEC_ROLE == null)
             {
                 return HttpNotFound();
@@ -110,9 +151,9 @@ namespace Constructora.Controllers.SecurityModule
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SEC_ROLE sEC_ROLE = controller.SEC_ROLE.Find(id);
-            controller.SEC_ROLE.Remove(sEC_ROLE);
-            controller.SaveChanges();
+            SEC_ROLE sEC_ROLE = capaNegocio.SEC_ROLE.Find(id);
+            capaNegocio.SEC_ROLE.Remove(sEC_ROLE);
+            capaNegocio.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -120,7 +161,7 @@ namespace Constructora.Controllers.SecurityModule
         {
             if (disposing)
             {
-                controller.Dispose();
+                capaNegocio.Dispose();
             }
             base.Dispose(disposing);
         }*/
