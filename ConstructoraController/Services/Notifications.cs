@@ -14,7 +14,6 @@ namespace ConstructoraController.Services
     {
         public Boolean SendEmail(string subject, string content, string toName, string toEmail)
         {
-            //string apiKey = "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";
             var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("angie.1701812633@ucaldas.edu.co", "Angie Camelo Ortiz");
