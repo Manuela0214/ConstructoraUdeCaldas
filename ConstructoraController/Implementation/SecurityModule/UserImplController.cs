@@ -18,6 +18,12 @@ namespace ConstructoraController.Implementation.SecurityModule
         {
             model = new UserImplModel();
         }
+
+        /// <summary>
+        /// Creación de un registro
+        /// </summary>
+        /// <param name="dto">Información dto</param>
+        /// <returns>1: Ok, 2: Excepción, 3: Ya existe</returns>
         public int RecordCreation(UserDTO dto)
         {
             UserDTOMapper mapper = new UserDTOMapper();
@@ -30,11 +36,25 @@ namespace ConstructoraController.Implementation.SecurityModule
             //verifica si el usuario fue guardado para enviar un email
             if(response == 1)
             {
-                new Notifications().SendEmail("User Registration", "Content...", dto.Email, "test@constructora.com");
+                String content = String.Format("Buen día {0}, " +
+                    "<br /> Usted ha sido registrado en la plataforma Contructora UdeC S.A.S. " +
+                    "Sus credenciales de acceso son: <br/>" +
+                    " <ul>" +
+                    "<li> Usuario: {1}</li>" +
+                    "<li>Contraseña: {2}</li>" +
+                    "</ul>" +
+                    "<br /> Cordial saludo, <br />" +
+                    "Su equipo de seguridad.", dto.Name, dto.Email, randomPassword);
+                new Notifications().SendEmail("Registro usuario UdeC", content, dto.Name, dto.Email);
             }
             return response;
         }
 
+        /// <summary>
+        /// Actualización de un registro
+        /// </summary>
+        /// <param name="dto">Información dto</param>
+        /// <returns>1: Ok, 2: Excepción, 3: Ya existe</returns>
         public int RecordUpdate(UserDTO dto)
         {
             UserDTOMapper mapper = new UserDTOMapper();
@@ -43,6 +63,11 @@ namespace ConstructoraController.Implementation.SecurityModule
             return model.RecordUpdate(dbModel);
         }
 
+        /// <summary>
+        /// Eliminación de un registro
+        /// </summary>
+        /// <param name="dto">Información dto</param>
+        /// <returns>1: Ok, 2: Excepción, 3: Ya existe</returns>
         public int RecordRemove(UserDTO dto)
         {
             UserDTOMapper mapper = new UserDTOMapper();
@@ -50,6 +75,11 @@ namespace ConstructoraController.Implementation.SecurityModule
             return model.RecordRemove(dbModel);
         }
 
+        /// <summary>
+        /// Se listan basandose en un filtro los registros de los usuarios
+        /// </summary>
+        /// <param name="filter">Representa filtro</param>
+        /// <returns>Lista con los usuarios, teniendo su id y su nombre respectivo.</returns>
         public IEnumerable<UserDTO> RecordList(string filter)
         {
             var list = model.RecordList(filter);
@@ -57,6 +87,11 @@ namespace ConstructoraController.Implementation.SecurityModule
             return mapper.MapperT1T2(list);
         }
 
+        /// <summary>
+        /// Iniciar sesión
+        /// </summary>
+        /// <param name="dto">Información dto</param>
+        /// <returns>Modelo en la db</returns>
         public UserDTO Login(UserDTO dto)
         {
             UserDTOMapper mapper = new UserDTOMapper();
@@ -66,6 +101,11 @@ namespace ConstructoraController.Implementation.SecurityModule
             return mapper.MapperT1T2(obj);
         }
 
+        /// <summary>
+        /// Restablecer la contraseña
+        /// </summary>
+        /// <param name="email">Representa el correo electrónico</param>
+        /// <returns>1: Ok, 2:KO, 3.Ya existe</returns>
         public int PasswordReset(string email)
         {
             Encrypt enc = new Encrypt();
@@ -78,6 +118,11 @@ namespace ConstructoraController.Implementation.SecurityModule
             }
             return response;
         }
+        /// <summary>
+        /// Cambio de la contraseña
+        /// </summary>
+        /// <param name="email">Representa el correo electrónico</param>
+        /// <returns>1: Ok, 2:KO, 3.Ya existe</returns>
 
         public int ChangePassword(string currentPassword, string newPassword, int userId)
         {
@@ -88,6 +133,22 @@ namespace ConstructoraController.Implementation.SecurityModule
                 new Notifications().SendEmail("Password Changed", "Content...", email, "test@constructora.com");
             }
             return response;
+        }
+
+        /// <summary>
+        /// Busqueda de un usuario
+        /// </summary>
+        /// <param name="id">Id del usuario</param>
+        /// <returns>El registro</returns>
+        public UserDTO RecordSearch(int id)
+        {
+            var record = model.RecordSearch(id);
+            if (record == null)
+            {
+                return null;
+            }
+            UserDTOMapper mapper = new UserDTOMapper();
+            return mapper.MapperT1T2(record);
         }
     }
 }

@@ -47,6 +47,7 @@ namespace ConstructoraModel.Mapper.SecurityModule
                 CELLPHONE = input.Cellphone,
                 EMAIL = input.Email,
                 USER_PASSWORD = input.Password
+ 
             };
         }
 

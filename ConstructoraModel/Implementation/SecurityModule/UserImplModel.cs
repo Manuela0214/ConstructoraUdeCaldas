@@ -129,18 +129,19 @@ namespace ConstructoraModel.Implementation.SecurityModule
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
                 
-                var lista = from role in db.SEC_USER
-                            where !role.REMOVED && role.NAME.ToUpper().Contains(filter.ToUpper())
-                            select role;
+                var lista = from user in db.SEC_USER
+                            where !user.REMOVED && user.NAME.ToUpper().Contains(filter)
+                            select user;
 
                 UserModelMapper mapper = new UserModelMapper();
 
                 //El mapeo se puede realizar con cualquiera de los dos métodos.
-                var listaFinal = mapper.MapperT1T2(lista);
+                var listaFinal = mapper.MapperT1T2(lista).ToList();
                
                 return listaFinal;
             }
         }
+        
 
         /// <summary>
         /// Cambio de contraseña
@@ -202,6 +203,27 @@ namespace ConstructoraModel.Implementation.SecurityModule
                 }
             }
         }
+        /// <summary>
+        /// Búsqueda de usuario
+        /// </summary>
+        /// <param name="id">Representa el id del usuario</param>
+        /// <returns>El registro.</returns>
+
+        public UserDbModel RecordSearch(int id)
+        {
+            using (ConstructoraDBEntities db = new ConstructoraDBEntities())
+            {
+                //Método Lambda
+                var record = db.SEC_USER.Where(x => !x.REMOVED && x.ID == id).FirstOrDefault();
+                if (record != null)
+                {
+                    UserModelMapper mapper = new UserModelMapper();
+                    return mapper.MapperT1T2(record);
+                }
+                return null;
+            }
+        }
+
 
         /// <summary>
         /// Inicio de sesión del usuario
@@ -261,10 +283,13 @@ namespace ConstructoraModel.Implementation.SecurityModule
             //Get the IP
             string myIP = Dns.GetHostEntry(hostName).AddressList[0].ToString();
             return myIP;
-        } 
-
-      
+        }
 
         
+
+        
+
+
+
     }
 }

@@ -12,8 +12,10 @@ namespace ConstructoraController.DTO
 
         public DateTime CurrentDate
         {
-            get { return DateTime.Now; }
+            get { return currentDate; }
+            set { currentDate = value; }
         }
+
 
 
         private int userInSessionId;

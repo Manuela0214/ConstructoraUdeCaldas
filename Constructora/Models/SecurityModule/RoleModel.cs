@@ -22,7 +22,7 @@ namespace Constructora.Models.SecurityModule
 
         [DisplayName("Nombre")]
         [Required()]
-        [MaxLength(100)]
+        [MaxLength(100, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
         public string Name
         {
             get { return name; }
@@ -41,6 +41,7 @@ namespace Constructora.Models.SecurityModule
         private string description;
 
         [DisplayName("Descripción")]
+        [MaxLength(200, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
         public string Description
         {
             get { return description; }

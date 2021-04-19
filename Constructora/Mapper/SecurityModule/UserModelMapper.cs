@@ -45,7 +45,9 @@ namespace Constructora.Mapper.SecurityModule
                 Document = input.Document,
                 Cellphone = input.Cellphone,
                 Email = input.Email,
-                Password = input.Password
+                Password = input.Password,
+                UserInSessionId = input.UserInSessionId,
+                CurrentDate = input.CurrentDate
             };
         }
 
