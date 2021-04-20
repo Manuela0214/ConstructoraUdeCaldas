@@ -17,6 +17,7 @@ namespace Constructora.Controllers.SecurityModule
     public class UserController : Controller
     {
         private UserImplController capaNegocio = new UserImplController();
+        private RoleImplController capaNegocioRole= new RoleImplController();
 
         // GET: User
         public ActionResult Index(string filter = "")
@@ -168,6 +169,47 @@ namespace Constructora.Controllers.SecurityModule
                     return View(model);
             }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Roles(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            IEnumerable<RoleDTO> dtoList = capaNegocioRole.RecordList(String.Empty);
+            if (dtoList == null)
+            {
+                return HttpNotFound();
+            }
+            RoleModelMapper mapper = new RoleModelMapper();
+            IEnumerable<RoleModel> roleList = mapper.MapperT1T2(dtoList);
+            UserRoleModel model = new UserRoleModel()
+            {
+                UserId = id.Value,
+                RoleList = roleList,
+                SelectedRoles = String.Empty
+            };
+
+            return View(model);
+        }
+
+        // POST: User/Delete/5
+        [HttpPost, ActionName("Roles")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Roles([Bind(Include = "UserId,SelectedRoles")] UserRoleModel model)
+        {
+            List<int> roleList = new List<int>();
+            foreach (string roleId in model.SelectedRoles.Split(','))
+            {
+                roleList.Add(int.Parse(roleId));
+            }
+            bool response = capaNegocio.AssignRoles(roleList, model.UserId);
+            if (response)
+            {
+               return RedirectToAction("Index");                
+            }
+            return View(model);
         }
 
     }

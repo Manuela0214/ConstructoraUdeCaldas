@@ -65,7 +65,6 @@ namespace ConstructoraModel.Implementation.SecurityModule
                     record.DOCUMENT = dbModel.Document;
                     record.CELLPHONE = dbModel.Cellphone;
                     record.EMAIL = dbModel.Email;
-                    record.USER_PASSWORD = dbModel.Password;
                     record.UPDATE_USER_ID = dbModel.UserInSessionId;
                     record.UPDATE_DATE = dbModel.CurrentDate;
                 
@@ -285,9 +284,43 @@ namespace ConstructoraModel.Implementation.SecurityModule
             return myIP;
         }
 
-        
+        /// <summary>
+        ///  Nos muestra si a un usuario se le han asignado roles.
+        /// </summary>
+        /// <param name="roles">Representa la lista de roles</param>
+        /// <param name="userId">Representa el id del usuario</param>
+        /// <returns></returns>
+        public bool AssignRoles(List<int> roles, int userId)
+        {
+            using (ConstructoraDBEntities db = new ConstructoraDBEntities())
+            {
+                try { 
+                    IList<SEC_USER_ROLE> userRoleList = db.SEC_USER_ROLE.Where(x => x.USERID == userId).ToList();
+                    foreach (var userRole in userRoleList)
+                    {
+                        db.SEC_USER_ROLE.Remove(userRole);
+                    }
+                    foreach (var roleId in roles)
+                    {
+                        db.SEC_USER_ROLE.Add(new SEC_USER_ROLE()
+                        {
+                            USERID = userId,
+                            ROLEID = roleId
+                        });
+                    }
+                    db.SaveChanges();
+                    return true;
+                }
+                catch(Exception e)
+                {
+                    return false;
+                }
 
-        
+            }
+
+        }
+
+
 
 
 
