@@ -177,24 +177,25 @@ namespace Constructora.Controllers.SecurityModule
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            IEnumerable<RoleDTO> dtoList = capaNegocioRole.RecordList(String.Empty);
+            IEnumerable<RoleDTO> dtoList = capaNegocio.RecordListByUser(id.Value);
             if (dtoList == null)
             {
                 return HttpNotFound();
             }
             RoleModelMapper mapper = new RoleModelMapper();
             IEnumerable<RoleModel> roleList = mapper.MapperT1T2(dtoList);
+            var selectedList = roleList.Where(x => x.IsSelectedByUser).Select(x => x.Id).ToList();
             UserRoleModel model = new UserRoleModel()
             {
                 UserId = id.Value,
                 RoleList = roleList,
-                SelectedRoles = String.Empty
+                SelectedRoles = String.Join(",",selectedList)
             };
 
             return View(model);
         }
 
-        // POST: User/Delete/5
+        // POST: User/Roles/5
         [HttpPost, ActionName("Roles")]
         [ValidateAntiForgeryToken]
         public ActionResult Roles([Bind(Include = "UserId,SelectedRoles")] UserRoleModel model)

@@ -14,9 +14,11 @@ namespace ConstructoraController.Implementation.SecurityModule
     public class UserImplController
     {
         private UserImplModel model;
+        private RoleImplModel roleModel;
         public UserImplController()
         {
             model = new UserImplModel();
+            roleModel = new RoleImplModel();
         }
 
         /// <summary>
@@ -150,9 +152,28 @@ namespace ConstructoraController.Implementation.SecurityModule
             return mapper.MapperT1T2(record);
         }
 
+        /// <summary>
+        /// Asignación de roles
+        /// </summary>
+        /// <param name="roleList">Répresenta la lista de id's de los roles</param>
+        /// <param name="userId">Representa el id del usuario</param>
+        /// <returns>True: Realiza asignación. False: No realiza asignación.</returns>
         public bool AssignRoles(List<int> roleList, int userId)
         {
             return model.AssignRoles(roleList, userId);
+        }
+
+        /// <summary>
+        /// Se listan los roles que tiene un usuario
+        /// </summary>
+        /// <param name="userId">Representa el ud del usuario</param>
+        /// <returns>Lista con los roles de un usuario, teniendo en cuenta su id.</returns>
+
+        public IEnumerable<RoleDTO> RecordListByUser(int userId)
+        {
+            var list = roleModel.RecordListByUser(userId);
+            RoleDTOMapper mapper = new RoleDTOMapper();
+            return mapper.MapperT1T2(list);
         }
     }
 }

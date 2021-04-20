@@ -38,7 +38,7 @@
                             <strong>@role.Name</strong>
                         </td>
                         <td>
-                            @Html.CheckBox("Role",(selectedRoles.Contains(role.Id.ToString())), new { @id = role.Id, @class = "roleList", @onclick = "refreshSelectedRoles()" })
+                            @Html.CheckBox("Role",role.IsSelectedByUser, new { @id = role.Id, @class = "roleList", @onclick = "refreshSelectedRoles()" })
                         </td>
                     </tr>
                 }

@@ -161,6 +161,39 @@ namespace ConstructoraModel.Implementation.SecurityModule
             }
         }
 
+        /// <summary>
+        /// Se listan los roles que tiene un usuario
+        /// </summary>
+        /// <param name="userId">Representa el ud del usuario</param>
+        /// <returns>Lista con los roles de un usuario, teniendo en cuenta su id.</returns>
+
+        public IEnumerable<RoleDbModel> RecordListByUser(int userId)
+        {
+            using (ConstructoraDBEntities db = new ConstructoraDBEntities())
+            {
+                
+                var roleListDB = from role in db.SEC_ROLE
+                                where !role.REMOVED 
+                                select role;
+
+                var roleListDbModel = new List<RoleDbModel>();
+
+                foreach (var role in roleListDB)
+                {
+                    roleListDbModel.Add(new RoleDbModel()
+                    {
+                        Id = role.ID,
+                        Name = role.NAME,
+                        Description = role.DESCRIPTION,
+                        Removed = role.REMOVED,
+                        IsSelectedByUser = db.SEC_USER_ROLE.Where(x => x.ROLEID == role.ID && x.USERID == userId).Count() > 0
+                     });
+                    
+                }
+                return roleListDbModel.ToList();
+            }
+        }
+
 
     }
 }

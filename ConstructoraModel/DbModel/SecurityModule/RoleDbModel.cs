@@ -41,6 +41,13 @@ namespace ConstructoraModel.DbModel.SecurityModule
         }
 
 
+        private bool isSelectedByUser;
+
+        public bool IsSelectedByUser
+        {
+            get { return isSelectedByUser; }
+            set { isSelectedByUser = value; }
+        }
 
 
     }

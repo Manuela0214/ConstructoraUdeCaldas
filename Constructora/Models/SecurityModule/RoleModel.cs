@@ -48,6 +48,14 @@ namespace Constructora.Models.SecurityModule
             set { description = value; }
         }
 
+        private bool isSelectedByUser;
+
+        public bool IsSelectedByUser
+        {
+            get { return isSelectedByUser; }
+            set { isSelectedByUser = value; }
+        }
+
 
 
 

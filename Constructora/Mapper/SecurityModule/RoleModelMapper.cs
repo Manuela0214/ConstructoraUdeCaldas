@@ -22,7 +22,8 @@ namespace Constructora.Mapper.SecurityModule
                 Id = input.Id,
                 Name = input.Name,
                 Description = input.Description,
-                Removed = input.Removed
+                Removed = input.Removed,
+                IsSelectedByUser = input.IsSelectedByUser
             };
         }
 
