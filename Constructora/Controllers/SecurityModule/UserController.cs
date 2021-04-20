@@ -14,7 +14,7 @@ using ConstructoraController.Implementation.SecurityModule;
 
 namespace Constructora.Controllers.SecurityModule
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private UserImplController capaNegocio = new UserImplController();
         private RoleImplController capaNegocioRole= new RoleImplController();
@@ -22,6 +22,10 @@ namespace Constructora.Controllers.SecurityModule
         // GET: User
         public ActionResult Index(string filter = "")
         {
+            if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             UserModelMapper mapper = new UserModelMapper();
             IEnumerable<UserModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter));
             return View(roleList);
@@ -30,6 +34,10 @@ namespace Constructora.Controllers.SecurityModule
         // GET: User/Create
         public ActionResult Create()
         {
+            if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -65,6 +73,10 @@ namespace Constructora.Controllers.SecurityModule
         // GET: User/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -135,6 +147,10 @@ namespace Constructora.Controllers.SecurityModule
         // GET: User/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -173,6 +189,10 @@ namespace Constructora.Controllers.SecurityModule
 
         public ActionResult Roles(int? id)
         {
+            if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -211,6 +231,54 @@ namespace Constructora.Controllers.SecurityModule
                return RedirectToAction("Index");                
             }
             return View(model);
+        }
+
+        public ActionResult Login()
+        {
+            if (this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        // POST: User/Login/5
+        [HttpPost, ActionName("Login")]
+        [ValidateAntiForgeryToken]
+        public ActionResult IdentifyUser([Bind(Include = "UserName, Password")] LoginModel model)
+        {
+            UserDTO dto = new UserDTO()
+            { 
+                Email = model.UserName,
+                Password = model.Password,
+                CurrentDate = DateTime.Now
+            };
+            UserDTO login = capaNegocio.Login(dto);
+            if (login == null)
+            {
+                ViewBag.Message = Messages.ErrorMessage;
+                return View(model);
+            }
+            else
+            {
+                Session["username"] = model.UserName;
+                Session["token"] = login.Token;
+                return RedirectToAction("Index","Home");
+            }
+            
+        }
+
+        public ActionResult Logout()
+        {
+            if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Session.Remove("username");
+            Session.Remove("token");
+            Session.Clear();
+            Session.RemoveAll();
+            return RedirectToAction("Index","Home");
         }
 
     }
