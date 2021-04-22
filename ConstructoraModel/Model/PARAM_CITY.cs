@@ -12,20 +12,21 @@ namespace ConstructoraModel.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class SEC_ROLE
+    public partial class PARAM_CITY
     {
-        public SEC_ROLE()
+        public PARAM_CITY()
         {
-            this.SEC_USER_ROLE = new HashSet<SEC_USER_ROLE>();
-            this.SEC_FORMS_ROLE = new HashSet<SEC_FORMS_ROLE>();
+            this.PARAM_CUSTOMER = new HashSet<PARAM_CUSTOMER>();
+            this.PARAM_PROJECT = new HashSet<PARAM_PROJECT>();
         }
     
         public int ID { get; set; }
+        public string CODE { get; set; }
         public string NAME { get; set; }
-        public bool REMOVED { get; set; }
-        public string DESCRIPTION { get; set; }
+        public int COUNTRYID { get; set; }
     
-        public virtual ICollection<SEC_USER_ROLE> SEC_USER_ROLE { get; set; }
-        public virtual ICollection<SEC_FORMS_ROLE> SEC_FORMS_ROLE { get; set; }
+        public virtual PARAM_COUNTRY PARAM_COUNTRY { get; set; }
+        public virtual ICollection<PARAM_CUSTOMER> PARAM_CUSTOMER { get; set; }
+        public virtual ICollection<PARAM_PROJECT> PARAM_PROJECT { get; set; }
     }
 }

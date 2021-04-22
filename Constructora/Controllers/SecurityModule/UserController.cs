@@ -11,6 +11,8 @@ using Constructora.Mapper.SecurityModule;
 using Constructora.Models.SecurityModule;
 using ConstructoraController.DTO.SecurityModule;
 using ConstructoraController.Implementation.SecurityModule;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Constructora.Controllers.SecurityModule
 {
@@ -22,10 +24,10 @@ namespace Constructora.Controllers.SecurityModule
         // GET: User
         public ActionResult Index(string filter = "")
         {
-            if (!this.VerificarSession())
+            /*if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
             UserModelMapper mapper = new UserModelMapper();
             IEnumerable<UserModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter));
             return View(roleList);
@@ -34,10 +36,10 @@ namespace Constructora.Controllers.SecurityModule
         // GET: User/Create
         public ActionResult Create()
         {
-            if (!this.VerificarSession())
+            /*if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
             return View();
         }
 
@@ -73,10 +75,10 @@ namespace Constructora.Controllers.SecurityModule
         // GET: User/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (!this.VerificarSession())
+            /*if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -147,10 +149,10 @@ namespace Constructora.Controllers.SecurityModule
         // GET: User/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (!this.VerificarSession())
+            /*if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -189,10 +191,10 @@ namespace Constructora.Controllers.SecurityModule
 
         public ActionResult Roles(int? id)
         {
-            if (!this.VerificarSession())
+            /*if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -235,6 +237,15 @@ namespace Constructora.Controllers.SecurityModule
 
         public ActionResult Login()
         {
+            //validando recaptacha de google
+            var response = Request["g-recaptcha-response"];
+            string secretKey = "6LexxrMaAAAAALnJK8WwntzE4mOhtQQgikSE5NtQ";
+            var client = new WebClient();
+            var result = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secretKey,response));
+            var obj = JObject.Parse(result);
+            var status = (bool)obj.SelectToken("success");
+            ViewBag.Message = status ? "Google reCaptcha validation success" : "Google reCaptcha validation failed";
+
             if (this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
@@ -270,10 +281,10 @@ namespace Constructora.Controllers.SecurityModule
 
         public ActionResult Logout()
         {
-            if (!this.VerificarSession())
+            /*if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
             Session.Remove("username");
             Session.Remove("token");
             Session.Clear();

@@ -14,7 +14,7 @@ using ConstructoraController.Implementation.SecurityModule;
 
 namespace Constructora.Controllers.SecurityModule
 {
-    public class RoleController : Controller
+    public class RoleController : BaseController
     {
         private RoleImplController capaNegocio = new RoleImplController();
 
@@ -167,6 +167,53 @@ namespace Constructora.Controllers.SecurityModule
                     return View(model);
             }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Forms(int? id)
+        {
+            /*if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }*/
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            IEnumerable<FormDTO> dtoList = capaNegocio.RecordFormListByRole(id.Value);
+            if (dtoList == null)
+            {
+                return HttpNotFound();
+            }
+            FormModelMapper mapper = new FormModelMapper();
+            IEnumerable<FormModel> formList = mapper.MapperT1T2(dtoList);
+            var selectedList = formList.Where(x => x.IsSelectedByUser).Select(x => x.Id).ToList();
+
+            FormsRoleModel model = new FormsRoleModel()
+            {
+                RoleId = id.Value,
+                FormsList = formList,
+                SelectedForms = String.Join(",", selectedList)
+            };
+
+            return View(model);
+        }
+
+        [HttpPost, ActionName("Forms")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Forms([Bind(Include = "RoleId,SelectedForms")] FormsRoleModel model)
+        {
+            List<int> formsList = new List<int>();
+            foreach (string formId in model.SelectedForms.Split(','))
+            {
+                formsList.Add(int.Parse(formId));
+            }
+
+            bool response = capaNegocio.AssignForms(formsList, model.RoleId);
+            if (response)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
 
     }

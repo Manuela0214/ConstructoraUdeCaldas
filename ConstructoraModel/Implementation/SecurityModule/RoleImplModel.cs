@@ -193,7 +193,81 @@ namespace ConstructoraModel.Implementation.SecurityModule
                 return roleListDbModel.ToList();
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="forms"></param>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        public bool AssignForms(List<int> forms, int roleId)
+        {
+            using (ConstructoraDBEntities db = new ConstructoraDBEntities())
+            {
+                try
+                {
+                    IList<SEC_FORMS_ROLE> formsRoleList = db.SEC_FORMS_ROLE.Where(x => x.ROLE_ID == roleId).ToList();
+                    foreach (var formsRole in formsRoleList)
+                    {
+                        db.SEC_FORMS_ROLE.Remove(formsRole);
+                    }
 
+                    foreach (int formsId in forms)
+                    {
+                        db.SEC_FORMS_ROLE.Add(new SEC_FORMS_ROLE()
+                        {
+                            ROLE_ID = roleId,
+                            FORM_ID = formsId
+                        });
+                    }
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            }
+        }
 
+        public IEnumerable<FormDbModel> RecordFormList()
+        {
+            using (ConstructoraDBEntities db = new ConstructoraDBEntities())
+            {
+                var recordList = from f in db.SEC_FORM
+                                 select f;
+
+                FormModelMapper mapper = new FormModelMapper();
+                var listaFinal = mapper.MapperT1T2(recordList).ToList();
+
+                return listaFinal.ToList();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        public IEnumerable<FormDbModel> RecordFormListByRole(int roleId)
+        {
+            using (ConstructoraDBEntities db = new ConstructoraDBEntities())
+            {
+                var recordList = from f in db.SEC_FORM
+                                 select f;
+                IList<FormDbModel> listaFinal = new List<FormDbModel>();
+                foreach (var f in recordList)
+                {
+                    listaFinal.Add(new FormDbModel()
+                    {
+                        Id = f.ID,
+                        Name = f.NAME,
+                        Url = f.URL,
+                        IsSelectedByUser = f.SEC_FORMS_ROLE.Where(x => x.ROLE_ID == roleId).Count() > 0
+                    });
+                }
+
+                return listaFinal;
+            }
+        }
     }
 }

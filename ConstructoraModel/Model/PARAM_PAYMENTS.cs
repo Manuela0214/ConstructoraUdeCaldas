@@ -12,20 +12,14 @@ namespace ConstructoraModel.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class SEC_ROLE
+    public partial class PARAM_PAYMENTS
     {
-        public SEC_ROLE()
-        {
-            this.SEC_USER_ROLE = new HashSet<SEC_USER_ROLE>();
-            this.SEC_FORMS_ROLE = new HashSet<SEC_FORMS_ROLE>();
-        }
-    
         public int ID { get; set; }
         public string NAME { get; set; }
-        public bool REMOVED { get; set; }
-        public string DESCRIPTION { get; set; }
+        public string PAYMENT_DESCRIPTION { get; set; }
+        public System.DateTime PAYMENT_DATE { get; set; }
+        public int REQUESTID { get; set; }
     
-        public virtual ICollection<SEC_USER_ROLE> SEC_USER_ROLE { get; set; }
-        public virtual ICollection<SEC_FORMS_ROLE> SEC_FORMS_ROLE { get; set; }
+        public virtual PARAM_REQUEST PARAM_REQUEST { get; set; }
     }
 }

@@ -57,11 +57,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbModel\DbModelBase.cs" />
+    <Compile Include="DbModel\ParametersModule\CityDbModel.cs" />
+    <Compile Include="DbModel\ParametersModule\CountryDbModel.cs" />
+    <Compile Include="DbModel\ParametersModule\ProjectDbModel.cs" />
+    <Compile Include="DbModel\SecurityModule\FormDbModel.cs" />
     <Compile Include="DbModel\SecurityModule\UserDbModel.cs" />
     <Compile Include="DbModel\SecurityModule\RoleDbModel.cs" />
+    <Compile Include="Implementation\ParametersModule\CityImplModel.cs" />
+    <Compile Include="Implementation\ParametersModule\CountryImplModel.cs" />
+    <Compile Include="Implementation\ParametersModule\ProjectImplModel.cs" />
     <Compile Include="Implementation\SecurityModule\UserImplModel.cs" />
     <Compile Include="Implementation\SecurityModule\RoleImplModel.cs" />
     <Compile Include="Mapper\MapperBase.cs" />
+    <Compile Include="Mapper\ParametersModule\CityModelMapper.cs" />
+    <Compile Include="Mapper\ParametersModule\CountryModelMapper.cs" />
+    <Compile Include="Mapper\ParametersModule\ProjectModelMapper.cs" />
+    <Compile Include="Mapper\SecurityModule\FormModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\UserModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\RoleModelMapper.cs" />
     <Compile Include="Model\ConstructoraDataModel.Context.cs">
@@ -78,6 +89,42 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ConstructoraDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARAM_BLOCK.cs">
+      <DependentUpon>ConstructoraDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARAM_CITY.cs">
+      <DependentUpon>ConstructoraDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARAM_COUNTRY.cs">
+      <DependentUpon>ConstructoraDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARAM_CUSTOMER.cs">
+      <DependentUpon>ConstructoraDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARAM_FINANCIAL.cs">
+      <DependentUpon>ConstructoraDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARAM_PAYMENTS.cs">
+      <DependentUpon>ConstructoraDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARAM_PROJECT.cs">
+      <DependentUpon>ConstructoraDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARAM_PROPERTY.cs">
+      <DependentUpon>ConstructoraDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARAM_REQUEST.cs">
+      <DependentUpon>ConstructoraDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARAM_REQUEST_STATUS.cs">
+      <DependentUpon>ConstructoraDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SEC_FORM.cs">
+      <DependentUpon>ConstructoraDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SEC_FORMS_ROLE.cs">
+      <DependentUpon>ConstructoraDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SEC_ROLE.cs">
       <DependentUpon>ConstructoraDataModel.tt</DependentUpon>

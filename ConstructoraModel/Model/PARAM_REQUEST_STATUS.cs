@@ -12,20 +12,17 @@ namespace ConstructoraModel.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class SEC_ROLE
+    public partial class PARAM_REQUEST_STATUS
     {
-        public SEC_ROLE()
+        public PARAM_REQUEST_STATUS()
         {
-            this.SEC_USER_ROLE = new HashSet<SEC_USER_ROLE>();
-            this.SEC_FORMS_ROLE = new HashSet<SEC_FORMS_ROLE>();
+            this.PARAM_REQUEST = new HashSet<PARAM_REQUEST>();
         }
     
         public int ID { get; set; }
         public string NAME { get; set; }
-        public bool REMOVED { get; set; }
-        public string DESCRIPTION { get; set; }
+        public string STATUS_DESCRIPTION { get; set; }
     
-        public virtual ICollection<SEC_USER_ROLE> SEC_USER_ROLE { get; set; }
-        public virtual ICollection<SEC_FORMS_ROLE> SEC_FORMS_ROLE { get; set; }
+        public virtual ICollection<PARAM_REQUEST> PARAM_REQUEST { get; set; }
     }
 }

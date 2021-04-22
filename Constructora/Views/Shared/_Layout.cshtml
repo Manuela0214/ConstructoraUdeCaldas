@@ -25,6 +25,10 @@
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Roles", "Index", "Role")</li>
+                    <li>@Html.ActionLink("Usuarios", "Index", "User")</li>
+                    <li>@Html.ActionLink("Cerrar sesión", "Logout", "User")</li>
+                    @*
                     @if (Session.Count > 0)
                     {
                         <li>@Html.ActionLink("Roles", "Index", "Role")</li>
@@ -36,7 +40,7 @@
                     {
                         <li>@Html.ActionLink("Iniciar sesión", "Login", "User")</li>
 
-                    }
+                    }*@
                 </ul>
             </div>
             
@@ -54,7 +58,7 @@
             <footer>
                 <p>&copy; @DateTime.Now.Year - Constructora UdeC</p>
             </footer>
-        </div>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
