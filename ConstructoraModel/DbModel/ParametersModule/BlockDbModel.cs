@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConstructoraModel.DbModel.ParametersModule
 {
-    public class ProjectDbModel
+    public class BlockDbModel
     {
         private int id;
 
@@ -40,20 +40,12 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { description = value; }
         }
 
-        private string picture;
+        private int projectId;
 
-        public string Picture
+        public int ProjectId
         {
-            get { return picture; }
-            set { picture = value; }
-        }
-
-        private int cityId;
-
-        public int CityId
-        {
-            get { return cityId; }
-            set { cityId = value; }
+            get { return projectId; }
+            set { projectId = value; }
         }
 
     }

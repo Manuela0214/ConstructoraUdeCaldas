@@ -154,6 +154,7 @@
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\SecurityModule\FormModel.cs" />
     <Compile Include="Models\SecurityModule\LoginModel.cs" />
+    <Compile Include="Models\SecurityModule\PasswordResetModel.cs" />
     <Compile Include="Models\SecurityModule\RoleModel.cs" />
     <Compile Include="Models\SecurityModule\UserModel.cs" />
     <Compile Include="Models\SecurityModule\FormsRoleModel.cs" />
@@ -209,6 +210,7 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Logout.cshtml" />
     <Content Include="Views\Role\Forms.cshtml" />
+    <Content Include="Views\User\PasswordReset.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

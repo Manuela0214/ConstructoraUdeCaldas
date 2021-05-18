@@ -115,7 +115,18 @@ namespace ConstructoraController.Implementation.SecurityModule
             var response =  model.PasswordReset(email, newPassword);
             if (response == 1)
             {
-                new Notifications().SendEmail("Password Reset", "Content...", email, "test@constructora.com");
+                String content = String.Format("Buen día, " +
+                    "<br /> Hemos recibido una solicitud de cambio de contraseña para la plataforma Contructora UdeC S.A.S. " +
+                    "Sus credenciales de acceso son: <br/>" +
+                    " <ul>" +
+                    "<li> Usuario: {0}</li>" +
+                    "<li>Contraseña: {1}</li>" +
+                    "</ul>" +
+                    "<br /> Cordial saludo, <br />" +
+                    "Su equipo de seguridad.", email, randomPassword);
+                //new Notifications().SendEmail("Cambio de contraseña usuario UdeC", content, email,email);
+                //new Notifications().SendEmail("Restablecimiento de contraseña", "Su contraseña temporal: "+newPassword, email, "angie.1701812633@ucaldas.edu.co");
+                new Notifications().SendEmail("Password Reset", content, email, "test@constructora.com");
             }
             return response;
         }

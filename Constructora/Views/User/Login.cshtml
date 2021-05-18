@@ -36,157 +36,171 @@
         </div>
     </div>
 
-
-    <div class="g-recaptcha" data-sitekey="6LexxrMaAAAAAPtJO497_0QfFrhZab71sdbjYrCa"></div>
-    
-    
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Ingresar" class="btn btn-primary" />
-            </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <div class="g-recaptcha" data-sitekey="6LexxrMaAAAAAPtJO497_0QfFrhZab71sdbjYrCa"></div>
         </div>
     </div>
-    }
-<script src="https://www.google.com/recaptcha/api.js" type="text/javascript"></script>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink("¿Olvidaste tu contraseña?", "PasswordReset", "User")
+        </div>
+    </div>
 
     @*
-        <style type="text/css">
+        <nav>
+            <ul class="menu-general center-block">
+                <li class="col-md-2 col-sm-2 col-xs-12 btn"><a href="#">¿Olvidaste tu contraseña?</a></li>
+            </ul>
+        </nav>
+    *@
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Ingresar" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+        }
+        <script src="https://www.google.com/recaptcha/api.js" type="text/javascript"></script>
 
-            /* sign in FORM */
-            #logreg-forms {
-                width: 600px;
-                margin: 10vh auto;
-                background-color: #f3f3f3;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-                transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-            }
+        @*
+            <style type="text/css">
 
-                #logreg-forms form {
-                    width: 95%;
-                    max-width: 600px;
-                    padding: 15px;
-                    margin: auto;
+                /* sign in FORM */
+                #logreg-forms {
+                    width: 600px;
+                    margin: 10vh auto;
+                    background-color: #f3f3f3;
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
                 }
 
-                #logreg-forms .form-control {
-                    position: relative;
-                    box-sizing: border-box;
-                    height: auto;
-                    padding: 10px;
-                    font-size: 16px;
-                }
-
-                    #logreg-forms .form-control:focus {
-                        z-index: 1;
+                    #logreg-forms form {
+                        width: 95%;
+                        max-width: 600px;
+                        padding: 15px;
+                        margin: auto;
                     }
 
-                #logreg-forms .form-signin input[type="email"] {
-                    margin-bottom: 5px;
-                    max-width: 600px;
-                    position: center;
-                    border-bottom-right-radius: 0;
-                    border-bottom-left-radius: 0;
+                    #logreg-forms .form-control {
+                        position: relative;
+                        box-sizing: border-box;
+                        height: auto;
+                        padding: 10px;
+                        font-size: 16px;
+                    }
+
+                        #logreg-forms .form-control:focus {
+                            z-index: 1;
+                        }
+
+                    #logreg-forms .form-signin input[type="email"] {
+                        margin-bottom: 5px;
+                        max-width: 600px;
+                        position: center;
+                        border-bottom-right-radius: 0;
+                        border-bottom-left-radius: 0;
+                    }
+
+                    #logreg-forms .form-signin input[type="password"] {
+                        border-top-left-radius: 0;
+                        border-top-right-radius: 0;
+                        max-width: 600px;
+                        position: center;
+                    }
+
+                    #logreg-forms .social-login {
+                        width: 390px;
+                        margin: 0 auto;
+                        margin-bottom: 14px;
+                    }
+
+                    #logreg-forms .social-btn {
+                        font-weight: 100;
+                        color: white;
+                        width: 190px;
+                        font-size: 1.2rem;
+                    }
+
+                    #logreg-forms a {
+                        display: block;
+                        padding-top: 10px;
+                        color: dodgerblue;
+                    }
+
+                #logreg-form .lines {
+                    width: 200px;
+                    border: 1px solid red;
                 }
 
-                #logreg-forms .form-signin input[type="password"] {
-                    border-top-left-radius: 0;
-                    border-top-right-radius: 0;
-                    max-width: 600px;
-                    position: center;
+
+                #logreg-forms button[type="submit"] {
+                    margin-top: 10px;
                 }
 
-                #logreg-forms .social-login {
-                    width: 390px;
+                #logreg-forms .facebook-btn {
+                    background-color: #3C589C;
+                }
+
+                #logreg-forms .google-btn {
+                    background-color: #DF4B3B;
+                }
+
+                #logreg-forms .form-reset, #logreg-forms .form-signup {
+                    display: none;
+                }
+
+                    #logreg-forms .form-signup .social-btn {
+                        width: 210px;
+                    }
+
+                    #logreg-forms .form-signup input {
+                        margin-bottom: 2px;
+                    }
+
+                .form-signup .social-login {
+                    width: 240px !important;
                     margin: 0 auto;
-                    margin-bottom: 14px;
                 }
+            </style>
 
-                #logreg-forms .social-btn {
-                    font-weight: 100;
-                    color: white;
-                    width: 190px;
-                    font-size: 1.2rem;
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+            <div id="logreg-forms">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <strong>@ViewBag.ErrorMessage</strong>
                 }
-
-                #logreg-forms a {
-                    display: block;
-                    padding-top: 10px;
-                    color: dodgerblue;
-                }
-
-            #logreg-form .lines {
-                width: 200px;
-                border: 1px solid red;
-            }
-
-
-            #logreg-forms button[type="submit"] {
-                margin-top: 10px;
-            }
-
-            #logreg-forms .facebook-btn {
-                background-color: #3C589C;
-            }
-
-            #logreg-forms .google-btn {
-                background-color: #DF4B3B;
-            }
-
-            #logreg-forms .form-reset, #logreg-forms .form-signup {
-                display: none;
-            }
-
-                #logreg-forms .form-signup .social-btn {
-                    width: 210px;
-                }
-
-                #logreg-forms .form-signup input {
-                    margin-bottom: 2px;
-                }
-
-            .form-signup .social-login {
-                width: 240px !important;
-                margin: 0 auto;
-            }
-        </style>
-
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-
-        <div id="logreg-forms">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @if (ViewBag.ErrorMessage != null)
-            {
-                <strong>@ViewBag.ErrorMessage</strong>
-            }
-            <form class="form-signin">
-                <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Iniciar sesión</h1>
-                <hr>
-                <div class="social-login">
-                    <button class="btn facebook-btn social-btn" type="button"><span><i class="bi-facebook"></i> Iniciar sesión con Facebook</span> </button>
-                    <button class="btn google-btn social-btn" type="button"><span><i class="bi-google"></i>  Iniciar sesión con Google+</span> </button>
-                </div>
-                <p style="text-align:center"> — o — </p>
-                <h5><i class="bi-person-fill"></i>Correo electrónico</h5>
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @type = "email", @id = "inputEmail", @class = "form-control", @placeholder = "Correo electrónico", @required = "", @autofocus = "" } })
-                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                <form class="form-signin">
+                    <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Iniciar sesión</h1>
+                    <hr>
+                    <div class="social-login">
+                        <button class="btn facebook-btn social-btn" type="button"><span><i class="bi-facebook"></i> Iniciar sesión con Facebook</span> </button>
+                        <button class="btn google-btn social-btn" type="button"><span><i class="bi-google"></i>  Iniciar sesión con Google+</span> </button>
+                    </div>
+                    <p style="text-align:center"> — o — </p>
+                    <h5><i class="bi-person-fill"></i>Correo electrónico</h5>
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @type = "email", @id = "inputEmail", @class = "form-control", @placeholder = "Correo electrónico", @required = "", @autofocus = "" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
 
 
-                <h5><i class="bi-lock-fill"></i>Contraseña</h5>
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @type = "password", @id = "inputPassword", @class = "form-control center-block", @placeholder = "Contraseña", @required = "" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                <a href="#" id="forgot_pswd">¿Olvidaste tu contraseña?<i class="bi-question-circle"></i></a>
-                <button class="btn btn-success center-block" type="submit"><i class="bi-box-arrow-right"></i>  Iniciar sesión   </button>
+                    <h5><i class="bi-lock-fill"></i>Contraseña</h5>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @type = "password", @id = "inputPassword", @class = "form-control center-block", @placeholder = "Contraseña", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    <a href="#" id="forgot_pswd">¿Olvidaste tu contraseña?<i class="bi-question-circle"></i></a>
+                    <button class="btn btn-success center-block" type="submit"><i class="bi-box-arrow-right"></i>  Iniciar sesión   </button>
 
-                <hr>
-                <!-- <p>Don't have an account!</p>  -->
-                <h5 style="text-align:center">¿No tienes una cuenta?</h5>
-                <button class="btn btn-primary center-block" type="button" id="btn-signup"><i class="bi-person-plus-fill"></i> Crear cuenta</button>
-            </form>
+                    <hr>
+                    <!-- <p>Don't have an account!</p>  -->
+                    <h5 style="text-align:center">¿No tienes una cuenta?</h5>
+                    <button class="btn btn-primary center-block" type="button" id="btn-signup"><i class="bi-person-plus-fill"></i> Crear cuenta</button>
+                </form>
 
 
 
 
-        </div>
+            </div>
 
-    *@
+        *@

@@ -7,28 +7,16 @@ using System.Web;
 
 namespace Constructora.Models.SecurityModule
 {
-    public class LoginModel
+    public class PasswordResetModel
     {
         private string userName;
 
         [DisplayName("Correo")]
         [MaxLength(50, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
-
         public string UserName
         {
             get { return userName; }
             set { userName = value; }
-        }
-
-        private string password;
-
-        [DisplayName("Contraseña")]
-        [MaxLength(50, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
-
-        public string Password
-        {
-            get { return password; }
-            set { password = value; }
         }
 
     }

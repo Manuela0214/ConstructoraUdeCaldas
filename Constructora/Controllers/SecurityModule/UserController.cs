@@ -11,6 +11,7 @@ using Constructora.Mapper.SecurityModule;
 using Constructora.Models.SecurityModule;
 using ConstructoraController.DTO.SecurityModule;
 using ConstructoraController.Implementation.SecurityModule;
+using ConstructoraController.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -20,14 +21,14 @@ namespace Constructora.Controllers.SecurityModule
     {
         private UserImplController capaNegocio = new UserImplController();
         private RoleImplController capaNegocioRole= new RoleImplController();
-
+        
         // GET: User
         public ActionResult Index(string filter = "")
         {
-            /*if (!this.VerificarSession())
+            if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }*/
+            }
             UserModelMapper mapper = new UserModelMapper();
             IEnumerable<UserModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter));
             return View(roleList);
@@ -36,10 +37,10 @@ namespace Constructora.Controllers.SecurityModule
         // GET: User/Create
         public ActionResult Create()
         {
-            /*if (!this.VerificarSession())
+            if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }*/
+            }
             return View();
         }
 
@@ -75,10 +76,10 @@ namespace Constructora.Controllers.SecurityModule
         // GET: User/Edit/5
         public ActionResult Edit(int? id)
         {
-            /*if (!this.VerificarSession())
+            if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }*/
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -149,10 +150,10 @@ namespace Constructora.Controllers.SecurityModule
         // GET: User/Delete/5
         public ActionResult Delete(int? id)
         {
-            /*if (!this.VerificarSession())
+            if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }*/
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -191,10 +192,10 @@ namespace Constructora.Controllers.SecurityModule
 
         public ActionResult Roles(int? id)
         {
-            /*if (!this.VerificarSession())
+            if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }*/
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -281,10 +282,10 @@ namespace Constructora.Controllers.SecurityModule
 
         public ActionResult Logout()
         {
-            /*if (!this.VerificarSession())
+            if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }*/
+            }
             Session.Remove("username");
             Session.Remove("token");
             Session.Clear();
@@ -292,5 +293,60 @@ namespace Constructora.Controllers.SecurityModule
             return RedirectToAction("Index","Home");
         }
 
+        
+        public ActionResult PasswordReset(PasswordResetModel model)
+        {
+            return View();
+            
+        }
+        
+        // POST: User/PasswordReset/5
+        /*[HttpPost, ActionName("PasswordReset")]
+        public ActionResult SendEmailResetPass([Bind(Include = "UserName")] PasswordResetModel model)
+        {
+            UserDTO dto = new UserDTO()
+            {
+                Email = model.UserName
+            };
+            string email = dto.Email.ToString();
+            
+            if (capaNegocio.PasswordReset(email) == 1)
+            {
+                capaNegocio.PasswordReset(email);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.Message = Messages.ErrorMessage;
+                return View(model);
+            }
+        }*/
+        
+        [HttpPost, ActionName("PasswordReset")]
+        public ActionResult SendEmailResetPass([Bind(Include = "UserName")] PasswordResetModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                UserDTO dto = new UserDTO()
+                {
+                    Email = model.UserName
+                };
+                string Email = dto.Email.ToString();
+                int response = capaNegocio.PasswordReset(Email);
+                switch (response)
+                {
+                    case 1:
+                        return RedirectToAction("Index");
+                    case 2:
+                        ViewBag.Message = Messages.ExceptionMessage;
+                        return View(model);
+                    case 3:
+                        ViewBag.Message = Messages.alreadyExistMessage;
+                        return View(model);
+                }
+            }
+
+            return View(model);
+        }
     }
 }

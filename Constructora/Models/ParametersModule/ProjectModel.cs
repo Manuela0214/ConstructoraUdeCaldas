@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConstructoraModel.DbModel.ParametersModule
+namespace Constructora.Models.ParametersModule
 {
-    public class ProjectDbModel
+    public class ProjectModel
     {
         private int id;
 
@@ -32,12 +32,12 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { name = value; }
         }
 
-        private string description;
+        private string projDescription;
 
-        public string Description
+        public string ProjDescription
         {
-            get { return description; }
-            set { description = value; }
+            get { return projDescription; }
+            set { projDescription = value; }
         }
 
         private string picture;
@@ -54,6 +54,14 @@ namespace ConstructoraModel.DbModel.ParametersModule
         {
             get { return cityId; }
             set { cityId = value; }
+        }
+
+        private bool isSelectedByUser;
+
+        public bool IsSelectedByUser
+        {
+            get { return isSelectedByUser; }
+            set { isSelectedByUser = value; }
         }
 
     }
