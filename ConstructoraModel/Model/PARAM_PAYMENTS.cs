@@ -16,8 +16,8 @@ namespace ConstructoraModel.Model
     {
         public int ID { get; set; }
         public string NAME { get; set; }
-        public string PAYMENT_DESCRIPTION { get; set; }
-        public System.DateTime PAYMENT_DATE { get; set; }
+        public string DESCRIPTION { get; set; }
+        public System.DateTime DATE { get; set; }
         public int REQUESTID { get; set; }
     
         public virtual PARAM_REQUEST PARAM_REQUEST { get; set; }

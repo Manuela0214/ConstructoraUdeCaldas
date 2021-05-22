@@ -22,8 +22,8 @@ namespace ConstructoraModel.Model
         public int ID { get; set; }
         public string CODE { get; set; }
         public string NAME { get; set; }
+        public int VALOR { get; set; }
         public int BLOCKID { get; set; }
-        public int VALUE { get; set; }
     
         public virtual PARAM_BLOCK PARAM_BLOCK { get; set; }
         public virtual ICollection<PARAM_REQUEST> PARAM_REQUEST { get; set; }

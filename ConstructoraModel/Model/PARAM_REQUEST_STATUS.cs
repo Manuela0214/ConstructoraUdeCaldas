@@ -21,7 +21,7 @@ namespace ConstructoraModel.Model
     
         public int ID { get; set; }
         public string NAME { get; set; }
-        public string STATUS_DESCRIPTION { get; set; }
+        public string DESCRIPTION { get; set; }
     
         public virtual ICollection<PARAM_REQUEST> PARAM_REQUEST { get; set; }
     }

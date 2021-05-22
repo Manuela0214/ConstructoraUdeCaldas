@@ -22,7 +22,7 @@ namespace ConstructoraModel.Model
         public int ID { get; set; }
         public string CODE { get; set; }
         public string NAME { get; set; }
-        public string PROJ_DESCRIPTION { get; set; }
+        public string DESCRIPTION { get; set; }
         public string PICTURE { get; set; }
         public int CITYID { get; set; }
     

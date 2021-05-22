@@ -20,9 +20,9 @@ namespace ConstructoraModel.Model
         }
     
         public int ID { get; set; }
-        public System.DateTime DELIVERY_DATE { get; set; }
-        public System.DateTime APPROVED_DATE { get; set; }
-        public int ECONOMIC_OFFER { get; set; }
+        public System.DateTime DELIVERYDATE { get; set; }
+        public System.DateTime APPROVEDDATE { get; set; }
+        public int ECONOMICOFFER { get; set; }
         public int CONSIGNMENT { get; set; }
         public int CUSTOMERID { get; set; }
         public int PROPERTYID { get; set; }
