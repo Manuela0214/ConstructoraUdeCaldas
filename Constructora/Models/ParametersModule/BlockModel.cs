@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Constructora.Models.ParametersModule
 {
-    public class CountryModel
+    public class BlockModel
     {
         private int id;
 
@@ -39,7 +39,23 @@ namespace Constructora.Models.ParametersModule
         }
 
 
+        private string description;
 
+        [DisplayName("Descripción")]
+        [MaxLength(200, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+
+        private int propertyId;
+
+        public int PropertyId
+        {
+            get { return propertyId; }
+            set { propertyId = value; }
+        }
 
 
     }

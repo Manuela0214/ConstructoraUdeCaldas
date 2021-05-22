@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Constructora.Models.ParametersModule
+namespace ConstructoraController.DTO.ParametersModule
 {
-    public class CountryModel
+    public class BlockDTO : DTOBase
     {
         private int id;
 
@@ -18,8 +17,6 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string code;
-        [DisplayName("Código")]
-        [Required()]
 
         public string Code
         {
@@ -27,17 +24,31 @@ namespace Constructora.Models.ParametersModule
             set { code = value; }
         }
 
+
         private string name;
 
-        [DisplayName("Nombre")]
-        [Required()]
-        [MaxLength(100, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
 
+
+        private string description;
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+
+        private int propertyId;
+
+        public int PropertyId
+        {
+            get { return propertyId; }
+            set { propertyId = value; }
+        }
 
 
 

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
 namespace Constructora.Models.ParametersModule
 {
@@ -17,6 +18,8 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string code;
+        [DisplayName("Código")]
+        [Required()]
 
         public string Code
         {
@@ -26,18 +29,24 @@ namespace Constructora.Models.ParametersModule
 
         private string name;
 
+        [DisplayName("Nombre")]
+        [Required()]
+        [MaxLength(100, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
 
-        private string projDescription;
 
-        public string ProjDescription
+        private string description;
+
+        [DisplayName("Descripción")]
+        [MaxLength(200, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
+        public string Description
         {
-            get { return projDescription; }
-            set { projDescription = value; }
+            get { return description; }
+            set { description = value; }
         }
 
         private string picture;
@@ -48,21 +57,16 @@ namespace Constructora.Models.ParametersModule
             set { picture = value; }
         }
 
-        private int cityId;
 
-        public int CityId
+
+        private int blockId;
+
+        public int BlockId
         {
-            get { return cityId; }
-            set { cityId = value; }
+            get { return blockId; }
+            set { blockId = value; }
         }
 
-        private bool isSelectedByUser;
-
-        public bool IsSelectedByUser
-        {
-            get { return isSelectedByUser; }
-            set { isSelectedByUser = value; }
-        }
 
     }
 }

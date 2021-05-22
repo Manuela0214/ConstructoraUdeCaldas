@@ -34,9 +34,9 @@ namespace ConstructoraController.Implementation.SecurityModule
             string randomPassword = enc.RandomString(10);
             string newPassword = enc.CreateMD5(randomPassword);
             dbModel.Password = newPassword;
-            int response = model.RecordCreation(dbModel);            
+            int response = model.RecordCreation(dbModel);
             //verifica si el usuario fue guardado para enviar un email
-            if(response == 1)
+            if (response == 1)
             {
                 String content = String.Format("Buen día {0}, " +
                     "<br /> Usted ha sido registrado en la plataforma Contructora UdeC S.A.S. " +
@@ -112,7 +112,7 @@ namespace ConstructoraController.Implementation.SecurityModule
             Encrypt enc = new Encrypt();
             string randomPassword = enc.RandomString(10);
             string newPassword = enc.CreateMD5(randomPassword);
-            var response =  model.PasswordReset(email, newPassword);
+            var response = model.PasswordReset(email, newPassword);
             if (response == 1)
             {
                 String content = String.Format("Buen día, " +
@@ -126,7 +126,7 @@ namespace ConstructoraController.Implementation.SecurityModule
                     "Su equipo de seguridad.", email, randomPassword);
                 //new Notifications().SendEmail("Cambio de contraseña usuario UdeC", content, email,email);
                 //new Notifications().SendEmail("Restablecimiento de contraseña", "Su contraseña temporal: "+newPassword, email, "angie.1701812633@ucaldas.edu.co");
-                new Notifications().SendEmail("Password Reset", content, email, "test@constructora.com");
+                new Notifications().SendEmail("Password Reset", content, email, "angie.1701812633@ucaldas.edu.co");
             }
             return response;
         }
@@ -142,7 +142,7 @@ namespace ConstructoraController.Implementation.SecurityModule
             var response = model.ChangePassword(currentPassword, newPassword, userId, out email);
             if (response == 1)
             {
-                new Notifications().SendEmail("Password Changed", "Content...", email, "test@constructora.com");
+                new Notifications().SendEmail("Password Changed", "Content...", email, "angie.1701812633@ucaldas.edu.co");
             }
             return response;
         }

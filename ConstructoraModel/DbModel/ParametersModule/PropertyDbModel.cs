@@ -24,12 +24,21 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { code = value; }
         }
 
-        private string identifier;
+        private string name;
 
-        public string Identifier
+        public string Name
         {
-            get { return identifier; }
-            set { identifier = value; }
+            get { return name; }
+            set { name = value; }
+        }
+
+
+        private int valor;
+
+        public int Valor
+        {
+            get { return valor; }
+            set { valor = value; }
         }
 
         private int blockId;
@@ -40,13 +49,8 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { blockId = value; }
         }
 
-        private int valor;
 
-        public int Valor
-        {
-            get { return valor; }
-            set { valor = value; }
-        }
+
 
 
     }

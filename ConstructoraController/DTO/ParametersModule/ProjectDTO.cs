@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConstructoraModel.DbModel.ParametersModule
+namespace ConstructoraController.DTO.ParametersModule
 {
-    public class BlockDbModel
+    public class ProjectDTO : DTOBase
     {
         private int id;
 
@@ -24,6 +24,7 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { code = value; }
         }
 
+
         private string name;
 
         public string Name
@@ -31,6 +32,7 @@ namespace ConstructoraModel.DbModel.ParametersModule
             get { return name; }
             set { name = value; }
         }
+
 
         private string description;
 
@@ -40,15 +42,25 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { description = value; }
         }
 
+        private string picture;
 
-
-        private int propertyId;
-
-        public int PropertyId
+        public string Picture
         {
-            get { return propertyId; }
-            set { propertyId = value; }
+            get { return picture; }
+            set { picture = value; }
         }
+
+
+
+        private int blockId;
+
+        public int BlockId
+        {
+            get { return blockId; }
+            set { blockId = value; }
+        }
+
+
 
 
 

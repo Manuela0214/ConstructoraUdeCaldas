@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Constructora.Models.ParametersModule
 {
-    public class CountryModel
+    public class PropertyModel
     {
         private int id;
 
@@ -26,7 +26,6 @@ namespace Constructora.Models.ParametersModule
             get { return code; }
             set { code = value; }
         }
-
         private string name;
 
         [DisplayName("Nombre")]
@@ -36,6 +35,24 @@ namespace Constructora.Models.ParametersModule
         {
             get { return name; }
             set { name = value; }
+        }
+
+        private int valor;
+        [DisplayName("Valor monetario")]
+        [Required()]
+
+        public int Valor
+        {
+            get { return valor; }
+            set { valor = value; }
+        }
+
+        private int blockId;
+
+        public int BlockId
+        {
+            get { return blockId; }
+            set { blockId = value; }
         }
 
 

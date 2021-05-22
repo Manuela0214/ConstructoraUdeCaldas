@@ -10,24 +10,24 @@ using System.Threading.Tasks;
 
 namespace ConstructoraModel.Implementation.ParametersModule
 {
-    public class ProjectImplModel
+    public class PropertyImplModel
     {
 
-        public int RecordCreation(ProjectDbModel dbModel)
+        public int RecordCreation(PropertyDbModel dbModel)
         {
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
                 try
                 {
                     ///verifica si el proyecto con el nombre ya existe en algun registro 
-                    if (db.PARAM_PROJECT.Where(x => x.ID.Equals(dbModel.Id)).Count() > 0)
+                    if (db.PARAM_PROPERTY.Where(x => x.ID.Equals(dbModel.Id)).Count() > 0)
                     {
                         return 3;
                     }
 
-                    ProjectModelMapper mapper = new ProjectModelMapper();
-                    PARAM_PROJECT record = mapper.MapperT2T1(dbModel);
-                    db.PARAM_PROJECT.Add(record);
+                    PropertyModelMapper mapper = new PropertyModelMapper();
+                    PARAM_PROPERTY record = mapper.MapperT2T1(dbModel);
+                    db.PARAM_PROPERTY.Add(record);
                     db.SaveChanges();
                     return 1;
                 }
@@ -38,21 +38,20 @@ namespace ConstructoraModel.Implementation.ParametersModule
             }
         }
 
-        public int RecordUpdate(ProjectDbModel dbModel)
+        public int RecordUpdate(PropertyDbModel dbModel)
         {
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
                 try
                 {
-                    var record = db.PARAM_PROJECT.Where(x => x.ID == dbModel.Id).FirstOrDefault();
+                    var record = db.PARAM_PROPERTY.Where(x => x.ID == dbModel.Id).FirstOrDefault();
                     if (record == null)
                     {
                         return 3;
                     }
                     record.CODE = dbModel.Code;
                     record.NAME = dbModel.Name;
-                    record.DESCRIPTION = dbModel.Description;
-                    record.PICTURE = dbModel.Picture;
+                    record.VALOR = dbModel.Valor;
                     //Aquí se debe tener una lista desplegable 
                     //record.BLOCKID = dbModel.BlockId;
                     db.Entry(record).State = EntityState.Modified;
@@ -66,13 +65,13 @@ namespace ConstructoraModel.Implementation.ParametersModule
             }
         }
 
-        public int RecordRemove(ProjectDbModel dbModel)
+        public int RecordRemove(PropertyDbModel dbModel)
         {
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
                 try
                 {
-                    var record = db.PARAM_PROJECT.Where(x => x.ID == dbModel.Id).FirstOrDefault();
+                    var record = db.PARAM_PROPERTY.Where(x => x.ID == dbModel.Id).FirstOrDefault();
                     if (record == null)
                     {
                         return 3;
@@ -87,26 +86,26 @@ namespace ConstructoraModel.Implementation.ParametersModule
             }
         }
 
-        public IEnumerable<ProjectDbModel> RecordList(String filter)
+        public IEnumerable<PropertyDbModel> RecordList(String filter)
         {
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
-                var listaLambda = db.PARAM_PROJECT.Where(x => x.NAME.ToUpper().Contains(filter)).ToList();
-                ProjectModelMapper mapper = new ProjectModelMapper();
+                var listaLambda = db.PARAM_PROPERTY.Where(x => x.NAME.ToUpper().Contains(filter)).ToList();
+                PropertyModelMapper mapper = new PropertyModelMapper();
                 var listFinal = mapper.MapperT1T2(listaLambda);
 
                 return listFinal.ToList();
             }
         }
 
-        public ProjectDbModel RecordSearch(int id)
+        public PropertyDbModel RecordSearch(int id)
         {
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
-                var record = db.PARAM_PROJECT.Where(x => x.ID == id).FirstOrDefault();
+                var record = db.PARAM_PROPERTY.Where(x => x.ID == id).FirstOrDefault();
                 if (record != null)
                 {
-                    ProjectModelMapper mapper = new ProjectModelMapper();
+                    PropertyModelMapper mapper = new PropertyModelMapper();
                     var recordFinal = mapper.MapperT1T2(record);
                     return recordFinal;
                 }
