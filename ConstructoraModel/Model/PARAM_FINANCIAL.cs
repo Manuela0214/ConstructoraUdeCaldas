@@ -20,14 +20,14 @@ namespace ConstructoraModel.Model
         }
     
         public int ID { get; set; }
-        public string NAME_JOB { get; set; }
-        public string PHONE_JOB { get; set; }
-        public int TOTAL_IN_COME { get; set; }
-        public System.DateTime TIME_CURRENT_WORK { get; set; }
-        public string NAME_FAMILY_REF { get; set; }
-        public string CELLPHONE_FAMILY_REF { get; set; }
-        public string NAME_PERSONAL_REF { get; set; }
-        public string CELLPHONE_PERSONAL_REF { get; set; }
+        public string NAMEJOB { get; set; }
+        public string PHONEJOB { get; set; }
+        public int TOTALINCOME { get; set; }
+        public System.DateTime TIMECURRENTWORK { get; set; }
+        public string NAMEFAMILYREF { get; set; }
+        public string CELLPHONEFAMILYREF { get; set; }
+        public string NAMEPERSONALREF { get; set; }
+        public string CELLPHONEPERSONALREF { get; set; }
     
         public virtual ICollection<PARAM_CUSTOMER> PARAM_CUSTOMER { get; set; }
     }

@@ -31,5 +31,9 @@ namespace ConstructoraModel.DbModel.ParametersModule
             get { return name; }
             set { name = value; }
         }
+
+
+
+
     }
 }

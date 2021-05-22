@@ -32,13 +32,16 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { name = value; }
         }
 
-        private int countryId;
+        private int projectId;
 
-        public int CountryId
+        public int ProjectId
         {
-            get { return countryId; }
-            set { countryId = value; }
+            get { return projectId; }
+            set { projectId = value; }
         }
+
+
+
 
     }
 }

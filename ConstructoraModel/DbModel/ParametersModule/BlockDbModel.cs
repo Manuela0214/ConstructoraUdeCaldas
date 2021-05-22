@@ -40,13 +40,17 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { description = value; }
         }
 
-        private int projectId;
 
-        public int ProjectId
+
+        private int propertyId;
+
+        public int PropertyId
         {
-            get { return projectId; }
-            set { projectId = value; }
+            get { return propertyId; }
+            set { propertyId = value; }
         }
+
+
 
     }
 }

@@ -23,7 +23,7 @@ namespace ConstructoraModel.Model
         public string DOCUMENT { get; set; }
         public string NAME { get; set; }
         public string LASTNAMEN { get; set; }
-        public System.DateTime DATE_BIRTH { get; set; }
+        public System.DateTime DATEBIRTH { get; set; }
         public string PICTURE { get; set; }
         public string CELLPHONE { get; set; }
         public string EMAIL { get; set; }

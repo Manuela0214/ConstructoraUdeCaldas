@@ -141,6 +141,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ParametersModule\PropertyController.cs" />
+    <Compile Include="Controllers\ParametersModule\BlockController.cs" />
+    <Compile Include="Controllers\ParametersModule\ProjectController.cs" />
+    <Compile Include="Controllers\ParametersModule\CountryController.cs" />
+    <Compile Include="Controllers\ParametersModule\CityController.cs" />
     <Compile Include="Controllers\SecurityModule\UserController.cs" />
     <Compile Include="Controllers\SecurityModule\RoleController.cs" />
     <Compile Include="Global.asax.cs">
@@ -148,10 +153,20 @@
     </Compile>
     <Compile Include="Helpers\Messages.cs" />
     <Compile Include="Mapper\MapperBase.cs" />
+    <Compile Include="Mapper\ParametersModule\PropertyModelMapper.cs" />
+    <Compile Include="Mapper\ParametersModule\BlockModelMapper.cs" />
+    <Compile Include="Mapper\ParametersModule\ProjectModelMapper.cs" />
+    <Compile Include="Mapper\ParametersModule\CityModelMapper.cs" />
+    <Compile Include="Mapper\ParametersModule\CountryModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\FormModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\RoleModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\UserModelMapper.cs" />
     <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\ParametersModule\CityModel.cs" />
+    <Compile Include="Models\ParametersModule\BlockModel.cs" />
+    <Compile Include="Models\ParametersModule\PropertyModel.cs" />
+    <Compile Include="Models\ParametersModule\ProjectModel.cs" />
+    <Compile Include="Models\ParametersModule\CountryModel.cs" />
     <Compile Include="Models\SecurityModule\FormModel.cs" />
     <Compile Include="Models\SecurityModule\LoginModel.cs" />
     <Compile Include="Models\SecurityModule\PasswordResetModel.cs" />
@@ -214,9 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\ParametersModule\" />
-    <Folder Include="Mapper\ParametersModule\" />
-    <Folder Include="Models\ParametersModule\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

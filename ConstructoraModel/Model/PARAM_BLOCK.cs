@@ -22,7 +22,7 @@ namespace ConstructoraModel.Model
         public int ID { get; set; }
         public string CODE { get; set; }
         public string NAME { get; set; }
-        public string BLOCK_DESCRIPTION { get; set; }
+        public string DESCRIPTION { get; set; }
         public int PROJECTID { get; set; }
     
         public virtual PARAM_PROJECT PARAM_PROJECT { get; set; }

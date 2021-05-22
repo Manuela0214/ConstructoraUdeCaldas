@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
 namespace Constructora.Models.ParametersModule
 {
@@ -17,6 +18,8 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string code;
+        [DisplayName("Código")]
+        [Required()]
 
         public string Code
         {
@@ -26,26 +29,18 @@ namespace Constructora.Models.ParametersModule
 
         private string name;
 
+        [DisplayName("Nombre")]
+        [Required()]
+        [MaxLength(100, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
 
-        private bool isSelectedByUser;
 
-        public bool IsSelectedByUser
-        {
-            get { return isSelectedByUser; }
-            set { isSelectedByUser = value; }
-        }
 
-        private IEnumerable<CityModel> cities;
 
-        public IEnumerable<CityModel> Cities
-        {
-            get { return cities; }
-            set { cities = value; }
-        }
+
     }
 }
