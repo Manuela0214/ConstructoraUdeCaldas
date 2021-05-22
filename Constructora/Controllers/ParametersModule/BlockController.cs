@@ -17,7 +17,7 @@ namespace Constructora.Controllers.ParametersModule
     public class BlockController : BaseController
     {
         private BlockImpController capaNegocio = new BlockImpController();
-        private CountryImpController capaNegocioCountry = new CountryImpController();
+        private BlockImpController capaNegocioBlock = new BlockImpController();
 
         // GET: Block
         public ActionResult Index(string filter = "")
@@ -31,15 +31,15 @@ namespace Constructora.Controllers.ParametersModule
         public ActionResult Create()
         {
             BlockModel cityModel = new BlockModel();
-            IEnumerable<CountryDTO> dtoList = capaNegocioCountry.RecordList(string.Empty);
-            CountryModelMapper mapper = new CountryModelMapper();
-            //cityModel.CountryList = mapper.MapperT1T2(dtoList);
+            IEnumerable<BlockDTO> dtoList = capaNegocioBlock.RecordList(string.Empty);
+            BlockModelMapper mapper = new BlockModelMapper();
+            //cityModel.BlockList = mapper.MapperT1T2(dtoList);
             return View(cityModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Code,Name,CountryId")] BlockModel model)
+        public ActionResult Create([Bind(Include = "Code,Name,BlockId")] BlockModel model)
         {
             if (ModelState.IsValid)
             {
@@ -65,14 +65,14 @@ namespace Constructora.Controllers.ParametersModule
                 return HttpNotFound();
             }
             BlockModel cityModel = new BlockModel();
-            IEnumerable<CountryDTO> dtoList = capaNegocioCountry.RecordList(string.Empty);
-            CountryModelMapper mapperCountry = new CountryModelMapper();
+            IEnumerable<BlockDTO> dtoList = capaNegocioBlock.RecordList(string.Empty);
+            BlockModelMapper mapperBlock = new BlockModelMapper();
             BlockModelMapper mapper = new BlockModelMapper();
             BlockModel model = mapper.MapperT1T2(dto);
 
             cityModel.Code = model.Code;
             cityModel.Name = model.Name;
-            //cityModel.CountryList = mapperCountry.MapperT1T2(dtoList);
+            //cityModel.BlockList = mapperBlock.MapperT1T2(dtoList);
             return View(cityModel);
         }
 
@@ -81,7 +81,7 @@ namespace Constructora.Controllers.ParametersModule
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Code,Name,CountryId,Removed")] BlockModel model)
+        public ActionResult Edit([Bind(Include = "Id,Code,Name,BlockId,Removed")] BlockModel model)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +114,7 @@ namespace Constructora.Controllers.ParametersModule
         // POST: Block/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed([Bind(Include = "Id,Code,Name,Country,Removed")] BlockModel model)
+        public ActionResult DeleteConfirmed([Bind(Include = "Id,Code,Name,Block,Removed")] BlockModel model)
         {
             BlockModelMapper mapper = new BlockModelMapper();
             BlockDTO dto = mapper.MapperT2T1(model);
