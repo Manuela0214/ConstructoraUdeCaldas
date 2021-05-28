@@ -120,13 +120,14 @@ namespace ConstructoraController.Implementation.SecurityModule
                     "Sus credenciales de acceso son: <br/>" +
                     " <ul>" +
                     "<li> Usuario: {0}</li>" +
-                    "<li>Contraseña: {1}</li>" +
+                    "<li>Contraseña temporal: {1}</li>" +
                     "</ul>" +
                     "<br /> Cordial saludo, <br />" +
                     "Su equipo de seguridad.", email, randomPassword);
                 //new Notifications().SendEmail("Cambio de contraseña usuario UdeC", content, email,email);
                 //new Notifications().SendEmail("Restablecimiento de contraseña", "Su contraseña temporal: "+newPassword, email, "angie.1701812633@ucaldas.edu.co");
-                new Notifications().SendEmail("Password Reset", content, email, "angie.1701812633@ucaldas.edu.co");
+                string From = System.Configuration.ConfigurationSettings.AppSettings["EmailFromSendGrid"];
+                new Notifications().SendEmail("Recuperación de contraseña", content, email, From);
             }
             return response;
         }
@@ -139,10 +140,18 @@ namespace ConstructoraController.Implementation.SecurityModule
         public int ChangePassword(string currentPassword, string newPassword, int userId)
         {
             String email = string.Empty;
+            //Encrypt enc = new Encrypt();
+            //string newPass = enc.CreateMD5(newPassword);
             var response = model.ChangePassword(currentPassword, newPassword, userId, out email);
+            string From = System.Configuration.ConfigurationSettings.AppSettings["EmailFromSendGrid"];
             if (response == 1)
             {
-                new Notifications().SendEmail("Password Changed", "Content...", email, "angie.1701812633@ucaldas.edu.co");
+                String content = String.Format("Buen día, " +
+                    "<br /> Se ha realizado el cambio de contraseña para la plataforma Contructora UdeC S.A.S. " +
+                    "Cambio de contraseña realizado con exito<br/>" +
+                    "<br /> Cordial saludo, <br />" +
+                    "Su equipo de seguridad.");
+                new Notifications().SendEmail("Actualización de contraseña", content, email, From);
             }
             return response;
         }

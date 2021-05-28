@@ -74,6 +74,9 @@ namespace ConstructoraModel.Implementation.ParametersModule
                     {
                         return 3;
                     }
+                    //Este se utilizaría para eliminar totalmente de la DB.
+                    db.PARAM_COUNTRY.Remove(record); 
+                    
                     db.SaveChanges();
                     return 1;
                 }

@@ -77,6 +77,7 @@ namespace ConstructoraModel.Implementation.ParametersModule
                     {
                         return 3;
                     }
+                    db.PARAM_PROJECT.Remove(record);
                     db.SaveChanges();
                     return 1;
                 }

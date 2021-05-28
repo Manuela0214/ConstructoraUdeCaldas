@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConstructoraController.Services
 {
-    class Encrypt
+    public class Encrypt
     {
         public string CreateMD5(string input)
         {

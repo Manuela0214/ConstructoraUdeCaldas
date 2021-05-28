@@ -169,6 +169,7 @@
     <Compile Include="Models\ParametersModule\CountryModel.cs" />
     <Compile Include="Models\SecurityModule\FormModel.cs" />
     <Compile Include="Models\SecurityModule\LoginModel.cs" />
+    <Compile Include="Models\SecurityModule\ChangePasswordModel.cs" />
     <Compile Include="Models\SecurityModule\PasswordResetModel.cs" />
     <Compile Include="Models\SecurityModule\RoleModel.cs" />
     <Compile Include="Models\SecurityModule\UserModel.cs" />
@@ -226,6 +227,27 @@
     <Content Include="Views\User\Logout.cshtml" />
     <Content Include="Views\Role\Forms.cshtml" />
     <Content Include="Views\User\PasswordReset.cshtml" />
+    <Content Include="Views\Country\Create.cshtml" />
+    <Content Include="Views\Country\Delete.cshtml" />
+    <Content Include="Views\Country\Edit.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
+    <Content Include="Views\City\Create.cshtml" />
+    <Content Include="Views\City\Delete.cshtml" />
+    <Content Include="Views\City\Edit.cshtml" />
+    <Content Include="Views\City\Index.cshtml" />
+    <Content Include="Views\Block\Create.cshtml" />
+    <Content Include="Views\Block\Delete.cshtml" />
+    <Content Include="Views\Block\Edit.cshtml" />
+    <Content Include="Views\Block\Index.cshtml" />
+    <Content Include="Views\Property\Create.cshtml" />
+    <Content Include="Views\Property\Delete.cshtml" />
+    <Content Include="Views\Property\Edit.cshtml" />
+    <Content Include="Views\Property\Index.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
+    <Content Include="Views\Project\Delete.cshtml" />
+    <Content Include="Views\Project\Edit.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -248,6 +270,10 @@
     <ProjectReference Include="..\ConstructoraController\ConstructoraController.csproj">
       <Project>{32bf7b19-591e-487a-b2e8-3f473bc6e93d}</Project>
       <Name>ConstructoraController</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConstructoraModel\ConstructoraModel.csproj">
+      <Project>{413a5e92-dc89-44f8-9ccd-a5083dfba40d}</Project>
+      <Name>ConstructoraModel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

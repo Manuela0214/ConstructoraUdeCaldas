@@ -12,6 +12,7 @@ using Constructora.Models.SecurityModule;
 using ConstructoraController.DTO.SecurityModule;
 using ConstructoraController.Implementation.SecurityModule;
 using ConstructoraController.Services;
+using ConstructoraModel.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -296,32 +297,10 @@ namespace Constructora.Controllers.SecurityModule
         
         public ActionResult PasswordReset(PasswordResetModel model)
         {
-            return View();
-            
+            return View();            
         }
         
-        // POST: User/PasswordReset/5
-        /*[HttpPost, ActionName("PasswordReset")]
-        public ActionResult SendEmailResetPass([Bind(Include = "UserName")] PasswordResetModel model)
-        {
-            UserDTO dto = new UserDTO()
-            {
-                Email = model.UserName
-            };
-            string email = dto.Email.ToString();
-            
-            if (capaNegocio.PasswordReset(email) == 1)
-            {
-                capaNegocio.PasswordReset(email);
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                ViewBag.Message = Messages.ErrorMessage;
-                return View(model);
-            }
-        }*/
-        
+               
         [HttpPost, ActionName("PasswordReset")]
         public ActionResult SendEmailResetPass([Bind(Include = "UserName")] PasswordResetModel model)
         {
@@ -346,6 +325,52 @@ namespace Constructora.Controllers.SecurityModule
                 }
             }
 
+            return View(model);
+        }
+
+        public ActionResult ChangePassword(PasswordResetModel model)
+        {
+            if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [HttpPost, ActionName("ChangePassword")]
+        public ActionResult ChangePass([Bind(Include = "Password, NewPassword")] ChangePasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {   
+                ConstructoraDBEntities db = new ConstructoraDBEntities();
+                var record = db.SEC_USER.Where(x => x.USER_PASSWORD == model.Password).FirstOrDefault();
+                if (record != null)
+                {
+                    int id = record.ID;
+                    Encrypt enc = new Encrypt();
+                    string np = model.NewPassword;
+                    string newPass = enc.CreateMD5(np);
+                    string oldPass = model.Password;
+                    int response = capaNegocio.ChangePassword(oldPass, newPass, id);
+
+                    UserDTO dto = new UserDTO()
+                    {
+                        Password = newPass
+                    };
+
+                    switch (response)
+                    {
+                        case 1:
+                            return RedirectToAction("Index");
+                        case 2:
+                            ViewBag.Message = Messages.ExceptionMessage;
+                            return View(model);
+                        case 3:
+                            ViewBag.Message = Messages.alreadyExistMessage;
+                            return View(model);
+                    }
+                }
+            }            
             return View(model);
         }
     }
