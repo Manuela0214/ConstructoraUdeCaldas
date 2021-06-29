@@ -1,4 +1,9 @@
-﻿@model IEnumerable<Constructora.Models.ParametersModule.CountryModel>
+﻿@*@model IEnumerable<Constructora.Models.ParametersModule.CountryModel>*@
+
+@*@model PagedList.IPagedList<Constructora.Models.ParametersModule.CountryModel>*@
+@model PagedList.IPagedList<ConstructoraModel.Model.PARAM_COUNTRY>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
 
 @{
     ViewBag.Title = "Listado de Paises";
@@ -6,17 +11,25 @@
 
 <h2>Paises</h2>
 
+
+@using (Html.BeginForm())
+{
+    <p>
+        Buscar Registro: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+        <input type="submit" class="btn btn-light" value="Buscar" />
+    </p>
+}
 <p>
-    @Html.ActionLink("Crear pais", "Create" , new { }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Crear pais", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Code)
+                Code
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.ActionLink("Nombre", "Index", new { Sorting_Order = ViewBag.SortingName })
             </th>
             <th>
                 Acciones
@@ -26,21 +39,25 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CODE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NAME)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
 
 
-            </td>
-        </tr>
-         }
+                </td>
+            </tr>
+        }
     </tbody>
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index",
+    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))

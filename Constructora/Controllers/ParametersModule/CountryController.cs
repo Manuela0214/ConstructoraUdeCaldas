@@ -11,6 +11,8 @@ using Constructora.Mapper.ParametersModule;
 using Constructora.Models.ParametersModule;
 using ConstructoraController.DTO.ParametersModule;
 using ConstructoraController.Implementation.ParametersModule;
+using ConstructoraModel.Model;
+using PagedList;
 
 namespace Constructora.Controllers.ParametersModule
 {
@@ -20,11 +22,50 @@ namespace Constructora.Controllers.ParametersModule
         private CountryImpController capaNegocioCountry = new CountryImpController();
 
         // GET: Country
-        public ActionResult Index(string filter = "")
+        public ActionResult Index(string Sorting_Order, string Search_Data, string Filter_Value, int? Page_No)//, string filter = "")
         {
-            CountryModelMapper mapper = new CountryModelMapper();
-            IEnumerable<CountryModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
-            return View(roleList);
+            using (ConstructoraDBEntities db = new ConstructoraDBEntities())
+            {
+                ViewBag.SortingName = string.IsNullOrEmpty(Sorting_Order) ? "name" : Sorting_Order;
+
+                //CountryModelMapper mapper = new CountryModelMapper();
+                //IEnumerable<CountryModel> CountryList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
+                //CountryList = CountryList.Where(x => x.Name.ToUpper().Contains(Search_Data.ToUpper()));
+
+                //--------------------------------------
+                if (Search_Data != null)
+                {
+                    Page_No = 1;
+                }
+                else
+                {
+                    Search_Data = Filter_Value;
+                }
+
+                ViewBag.FilterValue = Search_Data;
+
+                var CountryList = from stu in db.PARAM_COUNTRY select stu;
+
+                if (!String.IsNullOrEmpty(Search_Data))
+                {
+                    CountryList = CountryList.Where(stu => stu.NAME.ToUpper().Contains(Search_Data.ToUpper()));
+                }
+                //-----------------------------------------
+
+                switch (Sorting_Order)
+                {
+                    case "name":
+                        CountryList = CountryList.OrderByDescending(country => country.NAME);
+                        break;
+
+                    default:
+                        CountryList = CountryList.OrderBy(country => country.NAME);
+                        break;
+                }
+                int Size_Of_Page = 4;
+                int No_Of_Page = (Page_No ?? 1);
+                return View(CountryList.ToPagedList(No_Of_Page, Size_Of_Page));
+            }     
         }
 
         // GET: Country/Create
