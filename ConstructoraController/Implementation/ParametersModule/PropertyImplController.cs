@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace ConstructoraController.Implementation.ParametersModule
 {
-    public class PropertyImpController
+    public class PropertyImplController
     {
         private PropertyImplModel model;
 
-        public PropertyImpController()
+        public PropertyImplController()
         {
             model = new PropertyImplModel();
         }

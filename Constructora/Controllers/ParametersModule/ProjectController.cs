@@ -16,8 +16,8 @@ namespace Constructora.Controllers.ParametersModule
 {
     public class ProjectController : BaseController
     {
-        private ProjectImpController capaNegocio = new ProjectImpController();
-        private CountryImpController capaNegocioCountry = new CountryImpController();
+        private ProjectImplController capaNegocio = new ProjectImplController();
+        private CountryImplController capaNegocioCountry = new CountryImplController();
 
         // GET: Project
         public ActionResult Index(string filter = "")

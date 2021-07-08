@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace ConstructoraModel.DbModel.ParametersModule
 {
@@ -32,13 +33,38 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { name = value; }
         }
 
-        private int projectId;
+        private CountryDbModel country;
 
-        public int ProjectId
+        public CountryDbModel Country
         {
-            get { return projectId; }
-            set { projectId = value; }
+            get { return country; }
+            set { country = value; }
         }
+
+        private int countryId;
+
+        public int CountryId
+        {
+            get { return countryId; }
+            set { countryId = value; }
+        }
+
+        private bool removed;
+
+        public bool Removed
+        {
+            get { return removed; }
+            set { removed = value; }
+        }
+
+        private IEnumerable<CountryDbModel> countryList;
+
+        public IEnumerable<CountryDbModel> CountryList
+        {
+            get { return countryList; }
+            set { countryList = value; }
+        }
+
 
 
 

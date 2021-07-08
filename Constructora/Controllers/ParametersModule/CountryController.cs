@@ -18,8 +18,8 @@ namespace Constructora.Controllers.ParametersModule
 {
     public class CountryController : BaseController
     {
-        private CountryImpController capaNegocio = new CountryImpController();
-        private CountryImpController capaNegocioCountry = new CountryImpController();
+        private CountryImplController capaNegocio = new CountryImplController();
+        private CountryImplController capaNegocioCountry = new CountryImplController();
 
         // GET: Country
         public ActionResult Index(string Sorting_Order, string Search_Data, string Filter_Value, int? Page_No)//, string filter = "")

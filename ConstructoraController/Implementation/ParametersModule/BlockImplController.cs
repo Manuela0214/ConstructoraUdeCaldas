@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace ConstructoraController.Implementation.ParametersModule
 {
-    public class BlockImpController
+    public class BlockImplController
     {
         private BlockImplModel model;
 
-        public BlockImpController()
+        public BlockImplController()
         {
             model = new BlockImplModel();
         }

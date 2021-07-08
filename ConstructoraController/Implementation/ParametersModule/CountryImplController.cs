@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace ConstructoraController.Implementation.ParametersModule
 {
-    public class CountryImpController
+    public class CountryImplController
     {
         private CountryImplModel model;
 
-        public CountryImpController()
+        public CountryImplController()
         {
             model = new CountryImplModel();
         }

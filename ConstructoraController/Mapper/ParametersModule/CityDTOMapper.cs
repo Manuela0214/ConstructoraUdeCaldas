@@ -1,4 +1,5 @@
 ﻿using ConstructoraController.DTO.ParametersModule;
+using ConstructoraController.Implementation.ParametersModule;
 using ConstructoraModel.DbModel.ParametersModule;
 using ConstructoraModel.Model;
 using System;
@@ -11,14 +12,16 @@ namespace ConstructoraController.Mapper.ParametersModule
 {
     class CityDTOMapper : MapperBase<CityDbModel, CityDTO>
     {
+        private CountryImplController modelCountry = new CountryImplController();
         public override CityDTO MapperT1T2(CityDbModel input)
         {
-            CityDTOMapper roleMapper = new CityDTOMapper();
+            CountryDTOMapper countryMapper = new CountryDTOMapper();
             return new CityDTO()
             {
                 Id = input.Id,
                 Code = input.Code,
-                Name = input.Name
+                Name = input.Name,
+                Country = countryMapper.MapperT1T2(input.Country)
             };
         }
 
@@ -36,7 +39,8 @@ namespace ConstructoraController.Mapper.ParametersModule
             {
                 Id = input.Id,
                 Code = input.Code,
-                Name = input.Name
+                Name = input.Name,
+                CountryId = input.CountryId
             };
         }
 

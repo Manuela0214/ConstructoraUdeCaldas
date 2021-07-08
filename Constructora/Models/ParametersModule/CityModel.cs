@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Constructora.Models.ParametersModule
 {
     public class CityModel
     {
         private int id;
-
+        [Key]
         public int Id
         {
             get { return id; }
@@ -38,18 +40,41 @@ namespace Constructora.Models.ParametersModule
             set { name = value; }
         }
 
+        private int countryId;
 
-
-        private int projectId;
-
-        public int ProjectId
+        [DisplayName("Pais")]
+        [Required()]
+        public int CountryId
         {
-            get { return projectId; }
-            set { projectId = value; }
+            get { return countryId; }
+            set { countryId = value; }
+        }
+
+        private CountryModel country;
+        public CountryModel Country
+        {
+            get { return country; }
+            set { country = value; }
         }
 
 
+        private bool removed;
+        [DisplayName("Eliminado")]
+        public bool Removed
+        {
+            get { return removed; }
+            set { removed = value; }
+        }
 
+        private IEnumerable<CountryModel> countryList;
+
+        public IEnumerable<CountryModel> CountryList
+        {
+            get { return countryList; }
+            set { countryList = value; }
+        }
+
+         
 
     }
 }

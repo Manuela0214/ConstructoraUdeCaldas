@@ -41,5 +41,9 @@ namespace ConstructoraModel.Model
         public DbSet<PARAM_PROPERTY> PARAM_PROPERTY { get; set; }
         public DbSet<PARAM_REQUEST> PARAM_REQUEST { get; set; }
         public DbSet<PARAM_REQUEST_STATUS> PARAM_REQUEST_STATUS { get; set; }
+
+        /**public System.Data.Entity.DbSet<Constructora.Models.ParametersModule.CityModel> CityModels { get; set; }
+
+        public System.Data.Entity.DbSet<Constructora.Models.ParametersModule.CountryModel> CountryModels { get; set; }**/
     }
 }

@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace ConstructoraController.Implementation.ParametersModule
 {
-    public class ProjectImpController
+    public class ProjectImplController
     {
         private ProjectImplModel model;
 
-        public ProjectImpController()
+        public ProjectImplController()
         {
             model = new ProjectImplModel();
         }

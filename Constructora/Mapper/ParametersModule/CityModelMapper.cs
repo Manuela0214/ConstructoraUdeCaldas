@@ -17,11 +17,13 @@ namespace Constructora.Mapper.ParametersModule
         /// <returns></returns>
         public override CityModel MapperT1T2(CityDTO input)
         {
+            CountryModelMapper countryMapper = new CountryModelMapper();
             return new CityModel()
             {
                 Id = input.Id,
                 Code = input.Code,
-                Name = input.Name
+                Name = input.Name,
+                Country = countryMapper.MapperT1T2(input.Country)
             };
         }
 
@@ -39,7 +41,8 @@ namespace Constructora.Mapper.ParametersModule
             {
                 Id = input.Id,
                 Code = input.Code,
-                Name = input.Name
+                Name = input.Name,
+                CountryId = input.CountryId
             };
         }
 

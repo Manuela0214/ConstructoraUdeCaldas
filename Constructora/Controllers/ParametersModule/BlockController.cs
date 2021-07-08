@@ -16,8 +16,8 @@ namespace Constructora.Controllers.ParametersModule
 {
     public class BlockController : BaseController
     {
-        private BlockImpController capaNegocio = new BlockImpController();
-        private BlockImpController capaNegocioBlock = new BlockImpController();
+        private BlockImplController capaNegocio = new BlockImplController();
+        private BlockImplController capaNegocioBlock = new BlockImplController();
 
         // GET: Block
         public ActionResult Index(string filter = "")

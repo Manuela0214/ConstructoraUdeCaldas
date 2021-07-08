@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace ConstructoraController.DTO.ParametersModule
 {
@@ -33,17 +34,37 @@ namespace ConstructoraController.DTO.ParametersModule
             set { name = value; }
         }
 
-        private int projectId;
+        private int countryId;
 
-        public int ProjectId
+        public int CountryId
         {
-            get { return projectId; }
-            set { projectId = value; }
+            get { return countryId; }
+            set { countryId = value; }
         }
 
+        private CountryDTO country;
 
+        public CountryDTO Country
+        {
+            get { return country; }
+            set { country = value; }
+        }
 
+        private bool removed;
 
+        public bool Removed
+        {
+            get { return removed; }
+            set { removed = value; }
+        }
+
+        private IEnumerable<CountryDTO> countryList;
+
+        public IEnumerable<CountryDTO> CountryList
+        {
+            get { return countryList; }
+            set { countryList = value; }
+        }
 
     }
 }

@@ -28,6 +28,12 @@ namespace ConstructoraModel.Mapper.ParametersModule
                 yield return MapperT1T2(item);
             }
         }
+        
+        /**internal object MapperT1T2(int COUNTRYID)
+        {
+            throw new NotImplementedException();
+        }**/
+
 
         public override PARAM_COUNTRY MapperT2T1(CountryDbModel input)
         {

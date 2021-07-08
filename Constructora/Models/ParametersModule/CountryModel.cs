@@ -9,6 +9,11 @@ namespace Constructora.Models.ParametersModule
 {
     public class CountryModel
     {
+        /**public CountryModel()
+        {
+            Cities = new HashSet<CityModel>();
+        }**/
+        
         private int id;
 
         public int Id
@@ -38,7 +43,9 @@ namespace Constructora.Models.ParametersModule
             set { name = value; }
         }
 
-
+        /**
+        //PROPIEDD DE NAVEGACION
+        public ICollection<CityModel> Cities { get; set; }**/
 
 
 

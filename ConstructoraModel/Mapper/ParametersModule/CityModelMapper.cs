@@ -1,4 +1,5 @@
 ﻿using ConstructoraModel.DbModel.ParametersModule;
+using ConstructoraModel.Implementation.ParametersModule;
 using ConstructoraModel.Model;
 using System;
 using System.Collections.Generic;
@@ -10,13 +11,17 @@ namespace ConstructoraModel.Mapper.ParametersModule
 {
     class CityModelMapper : MapperBase<PARAM_CITY, CityDbModel>
     {
+        private CountryImplModel model = new CountryImplModel();
         public override CityDbModel MapperT1T2(PARAM_CITY input)
         {
+            //var country = input.COUNTRYID;
+            CountryModelMapper countryMapper = new CountryModelMapper();
             return new CityDbModel()
             {
                 Id = input.ID,
                 Code = input.CODE,
-                Name = input.NAME
+                Name = input.NAME,
+                CountryId = input.COUNTRYID
             };
         }
 
@@ -34,7 +39,8 @@ namespace ConstructoraModel.Mapper.ParametersModule
             {
                 ID = input.Id,
                 CODE = input.Code,
-                NAME = input.Name
+                NAME = input.Name,
+                COUNTRYID = input.CountryId
             };
         }
 
