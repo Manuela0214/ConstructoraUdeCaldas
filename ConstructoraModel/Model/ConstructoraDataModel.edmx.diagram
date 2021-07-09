@@ -24,7 +24,7 @@
         <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_PROJECT" Width="1.5" PointX="11.875" PointY="4.375" />
         <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_PROPERTY" Width="1.5" PointX="14.625" PointY="9.75" />
         <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_REQUEST" Width="1.5" PointX="20.125" PointY="3.625" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_REQUEST_STATUS" Width="1.5" PointX="22.625" PointY="4.5" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_REQUEST_STATUS" Width="2.125" PointX="22.625" PointY="4.5" />
         <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_BLO__PROJE__00200768" />
         <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_PRO__BLOCK__02FC7413" />
         <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_CIT__COUNT__74AE54BC" />

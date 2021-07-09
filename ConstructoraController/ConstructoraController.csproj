@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="DTO\DTOBase.cs" />
     <Compile Include="DTO\ParametersModule\BlockDTO.cs" />
+    <Compile Include="DTO\ParametersModule\RequestStatusDTO.cs" />
     <Compile Include="DTO\ParametersModule\FinancialDTO.cs" />
     <Compile Include="DTO\ParametersModule\PropertyDTO.cs" />
     <Compile Include="DTO\ParametersModule\ProjectDTO.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="DTO\SecurityModule\FormDTO.cs" />
     <Compile Include="DTO\SecurityModule\RoleDTO.cs" />
     <Compile Include="DTO\SecurityModule\UserDTO.cs" />
+    <Compile Include="Implementation\ParametersModule\RequestStatusImplController.cs" />
     <Compile Include="Implementation\ParametersModule\FinancialImplController.cs" />
     <Compile Include="Implementation\ParametersModule\PropertyImplController.cs" />
     <Compile Include="Implementation\ParametersModule\BlockImplController.cs" />
@@ -98,6 +100,7 @@
     <Compile Include="Implementation\SecurityModule\UserImplController.cs" />
     <Compile Include="Implementation\SecurityModule\RoleImplController.cs" />
     <Compile Include="Mapper\MapperBase.cs" />
+    <Compile Include="Mapper\ParametersModule\RequestStatusDTOMapper.cs" />
     <Compile Include="Mapper\ParametersModule\FinancialDTOMapper.cs" />
     <Compile Include="Mapper\ParametersModule\PropertyDTOMapper.cs" />
     <Compile Include="Mapper\ParametersModule\BlockDTOMapper.cs" />
