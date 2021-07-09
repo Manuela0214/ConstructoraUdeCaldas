@@ -32,7 +32,7 @@ namespace ConstructoraModel.Model
         public int FINANCIALID { get; set; }
     
         public virtual PARAM_CITY PARAM_CITY { get; set; }
-        public virtual PARAM_FINANCIAL PARAM_FINANCIAL { get; set; }
         public virtual ICollection<PARAM_REQUEST> PARAM_REQUEST { get; set; }
+        public virtual PARAM_FINANCIAL PARAM_FINANCIAL { get; set; }
     }
 }

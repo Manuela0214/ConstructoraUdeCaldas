@@ -23,7 +23,7 @@ namespace ConstructoraModel.Model
         public string NAMEJOB { get; set; }
         public string PHONEJOB { get; set; }
         public int TOTALINCOME { get; set; }
-        public System.DateTime TIMECURRENTWORK { get; set; }
+        public System.DateTime TIMECURRENTJOB { get; set; }
         public string NAMEFAMILYREF { get; set; }
         public string CELLPHONEFAMILYREF { get; set; }
         public string NAMEPERSONALREF { get; set; }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="990ff3813a034128bcb61fe65a41f2ea" Name="Diagram1" ZoomLevel="85">
+      <Diagram DiagramId="990ff3813a034128bcb61fe65a41f2ea" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="ConstructoraDBModel.SEC_ROLE" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ConstructoraDBModel.SEC_SESSION" Width="1.5" PointX="2.875" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ConstructoraDBModel.SEC_USER" Width="1.5" PointX="0.5" PointY="1.75" IsExpanded="true" />
@@ -20,7 +20,6 @@
         <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_CITY" Width="1.5" PointX="14.625" PointY="3.5" />
         <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_COUNTRY" Width="1.5" PointX="14.625" PointY="6.375" />
         <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_CUSTOMER" Width="1.5" PointX="17.25" PointY="3.125" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_FINANCIAL" Width="1.5" PointX="17.25" PointY="7.875" />
         <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_PAYMENTS" Width="1.5" PointX="20.125" PointY="0.5" />
         <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_PROJECT" Width="1.5" PointX="11.875" PointY="4.375" />
         <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_PROPERTY" Width="1.5" PointX="14.625" PointY="9.75" />
@@ -31,11 +30,12 @@
         <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_CIT__COUNT__74AE54BC" />
         <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_CUS__CITYI__797309D9" />
         <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_PRO__CITYI__7D439ABD" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_CUS__FINAN__7A672E12" />
         <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_REQ__CUSTO__07C12930" />
         <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_PAY__REQUE__0C85DE4D" />
         <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_REQ__PROPE__08B54D69" />
         <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_REQ__REQUE__09A971A2" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_FINANCIAL" Width="1.75" PointX="17.375" PointY="7.875" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_CUS__FINAN__7A672E12" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

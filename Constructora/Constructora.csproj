@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ParametersModule\FinancialController.cs" />
     <Compile Include="Controllers\ParametersModule\PropertyController.cs" />
     <Compile Include="Controllers\ParametersModule\BlockController.cs" />
     <Compile Include="Controllers\ParametersModule\ProjectController.cs" />
@@ -160,6 +161,7 @@
     </Compile>
     <Compile Include="Helpers\Messages.cs" />
     <Compile Include="Mapper\MapperBase.cs" />
+    <Compile Include="Mapper\ParametersModule\FinancialModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\PropertyModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\BlockModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\ProjectModelMapper.cs" />
@@ -171,6 +173,7 @@
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\ParametersModule\CityModel.cs" />
     <Compile Include="Models\ParametersModule\BlockModel.cs" />
+    <Compile Include="Models\ParametersModule\FinancialModel.cs" />
     <Compile Include="Models\ParametersModule\PropertyModel.cs" />
     <Compile Include="Models\ParametersModule\ProjectModel.cs" />
     <Compile Include="Models\ParametersModule\CountryModel.cs" />
@@ -257,6 +260,10 @@
     <Content Include="Views\Upload\UploadFile.cshtml" />
     <Content Include="Views\City\Edit.cshtml" />
     <Content Include="Views\City\Delete.cshtml" />
+    <Content Include="Views\Financial\Delete.cshtml" />
+    <Content Include="Views\Financial\Index.cshtml" />
+    <Content Include="Views\Financial\Create.cshtml" />
+    <Content Include="Views\Financial\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

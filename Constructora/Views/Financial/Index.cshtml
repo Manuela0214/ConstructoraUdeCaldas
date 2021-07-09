@@ -1,0 +1,96 @@
+﻿@model PagedList.IPagedList<ConstructoraModel.Model.PARAM_FINANCIAL>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Listado";
+}
+
+<h2>Información Financiera</h2>
+
+
+@using (Html.BeginForm())
+{
+    <p>
+        Buscar Registro: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+        <input type="submit" class="btn btn-light" value="Buscar" />
+    </p>
+}
+<p>
+    @Html.ActionLink("Crear registro", "Create", new { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("Nombre Trabajo", "Index", new { Sorting_Order = ViewBag.SortingName })
+            </th>
+            <th>
+                Teléfono Trabajo
+            </th>
+            <th>
+                Total Ingresos
+            </th>
+            <th>
+                Tiempo Trabajo Actual
+            </th>
+            <th>
+                Referencia Familiar
+            </th>
+            <th>
+                Teléfono Ref.Familiar
+            </th>
+            <th>
+                Referencia Personal
+            </th>
+            <th>
+                Teléfono Ref.Personal
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NAMEJOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PHONEJOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TOTALINCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIMECURRENTJOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NAMEFAMILYREF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CELLPHONEFAMILYREF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NAMEPERSONALREF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CELLPHONEPERSONALREF)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+
+
+            </td>
+        </tr>
+        }
+    </tbody>
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index",
+    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))

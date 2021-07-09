@@ -56,7 +56,7 @@
           <Property Name="NAMEJOB" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PHONEJOB" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="TOTALINCOME" Type="int" Nullable="false" />
-          <Property Name="TIMECURRENTWORK" Type="datetime" Nullable="false" />
+          <Property Name="TIMECURRENTJOB" Type="datetime" Nullable="false" />
           <Property Name="NAMEFAMILYREF" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CELLPHONEFAMILYREF" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="NAMEPERSONALREF" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -562,7 +562,6 @@
           <EntitySet Name="PARAM_CITY" EntityType="ConstructoraDBModel.PARAM_CITY" />
           <EntitySet Name="PARAM_COUNTRY" EntityType="ConstructoraDBModel.PARAM_COUNTRY" />
           <EntitySet Name="PARAM_CUSTOMER" EntityType="ConstructoraDBModel.PARAM_CUSTOMER" />
-          <EntitySet Name="PARAM_FINANCIAL" EntityType="ConstructoraDBModel.PARAM_FINANCIAL" />
           <EntitySet Name="PARAM_PAYMENTS" EntityType="ConstructoraDBModel.PARAM_PAYMENTS" />
           <EntitySet Name="PARAM_PROJECT" EntityType="ConstructoraDBModel.PARAM_PROJECT" />
           <EntitySet Name="PARAM_PROPERTY" EntityType="ConstructoraDBModel.PARAM_PROPERTY" />
@@ -588,10 +587,6 @@
             <End Role="PARAM_CITY" EntitySet="PARAM_CITY" />
             <End Role="PARAM_PROJECT" EntitySet="PARAM_PROJECT" />
           </AssociationSet>
-          <AssociationSet Name="FK__PARAM_CUS__FINAN__7A672E12" Association="ConstructoraDBModel.FK__PARAM_CUS__FINAN__7A672E12">
-            <End Role="PARAM_FINANCIAL" EntitySet="PARAM_FINANCIAL" />
-            <End Role="PARAM_CUSTOMER" EntitySet="PARAM_CUSTOMER" />
-          </AssociationSet>
           <AssociationSet Name="FK__PARAM_REQ__CUSTO__07C12930" Association="ConstructoraDBModel.FK__PARAM_REQ__CUSTO__07C12930">
             <End Role="PARAM_CUSTOMER" EntitySet="PARAM_CUSTOMER" />
             <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
@@ -607,6 +602,11 @@
           <AssociationSet Name="FK__PARAM_REQ__REQUE__09A971A2" Association="ConstructoraDBModel.FK__PARAM_REQ__REQUE__09A971A2">
             <End Role="PARAM_REQUEST_STATUS" EntitySet="PARAM_REQUEST_STATUS" />
             <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
+          </AssociationSet>
+          <EntitySet Name="PARAM_FINANCIAL" EntityType="ConstructoraDBModel.PARAM_FINANCIAL" />
+          <AssociationSet Name="FK__PARAM_CUS__FINAN__7A672E12" Association="ConstructoraDBModel.FK__PARAM_CUS__FINAN__7A672E12">
+            <End Role="PARAM_FINANCIAL" EntitySet="PARAM_FINANCIAL" />
+            <End Role="PARAM_CUSTOMER" EntitySet="PARAM_CUSTOMER" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="SEC_FORM">
@@ -701,23 +701,8 @@
           <Property Name="CITYID" Type="Int32" Nullable="false" />
           <Property Name="FINANCIALID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PARAM_CITY" Relationship="ConstructoraDBModel.FK__PARAM_CUS__CITYI__797309D9" FromRole="PARAM_CUSTOMER" ToRole="PARAM_CITY" />
-          <NavigationProperty Name="PARAM_FINANCIAL" Relationship="ConstructoraDBModel.FK__PARAM_CUS__FINAN__7A672E12" FromRole="PARAM_CUSTOMER" ToRole="PARAM_FINANCIAL" />
           <NavigationProperty Name="PARAM_REQUEST" Relationship="ConstructoraDBModel.FK__PARAM_REQ__CUSTO__07C12930" FromRole="PARAM_CUSTOMER" ToRole="PARAM_REQUEST" />
-        </EntityType>
-        <EntityType Name="PARAM_FINANCIAL">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAMEJOB" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PHONEJOB" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="TOTALINCOME" Type="Int32" Nullable="false" />
-          <Property Name="TIMECURRENTWORK" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="NAMEFAMILYREF" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CELLPHONEFAMILYREF" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="NAMEPERSONALREF" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CELLPHONEPERSONALREF" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PARAM_CUSTOMER" Relationship="ConstructoraDBModel.FK__PARAM_CUS__FINAN__7A672E12" FromRole="PARAM_FINANCIAL" ToRole="PARAM_CUSTOMER" />
+          <NavigationProperty Name="PARAM_FINANCIAL" Relationship="ConstructoraDBModel.FK__PARAM_CUS__FINAN__7A672E12" FromRole="PARAM_CUSTOMER" ToRole="PARAM_FINANCIAL" />
         </EntityType>
         <EntityType Name="PARAM_PAYMENTS">
           <Key>
@@ -841,18 +826,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PARAM_CUS__FINAN__7A672E12">
-          <End Type="ConstructoraDBModel.PARAM_FINANCIAL" Role="PARAM_FINANCIAL" Multiplicity="1" />
-          <End Type="ConstructoraDBModel.PARAM_CUSTOMER" Role="PARAM_CUSTOMER" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PARAM_FINANCIAL">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PARAM_CUSTOMER">
-              <PropertyRef Name="FINANCIALID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__PARAM_REQ__CUSTO__07C12930">
           <End Type="ConstructoraDBModel.PARAM_CUSTOMER" Role="PARAM_CUSTOMER" Multiplicity="1" />
           <End Type="ConstructoraDBModel.PARAM_REQUEST" Role="PARAM_REQUEST" Multiplicity="*" />
@@ -898,6 +871,33 @@
             </Principal>
             <Dependent Role="PARAM_REQUEST">
               <PropertyRef Name="REQUEST_STATUSID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PARAM_FINANCIAL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAMEJOB" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PHONEJOB" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TOTALINCOME" Type="Int32" Nullable="false" />
+          <Property Name="TIMECURRENTJOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NAMEFAMILYREF" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CELLPHONEFAMILYREF" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="NAMEPERSONALREF" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CELLPHONEPERSONALREF" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PARAM_CUSTOMER" Relationship="ConstructoraDBModel.FK__PARAM_CUS__FINAN__7A672E12" FromRole="PARAM_FINANCIAL" ToRole="PARAM_CUSTOMER" />
+        </EntityType>
+        <Association Name="FK__PARAM_CUS__FINAN__7A672E12">
+          <End Type="ConstructoraDBModel.PARAM_FINANCIAL" Role="PARAM_FINANCIAL" Multiplicity="1" />
+          <End Type="ConstructoraDBModel.PARAM_CUSTOMER" Role="PARAM_CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PARAM_FINANCIAL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PARAM_CUSTOMER">
+              <PropertyRef Name="FINANCIALID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1024,21 +1024,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PARAM_FINANCIAL">
-            <EntityTypeMapping TypeName="ConstructoraDBModel.PARAM_FINANCIAL">
-              <MappingFragment StoreEntitySet="PARAM_FINANCIAL">
-                <ScalarProperty Name="CELLPHONEPERSONALREF" ColumnName="CELLPHONEPERSONALREF" />
-                <ScalarProperty Name="NAMEPERSONALREF" ColumnName="NAMEPERSONALREF" />
-                <ScalarProperty Name="CELLPHONEFAMILYREF" ColumnName="CELLPHONEFAMILYREF" />
-                <ScalarProperty Name="NAMEFAMILYREF" ColumnName="NAMEFAMILYREF" />
-                <ScalarProperty Name="TIMECURRENTWORK" ColumnName="TIMECURRENTWORK" />
-                <ScalarProperty Name="TOTALINCOME" ColumnName="TOTALINCOME" />
-                <ScalarProperty Name="PHONEJOB" ColumnName="PHONEJOB" />
-                <ScalarProperty Name="NAMEJOB" ColumnName="NAMEJOB" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PARAM_PAYMENTS">
             <EntityTypeMapping TypeName="ConstructoraDBModel.PARAM_PAYMENTS">
               <MappingFragment StoreEntitySet="PARAM_PAYMENTS">
@@ -1092,6 +1077,21 @@
               <MappingFragment StoreEntitySet="PARAM_REQUEST_STATUS">
                 <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARAM_FINANCIAL">
+            <EntityTypeMapping TypeName="ConstructoraDBModel.PARAM_FINANCIAL">
+              <MappingFragment StoreEntitySet="PARAM_FINANCIAL">
+                <ScalarProperty Name="CELLPHONEPERSONALREF" ColumnName="CELLPHONEPERSONALREF" />
+                <ScalarProperty Name="NAMEPERSONALREF" ColumnName="NAMEPERSONALREF" />
+                <ScalarProperty Name="CELLPHONEFAMILYREF" ColumnName="CELLPHONEFAMILYREF" />
+                <ScalarProperty Name="NAMEFAMILYREF" ColumnName="NAMEFAMILYREF" />
+                <ScalarProperty Name="TIMECURRENTJOB" ColumnName="TIMECURRENTJOB" />
+                <ScalarProperty Name="TOTALINCOME" ColumnName="TOTALINCOME" />
+                <ScalarProperty Name="PHONEJOB" ColumnName="PHONEJOB" />
+                <ScalarProperty Name="NAMEJOB" ColumnName="NAMEJOB" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

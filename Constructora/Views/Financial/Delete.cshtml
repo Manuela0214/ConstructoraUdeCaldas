@@ -1,0 +1,88 @@
+﻿@model Constructora.Models.ParametersModule.FinancialModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar Información Financiera</h2>
+
+<h3>¿Estás seguro de eliminar esta información?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameJob)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameJob)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneJob)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneJob)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalInCome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalInCome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeCurrentJob)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeCurrentJob)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameFamilyRef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameFamilyRef)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CellphoneFamilyRef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CellphoneFamilyRef)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamePersonalRef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamePersonalRef)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CellphonePersonalRef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CellphonePersonalRef)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

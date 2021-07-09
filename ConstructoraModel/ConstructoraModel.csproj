@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbModel\DbModelBase.cs" />
+    <Compile Include="DbModel\ParametersModule\FinancialDbModel.cs" />
     <Compile Include="DbModel\ParametersModule\PropertyDbModel.cs" />
     <Compile Include="DbModel\ParametersModule\BlockDbModel.cs" />
     <Compile Include="DbModel\ParametersModule\CityDbModel.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="DbModel\SecurityModule\FormDbModel.cs" />
     <Compile Include="DbModel\SecurityModule\UserDbModel.cs" />
     <Compile Include="DbModel\SecurityModule\RoleDbModel.cs" />
+    <Compile Include="Implementation\ParametersModule\FinancialImplModel.cs" />
     <Compile Include="Implementation\ParametersModule\PropertyImplModel.cs" />
     <Compile Include="Implementation\ParametersModule\BlockImplModel.cs" />
     <Compile Include="Implementation\ParametersModule\ProjectImplModel.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="Implementation\SecurityModule\UserImplModel.cs" />
     <Compile Include="Implementation\SecurityModule\RoleImplModel.cs" />
     <Compile Include="Mapper\MapperBase.cs" />
+    <Compile Include="Mapper\ParametersModule\FinancialModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\PropertyModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\BlockModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\ProjectModelMapper.cs" />
