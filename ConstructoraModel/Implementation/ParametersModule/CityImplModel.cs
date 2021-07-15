@@ -51,8 +51,7 @@ namespace ConstructoraModel.Implementation.ParametersModule
                     }
                     record.CODE = dbModel.Code;
                     record.NAME = dbModel.Name;
-                    //Aquí se debe tener una lista desplegable 
-                    //record.PROJECTID = dbModel.ProjectId;
+                    record.COUNTRYID = dbModel.CountryId;
 
                     db.Entry(record).State = EntityState.Modified;
                     db.SaveChanges();

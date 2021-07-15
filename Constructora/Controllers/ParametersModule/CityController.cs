@@ -22,19 +22,21 @@ namespace Constructora.Controllers.ParametersModule
     {
         private CityImplController capaNegocio = new CityImplController();
         private CountryImplController capaNegocioCountry = new CountryImplController();
-        private ConstructoraDBEntities db = new ConstructoraDBEntities();
 
         // GET: City
-        public ActionResult Index(string Sorting_Order, string Search_Data, string Filter_Value, int? Page_No)//, string filter = "")
+        public ActionResult Index(string Sorting_Order, string Search_Data, string Filter_Value, int? Page_No, string filter = "")
         {
+            /**if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }**/
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
                 ViewBag.SortingName = string.IsNullOrEmpty(Sorting_Order) ? "name" : Sorting_Order;
 
-                //CityModelMapper mapper = new CityModelMapper();
-                //IEnumerable<CityModel> CityList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
-                //CityList = CityList.Where(x => x.Name.ToUpper().Contains(Search_Data.ToUpper()));
-
+                CityModelMapper mapper = new CityModelMapper();
+                IEnumerable<CityModel> CityList = mapper.MapperT1T2(capaNegocio.RecordList(filter));
+                //return View(CityList);
                 //--------------------------------------
                 if (Search_Data != null)
                 {
@@ -47,42 +49,22 @@ namespace Constructora.Controllers.ParametersModule
 
                 ViewBag.FilterValue = Search_Data;
 
-                var CityList = from c in db.PARAM_CITY select c;
-
-                //var countryList = from stu in db.PARAM_COUNTRY select stu;
-                //var countryList = from c in db.PARAM_COUNTRY join x in db.PARAM_CITY on db.PARAM_COUNTRY.
-                //---------------------------
-                /**var countryList = (
-                from city in db.PARAM_CITY
-                from country in db.PARAM_COUNTRY
-                where city.COUNTRYID == country.ID
-                select new
-                {
-                    Name = city.NAME,
-                    Code = city.CODE,
-                    CountryId = country.ID,
-                    Country = country.NAME
-                }).ToList();
-
-                ViewBag.CountryName = (from city in db.PARAM_CITY
-                                       from country in db.PARAM_COUNTRY
-                                       where city.COUNTRYID == country.ID
-                                       select country.NAME);**/
-
-                //-------------------------------
+                //var CityList = from stu in db.PARAM_CITY select stu;
 
                 if (!String.IsNullOrEmpty(Search_Data))
                 {
-                    CityList = CityList.Where(c => c.NAME.ToUpper().Contains(Search_Data.ToUpper()));
+                    CityList = CityList.Where(stu => stu.Name.ToUpper().Contains(Search_Data.ToUpper()));
                 }
+                //-----------------------------------------
+
                 switch (Sorting_Order)
                 {
                     case "name":
-                        CityList = CityList.OrderByDescending(country => country.NAME);
+                        CityList = CityList.OrderByDescending(city => city.Name);
                         break;
 
                     default:
-                        CityList = CityList.OrderBy(country => country.NAME);
+                        CityList = CityList.OrderBy(city => city.Name);
                         break;
                 }
                 int Size_Of_Page = 4;
@@ -91,8 +73,13 @@ namespace Constructora.Controllers.ParametersModule
             }
         }
 
+        // GET: City/Create
         public ActionResult Create()
         {
+            /*if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }**/
             CityModel cityModel = new CityModel();
             IEnumerable<CountryDTO> dtoList = capaNegocioCountry.RecordList(string.Empty);
             CountryModelMapper mapper = new CountryModelMapper();
@@ -115,8 +102,13 @@ namespace Constructora.Controllers.ParametersModule
             return View(model);
         }
 
+        // GET: City/Edit/5
         public ActionResult Edit(int? id)
         {
+            /**if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }**/
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -145,6 +137,7 @@ namespace Constructora.Controllers.ParametersModule
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Code,Name,CountryId,Removed")] CityModel model)
         {
+
             if (ModelState.IsValid)
             {
                 CityModelMapper mapper = new CityModelMapper();
@@ -156,17 +149,13 @@ namespace Constructora.Controllers.ParametersModule
             return View(model);
         }
 
-        /**private void CountryDropDownList(object selectedCountry = null)
-        {
-            var departmentsQuery = from d in db.PARAM_COUNTRY
-                                   orderby d.NAME
-                                   select d;
-            ViewBag.CountryId = new SelectList(departmentsQuery, "CountryId", "Name", selectedCountry);
-        }**/
-
         // GET: City/Delete/5
         public ActionResult Delete(int? id)
         {
+            /**if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }**/
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -184,14 +173,13 @@ namespace Constructora.Controllers.ParametersModule
         // POST: City/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed([Bind(Include = "Id,Code,Name,Country")] CityModel model)
+        public ActionResult DeleteConfirmed([Bind(Include = "Id,Code,Name,Country,Removed")] CityModel model)
         {
             CityModelMapper mapper = new CityModelMapper();
             CityDTO dto = mapper.MapperT2T1(model);
             int response = capaNegocio.RecordRemove(dto);
             return this.ProcessResponse(response, model);
         }
-
 
         private ActionResult ProcessResponse(int response, CityModel model)
         {

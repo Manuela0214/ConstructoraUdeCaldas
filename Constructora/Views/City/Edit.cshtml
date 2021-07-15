@@ -1,7 +1,7 @@
 ﻿@model Constructora.Models.ParametersModule.CityModel
 
 @{
-    ViewBag.Title = "Editar un ciudad";
+    ViewBag.Title = "Editar";
 }
 
 <h2>Editar un ciudad</h2>
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>CITY</h4>
+        <h4>Ciudades</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -40,6 +40,7 @@
                 @Html.ValidationMessageFor(model => model.CountryList, "", new { @class = "text-danger" })
             </div>
         </div>
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

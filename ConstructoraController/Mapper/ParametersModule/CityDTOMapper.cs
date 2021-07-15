@@ -13,10 +13,12 @@ namespace ConstructoraController.Mapper.ParametersModule
     class CityDTOMapper : MapperBase<CityDbModel, CityDTO>
     {
         private CountryImplController modelCountry = new CountryImplController();
+
         public override CityDTO MapperT1T2(CityDbModel input)
         {
             CountryDTOMapper countryMapper = new CountryDTOMapper();
-            return new CityDTO()
+
+            return new CityDTO
             {
                 Id = input.Id,
                 Code = input.Code,
@@ -27,15 +29,15 @@ namespace ConstructoraController.Mapper.ParametersModule
 
         public override IEnumerable<CityDTO> MapperT1T2(IEnumerable<CityDbModel> input)
         {
-            foreach (var item in input)
+            foreach (var intem in input)
             {
-                yield return MapperT1T2(item);
+                yield return MapperT1T2(intem);
             }
         }
 
         public override CityDbModel MapperT2T1(CityDTO input)
         {
-            return new CityDbModel()
+            return new CityDbModel
             {
                 Id = input.Id,
                 Code = input.Code,
@@ -46,9 +48,9 @@ namespace ConstructoraController.Mapper.ParametersModule
 
         public override IEnumerable<CityDbModel> MapperT2T1(IEnumerable<CityDTO> input)
         {
-            foreach (var item in input)
+            foreach (var intem in input)
             {
-                yield return MapperT2T1(item);
+                yield return MapperT2T1(intem);
             }
         }
     }

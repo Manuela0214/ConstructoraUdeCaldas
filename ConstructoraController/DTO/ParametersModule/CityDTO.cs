@@ -25,7 +25,6 @@ namespace ConstructoraController.DTO.ParametersModule
             set { code = value; }
         }
 
-
         private string name;
 
         public string Name
@@ -48,14 +47,6 @@ namespace ConstructoraController.DTO.ParametersModule
         {
             get { return country; }
             set { country = value; }
-        }
-
-        private bool removed;
-
-        public bool Removed
-        {
-            get { return removed; }
-            set { removed = value; }
         }
 
         private IEnumerable<CountryDTO> countryList;

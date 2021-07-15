@@ -12,7 +12,7 @@ namespace Constructora.Models.ParametersModule
     public class CityModel
     {
         private int id;
-        [Key]
+
         public int Id
         {
             get { return id; }
@@ -20,9 +20,10 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string code;
-        [DisplayName("Código")]
-        [Required()]
 
+        [DisplayName("Codigo")]
+        [Required()]
+        [MaxLength(50)]
         public string Code
         {
             get { return code; }
@@ -33,7 +34,7 @@ namespace Constructora.Models.ParametersModule
 
         [DisplayName("Nombre")]
         [Required()]
-        [MaxLength(100, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
+        [MaxLength(50)]
         public string Name
         {
             get { return name; }
@@ -50,21 +51,15 @@ namespace Constructora.Models.ParametersModule
             set { countryId = value; }
         }
 
+
         private CountryModel country;
+
         public CountryModel Country
         {
             get { return country; }
             set { country = value; }
         }
 
-
-        private bool removed;
-        [DisplayName("Eliminado")]
-        public bool Removed
-        {
-            get { return removed; }
-            set { removed = value; }
-        }
 
         private IEnumerable<CountryModel> countryList;
 
@@ -73,8 +68,5 @@ namespace Constructora.Models.ParametersModule
             get { return countryList; }
             set { countryList = value; }
         }
-
-         
-
     }
 }

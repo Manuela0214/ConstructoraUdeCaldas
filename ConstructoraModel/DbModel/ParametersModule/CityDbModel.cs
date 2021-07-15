@@ -49,14 +49,6 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { countryId = value; }
         }
 
-        private bool removed;
-
-        public bool Removed
-        {
-            get { return removed; }
-            set { removed = value; }
-        }
-
         private IEnumerable<CountryDbModel> countryList;
 
         public IEnumerable<CountryDbModel> CountryList
@@ -64,8 +56,6 @@ namespace ConstructoraModel.DbModel.ParametersModule
             get { return countryList; }
             set { countryList = value; }
         }
-
-
 
 
 
