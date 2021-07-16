@@ -10,48 +10,47 @@ namespace Constructora.Mapper.ParametersModule
 {
     class ProjectModelMapper : MapperBase<ProjectDTO, ProjectModel>
     {
-        /// <summary>
-        /// Method to map the ProjectDTO object to ProjectModel
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         public override ProjectModel MapperT1T2(ProjectDTO input)
         {
-            return new ProjectModel()
+            CityModelMapper cityMapper = new CityModelMapper();
+            return new ProjectModel
             {
                 Id = input.Id,
                 Code = input.Code,
                 Name = input.Name,
                 Description = input.Description,
-                Picture = input.Picture
+                Picture = input.Picture,
+                City = cityMapper.MapperT1T2(input.City)
             };
         }
 
         public override IEnumerable<ProjectModel> MapperT1T2(IEnumerable<ProjectDTO> input)
         {
-            foreach (var item in input)
+            foreach (var intem in input)
             {
-                yield return MapperT1T2(item);
+                yield return MapperT1T2(intem);
             }
         }
 
         public override ProjectDTO MapperT2T1(ProjectModel input)
         {
-            return new ProjectDTO()
+            return new ProjectDTO
             {
                 Id = input.Id,
                 Code = input.Code,
                 Name = input.Name,
                 Description = input.Description,
-                Picture = input.Picture
+                Picture = input.Picture,
+                CityId = input.CityId
+
             };
         }
 
         public override IEnumerable<ProjectDTO> MapperT2T1(IEnumerable<ProjectModel> input)
         {
-            foreach (var item in input)
+            foreach (var intem in input)
             {
-                yield return MapperT2T1(item);
+                yield return MapperT2T1(intem);
             }
         }
     }

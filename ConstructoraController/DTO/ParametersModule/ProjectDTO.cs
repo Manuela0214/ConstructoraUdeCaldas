@@ -24,7 +24,6 @@ namespace ConstructoraController.DTO.ParametersModule
             set { code = value; }
         }
 
-
         private string name;
 
         public string Name
@@ -32,7 +31,6 @@ namespace ConstructoraController.DTO.ParametersModule
             get { return name; }
             set { name = value; }
         }
-
 
         private string description;
 
@@ -50,16 +48,29 @@ namespace ConstructoraController.DTO.ParametersModule
             set { picture = value; }
         }
 
+        private CityDTO city;
 
-
-        private int blockId;
-
-        public int BlockId
+        public CityDTO City
         {
-            get { return blockId; }
-            set { blockId = value; }
+            get { return city; }
+            set { city = value; }
         }
 
+        private int cityId;
+
+        public int CityId
+        {
+            get { return cityId; }
+            set { cityId = value; }
+        }
+
+        private IEnumerable<CityDTO> cityList;
+
+        public IEnumerable<CityDTO> CityList
+        {
+            get { return cityList; }
+            set { cityList = value; }
+        }
 
 
 

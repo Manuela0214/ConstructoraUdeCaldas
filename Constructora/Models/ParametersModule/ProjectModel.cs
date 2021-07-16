@@ -18,9 +18,10 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string code;
-        [DisplayName("Código")]
-        [Required()]
 
+        [DisplayName("Codigo")]
+        [Required()]
+        [MaxLength(50)]
         public string Code
         {
             get { return code; }
@@ -31,18 +32,18 @@ namespace Constructora.Models.ParametersModule
 
         [DisplayName("Nombre")]
         [Required()]
-        [MaxLength(100, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
+        [MaxLength(50)]
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
 
-
         private string description;
 
         [DisplayName("Descripción")]
-        [MaxLength(200, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
+        [Required()]
+        [MaxLength(50)]
         public string Description
         {
             get { return description; }
@@ -51,20 +52,41 @@ namespace Constructora.Models.ParametersModule
 
         private string picture;
 
+        [DisplayName("Imagen")]
+        [Required()]
+        [MaxLength(50)]
         public string Picture
         {
             get { return picture; }
             set { picture = value; }
         }
 
+        private int cityId;
 
-
-        private int blockId;
-
-        public int BlockId
+        [DisplayName("Ciudad")]
+        [Required()]
+        public int CityId
         {
-            get { return blockId; }
-            set { blockId = value; }
+            get { return cityId; }
+            set { cityId = value; }
+        }
+
+
+        private CityModel city;
+
+        public CityModel City
+        {
+            get { return city; }
+            set { city = value; }
+        }
+
+
+        private IEnumerable<CityModel> cityList;
+
+        public IEnumerable<CityModel> CityList
+        {
+            get { return cityList; }
+            set { cityList = value; }
         }
 
 

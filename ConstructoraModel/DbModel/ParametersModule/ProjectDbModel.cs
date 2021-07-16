@@ -48,17 +48,29 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { picture = value; }
         }
 
+        private CityDbModel city;
 
-
-        private int blockId;
-
-        public int BlockId
+        public CityDbModel City
         {
-            get { return blockId; }
-            set { blockId = value; }
+            get { return city; }
+            set { city = value; }
         }
 
+        private int cityId;
 
+        public int CityId
+        {
+            get { return cityId; }
+            set { cityId = value; }
+        }
+
+        private IEnumerable<CityDbModel> cityList;
+
+        public IEnumerable<CityDbModel> CityList
+        {
+            get { return cityList; }
+            set { cityList = value; }
+        }
 
 
     }
