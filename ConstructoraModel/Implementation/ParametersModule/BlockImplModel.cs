@@ -19,7 +19,7 @@ namespace ConstructoraModel.Implementation.ParametersModule
             {
                 try
                 {
-                    ///verifica si el proyecto con el nombre ya existe en algun registro 
+                    ///verifica si el PAIS con el nombre ya existe en algun registro 
                     if (db.PARAM_BLOCK.Where(x => x.ID.Equals(dbModel.Id)).Count() > 0)
                     {
                         return 3;
@@ -52,8 +52,8 @@ namespace ConstructoraModel.Implementation.ParametersModule
                     record.CODE = dbModel.Code;
                     record.NAME = dbModel.Name;
                     record.DESCRIPTION = dbModel.Description;
-                    //Aquí se debe tener una lista desplegable 
-                    //record.PROPERTYID = dbModel.PropertyId;
+                    record.PROJECTID = dbModel.ProjectId;
+
                     db.Entry(record).State = EntityState.Modified;
                     db.SaveChanges();
                     return 1;

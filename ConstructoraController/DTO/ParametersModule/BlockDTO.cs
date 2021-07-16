@@ -24,7 +24,6 @@ namespace ConstructoraController.DTO.ParametersModule
             set { code = value; }
         }
 
-
         private string name;
 
         public string Name
@@ -32,7 +31,6 @@ namespace ConstructoraController.DTO.ParametersModule
             get { return name; }
             set { name = value; }
         }
-
 
         private string description;
 
@@ -42,14 +40,29 @@ namespace ConstructoraController.DTO.ParametersModule
             set { description = value; }
         }
 
-        private int propertyId;
+        private ProjectDTO project;
 
-        public int PropertyId
+        public ProjectDTO Project
         {
-            get { return propertyId; }
-            set { propertyId = value; }
+            get { return project; }
+            set { project = value; }
         }
 
+        private int projectId;
+
+        public int ProjectId
+        {
+            get { return projectId; }
+            set { projectId = value; }
+        }
+
+        private IEnumerable<ProjectDTO> projectList;
+
+        public IEnumerable<ProjectDTO> ProjectList
+        {
+            get { return projectList; }
+            set { projectList = value; }
+        }
 
 
 

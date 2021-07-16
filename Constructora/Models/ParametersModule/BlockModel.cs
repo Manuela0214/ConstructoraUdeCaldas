@@ -18,9 +18,10 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string code;
-        [DisplayName("Código")]
-        [Required()]
 
+        [DisplayName("Codigo")]
+        [Required()]
+        [MaxLength(50)]
         public string Code
         {
             get { return code; }
@@ -31,31 +32,52 @@ namespace Constructora.Models.ParametersModule
 
         [DisplayName("Nombre")]
         [Required()]
-        [MaxLength(100, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
+        [MaxLength(50)]
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
 
-
         private string description;
 
         [DisplayName("Descripción")]
-        [MaxLength(200, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
+        [Required()]
+        [MaxLength(50)]
         public string Description
         {
             get { return description; }
             set { description = value; }
         }
 
-        private int propertyId;
+        private int projectId;
 
-        public int PropertyId
+        [DisplayName("Proyecto")]
+        [Required()]
+        public int ProjectId
         {
-            get { return propertyId; }
-            set { propertyId = value; }
+            get { return projectId; }
+            set { projectId = value; }
         }
+
+
+        private ProjectModel project;
+
+        public ProjectModel Project
+        {
+            get { return project; }
+            set { project = value; }
+        }
+
+
+        private IEnumerable<ProjectModel> projectList;
+
+        public IEnumerable<ProjectModel> ProjectList
+        {
+            get { return projectList; }
+            set { projectList = value; }
+        }
+
 
 
     }

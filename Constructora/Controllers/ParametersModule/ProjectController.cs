@@ -124,6 +124,8 @@ namespace Constructora.Controllers.ParametersModule
 
             projectModel.Code = model.Code;
             projectModel.Name = model.Name;
+            projectModel.Description = model.Description;
+            projectModel.Picture = model.Picture;
             projectModel.CityList = mapperCity.MapperT1T2(dtoList);
             return View(projectModel);
         }
