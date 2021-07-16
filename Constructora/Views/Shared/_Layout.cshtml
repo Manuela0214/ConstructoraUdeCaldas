@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Constructora UdeC</title>
@@ -10,6 +10,10 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
+        <a class="navbar-brand" href="#">
+            <img src="/Files/LOGO/final.png" width="45" height="35" alt="">
+       
+        </a>
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -20,7 +24,7 @@
                 @Html.ActionLink("Constructora UdeC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                
+
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Inicio", "Index", "Home")</li>*@
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
@@ -48,21 +52,21 @@
                     }
                 </ul>
             </div>
-            
+
         </div>
     </div>
     <div class="container body-content">
-            @if (Session.Count > 0)
-            {
-                <div class="sessionBar">
-                    En sesión: <strong>@Session["username"]</strong>
-                </div>
-            }
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Constructora UdeC</p>
-            </footer>
+        @if (Session.Count > 0)
+        {
+            <div class="sessionBar">
+                En sesión: <strong>@Session["username"]</strong>
+            </div>
+        }
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Constructora UdeC</p>
+        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

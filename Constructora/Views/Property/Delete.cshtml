@@ -1,12 +1,12 @@
-﻿@model Constructora.Models.ParametersModule.CountryModel
+﻿@model Constructora.Models.ParametersModule.PropertyModel
 
 @{
     ViewBag.Title = "Eliminar";
 }
 
-<h2>Eliminar un pais</h2>
+<h2>Eliminar una propiedad</h2>
 
-<h3>¿Estás seguro de eliminar esta información?</h3>
+<h3>¿Estas seguro de eliminar esta información?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -17,6 +17,7 @@
         <dd>
             @Html.DisplayFor(model => model.Code)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -25,10 +26,26 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Block.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Block.Name)
+        </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

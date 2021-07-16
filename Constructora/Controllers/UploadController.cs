@@ -30,12 +30,12 @@ namespace Constructora.Controllers
                     string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
                     file.SaveAs(_path);
                 }
-                ViewBag.Message = "Archivo cargado correctamente!!";
+                ViewBag.Message = "Archivo cargado correctamente";
                 return View();
             }
             catch
             {
-                ViewBag.Message = "Error al cargar el archivo!!";
+                ViewBag.Message = "Error al cargar el archivo";
                 return View();
             }
         }

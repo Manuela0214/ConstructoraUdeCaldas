@@ -10,46 +10,45 @@ namespace Constructora.Mapper.ParametersModule
 {
     class PropertyModelMapper : MapperBase<PropertyDTO, PropertyModel>
     {
-        /// <summary>
-        /// Method to map the PropertyDTO object to PropertyModel
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         public override PropertyModel MapperT1T2(PropertyDTO input)
         {
-            return new PropertyModel()
+            BlockModelMapper blockMapper = new BlockModelMapper();
+            return new PropertyModel
             {
                 Id = input.Id,
                 Code = input.Code,
                 Name = input.Name,
-                Valor = input.Valor
+                Valor = input.Valor,
+                Block = blockMapper.MapperT1T2(input.Block)
             };
         }
 
         public override IEnumerable<PropertyModel> MapperT1T2(IEnumerable<PropertyDTO> input)
         {
-            foreach (var item in input)
+            foreach (var intem in input)
             {
-                yield return MapperT1T2(item);
+                yield return MapperT1T2(intem);
             }
         }
 
         public override PropertyDTO MapperT2T1(PropertyModel input)
         {
-            return new PropertyDTO()
+            return new PropertyDTO
             {
                 Id = input.Id,
                 Code = input.Code,
                 Name = input.Name,
-                Valor = input.Valor
+                Valor = input.Valor,
+                BlockId = input.BlockId
+
             };
         }
 
         public override IEnumerable<PropertyDTO> MapperT2T1(IEnumerable<PropertyModel> input)
         {
-            foreach (var item in input)
+            foreach (var intem in input)
             {
-                yield return MapperT2T1(item);
+                yield return MapperT2T1(intem);
             }
         }
     }

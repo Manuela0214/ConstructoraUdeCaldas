@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace ConstructoraController.DTO.ParametersModule
 {
@@ -24,7 +25,6 @@ namespace ConstructoraController.DTO.ParametersModule
             set { code = value; }
         }
 
-
         private string name;
 
         public string Name
@@ -32,8 +32,6 @@ namespace ConstructoraController.DTO.ParametersModule
             get { return name; }
             set { name = value; }
         }
-
-
         private int valor;
 
         public int Valor
@@ -41,7 +39,6 @@ namespace ConstructoraController.DTO.ParametersModule
             get { return valor; }
             set { valor = value; }
         }
-
         private int blockId;
 
         public int BlockId
@@ -50,8 +47,21 @@ namespace ConstructoraController.DTO.ParametersModule
             set { blockId = value; }
         }
 
+        private BlockDTO block;
 
+        public BlockDTO Block
+        {
+            get { return block; }
+            set { block = value; }
+        }
 
+        private IEnumerable<BlockDTO> blockList;
+
+        public IEnumerable<BlockDTO> BlockList
+        {
+            get { return blockList; }
+            set { blockList = value; }
+        }
 
     }
 }

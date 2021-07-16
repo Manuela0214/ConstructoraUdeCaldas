@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Constructora.Models.ParametersModule
 {
@@ -18,19 +20,21 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string code;
-        [DisplayName("Código")]
-        [Required()]
 
+        [DisplayName("Codigo")]
+        [Required()]
+        [MaxLength(50)]
         public string Code
         {
             get { return code; }
             set { code = value; }
         }
+
         private string name;
 
         [DisplayName("Nombre")]
         [Required()]
-        [MaxLength(100, ErrorMessage = "El campo {0} puede tener una longitud máxima de {1} caracteres")]
+        [MaxLength(50)]
         public string Name
         {
             get { return name; }
@@ -38,8 +42,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private int valor;
-        [DisplayName("Valor monetario")]
-        [Required()]
+
 
         public int Valor
         {
@@ -49,6 +52,8 @@ namespace Constructora.Models.ParametersModule
 
         private int blockId;
 
+        [DisplayName("Bloque")]
+        [Required()]
         public int BlockId
         {
             get { return blockId; }
@@ -56,8 +61,21 @@ namespace Constructora.Models.ParametersModule
         }
 
 
+        private BlockModel block;
+
+        public BlockModel Block
+        {
+            get { return block; }
+            set { block = value; }
+        }
 
 
+        private IEnumerable<BlockModel> blockList;
 
+        public IEnumerable<BlockModel> BlockList
+        {
+            get { return blockList; }
+            set { blockList = value; }
+        }
     }
 }

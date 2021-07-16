@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace ConstructoraModel.DbModel.ParametersModule
 {
@@ -32,13 +33,19 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { name = value; }
         }
 
-
         private int valor;
 
         public int Valor
         {
             get { return valor; }
             set { valor = value; }
+        }
+        private BlockDbModel block;
+
+        public BlockDbModel Block
+        {
+            get { return block; }
+            set { block = value; }
         }
 
         private int blockId;
@@ -49,7 +56,13 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { blockId = value; }
         }
 
+        private IEnumerable<BlockDbModel> blockList;
 
+        public IEnumerable<BlockDbModel> BlockList
+        {
+            get { return blockList; }
+            set { blockList = value; }
+        }
 
 
 
