@@ -1,0 +1,110 @@
+﻿@*@model IEnumerable<Constructora.Models.ParametersModule.CityModel>
+    @model PagedList.IPagedList<ConstructoraModel.Model.PARAM_CITY>*@
+@model PagedList.IPagedList<Constructora.Models.ParametersModule.CustomerModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Listado de Clientes";
+}
+
+<h2>Clientes</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Buscar Registro: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+        <input type="submit" class="btn btn-light" value="Buscar" />
+    </p>
+}
+
+<p>
+    @Html.ActionLink("Crear Cliente", "Create", new { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Documento
+            </th>
+            <th>
+                @Html.ActionLink("Nombre", "Index", new { Sorting_Order = ViewBag.SortingName })
+            </th>
+            <th>
+                Apellido
+            </th>
+            <th>
+                Fecha de nacimiento
+            </th>
+            <th>
+                Imagen
+            </th>
+            <th>
+                Teléfono
+            </th>
+            <th>
+                Correo electrónico
+            </th>
+            <th>
+                Dirección
+            </th>
+            <th>
+                Ciudad
+            </th>
+            <th>
+                Información financiera
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Document)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Picture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cellphone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Financial.NameJob)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index",
+    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))

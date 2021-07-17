@@ -22,17 +22,17 @@ namespace ConstructoraModel.Model
         public int ID { get; set; }
         public string DOCUMENT { get; set; }
         public string NAME { get; set; }
-        public string LASTNAMEN { get; set; }
+        public string LASTNAME { get; set; }
         public System.DateTime DATEBIRTH { get; set; }
         public string PICTURE { get; set; }
         public string CELLPHONE { get; set; }
         public string EMAIL { get; set; }
-        public string ADRESS { get; set; }
+        public string ADDRESS { get; set; }
         public int CITYID { get; set; }
         public int FINANCIALID { get; set; }
     
         public virtual PARAM_CITY PARAM_CITY { get; set; }
-        public virtual ICollection<PARAM_REQUEST> PARAM_REQUEST { get; set; }
         public virtual PARAM_FINANCIAL PARAM_FINANCIAL { get; set; }
+        public virtual ICollection<PARAM_REQUEST> PARAM_REQUEST { get; set; }
     }
 }

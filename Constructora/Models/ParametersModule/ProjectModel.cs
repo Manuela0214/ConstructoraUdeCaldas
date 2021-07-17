@@ -43,7 +43,7 @@ namespace Constructora.Models.ParametersModule
 
         [DisplayName("Descripción")]
         [Required()]
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string Description
         {
             get { return description; }
@@ -54,7 +54,6 @@ namespace Constructora.Models.ParametersModule
 
         [DisplayName("Imagen")]
         [Required()]
-        [MaxLength(50)]
         public string Picture
         {
             get { return picture; }

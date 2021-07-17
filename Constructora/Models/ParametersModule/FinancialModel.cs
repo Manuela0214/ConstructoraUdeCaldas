@@ -26,7 +26,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string phoneJob;
-        [DisplayName("Telefono del trabajo")]
+        [DisplayName("Teléfono del trabajo")]
         public string PhoneJob
         {
             get { return phoneJob; }
