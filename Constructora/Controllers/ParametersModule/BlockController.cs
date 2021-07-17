@@ -24,10 +24,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Block
         public ActionResult Index(string Sorting_Order, string Search_Data, string Filter_Value, int? Page_No, string filter = "")
         {
-            /**if (!this.VerificarSession())
+            if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }**/
+            }
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
                 ViewBag.SortingName = string.IsNullOrEmpty(Sorting_Order) ? "name" : Sorting_Order;
@@ -74,10 +74,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Block/Create
         public ActionResult Create()
         {
-            /*if (!this.VerificarSession())
+            if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }**/
+            }
             BlockModel blockModel = new BlockModel();
             IEnumerable<ProjectDTO> dtoList = capaNegocioProject.RecordList(string.Empty);
             ProjectModelMapper mapper = new ProjectModelMapper();
@@ -103,10 +103,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Block/Edit/5
         public ActionResult Edit(int? id)
         {
-            /**if (!this.VerificarSession())
+            if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }**/
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -151,10 +151,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Block/Delete/5
         public ActionResult Delete(int? id)
         {
-            /**if (!this.VerificarSession())
+            if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }**/
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

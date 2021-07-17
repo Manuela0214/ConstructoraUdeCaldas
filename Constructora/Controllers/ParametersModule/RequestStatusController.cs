@@ -26,6 +26,10 @@ namespace Constructora.Controllers.ParametersModule
         {
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
+                if (!this.VerificarSession())
+                {
+                    return RedirectToAction("Index", "Home");
+                }
                 ViewBag.SortingName = string.IsNullOrEmpty(Sorting_Order) ? "name" : Sorting_Order;
 
                 //RequestStatusModelMapper mapper = new RequestStatusModelMapper();
@@ -65,7 +69,7 @@ namespace Constructora.Controllers.ParametersModule
                 int Size_Of_Page = 4;
                 int No_Of_Page = (Page_No ?? 1);
                 return View(RequestStatusList.ToPagedList(No_Of_Page, Size_Of_Page));
-            }     
+            }
         }
 
         // GET: RequestStatus/Create
@@ -82,6 +86,10 @@ namespace Constructora.Controllers.ParametersModule
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Name,Description")] RequestStatusModel model)
         {
+            if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (ModelState.IsValid)
             {
                 RequestStatusModelMapper mapper = new RequestStatusModelMapper();
@@ -96,6 +104,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: RequestStatus/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -138,6 +150,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: RequestStatus/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
