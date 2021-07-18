@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<Constructora.Models.ParametersModule.CityModel>
+﻿@*@model IEnumerable<Constructora.Models.ParametersModule.CustomerModel>
     @model PagedList.IPagedList<ConstructoraModel.Model.PARAM_CITY>*@
 @model PagedList.IPagedList<Constructora.Models.ParametersModule.CustomerModel>
 @using PagedList.Mvc;
@@ -19,7 +19,7 @@
 }
 
 <p>
-    @Html.ActionLink("Crear Cliente", "Create", new { }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Crear cliente", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <thead>
@@ -34,10 +34,10 @@
                 Apellido
             </th>
             <th>
-                Fecha de nacimiento
+                Fecha nacimiento
             </th>
             <th>
-                Imagen
+                Foto
             </th>
             <th>
                 Teléfono
@@ -52,9 +52,6 @@
                 Ciudad
             </th>
             <th>
-                Información financiera
-            </th>
-            <th>
                 Acciones
             </th>
         </tr>
@@ -62,44 +59,41 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Document)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateBirth)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Picture)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cellphone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Financial.NameJob)
-                </td>
-                <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Document)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Picture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cellphone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
 
 
-                </td>
-            </tr>
+            </td>
+        </tr>
         }
     </tbody>
 

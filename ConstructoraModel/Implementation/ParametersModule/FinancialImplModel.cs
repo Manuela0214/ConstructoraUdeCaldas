@@ -20,11 +20,10 @@ namespace ConstructoraModel.Implementation.ParametersModule
                 try
                 {
                     ///verifica si el PAIS con el nombre ya existe en algun registro 
-                    /**
                     if (db.PARAM_FINANCIAL.Where(x => x.ID.Equals(dbModel.Id)).Count() > 0)
                     {
                         return 3;
-                    }**/
+                    }
 
                     FinancialModelMapper mapper = new FinancialModelMapper();
                     PARAM_FINANCIAL record = mapper.MapperT2T1(dbModel);
@@ -55,9 +54,10 @@ namespace ConstructoraModel.Implementation.ParametersModule
                     record.TOTALINCOME = dbModel.TotalInCome;
                     record.TIMECURRENTJOB = dbModel.TimeCurrentJob;
                     record.NAMEFAMILYREF = dbModel.NameFamilyRef;
-                    record.CELLPHONEFAMILYREF = dbModel.CellphoneFamilyRef;
+                    record.CELLPHONEFAMILYREF = dbModel.CellphoneFamilyRef; ;
                     record.NAMEPERSONALREF = dbModel.NamePersonalRef;
                     record.CELLPHONEPERSONALREF = dbModel.CellphonePersonalRef;
+                    record.CUSTOMERID = dbModel.CustomerId;
 
                     db.Entry(record).State = EntityState.Modified;
                     db.SaveChanges();
@@ -81,9 +81,7 @@ namespace ConstructoraModel.Implementation.ParametersModule
                     {
                         return 3;
                     }
-                    //Este se utilizaría para eliminar totalmente de la DB.
-                    db.PARAM_FINANCIAL.Remove(record); 
-                    
+                    db.PARAM_FINANCIAL.Remove(record);
                     db.SaveChanges();
                     return 1;
                 }

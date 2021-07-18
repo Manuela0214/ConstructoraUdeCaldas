@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,29 +14,29 @@ using ConstructoraController.DTO.ParametersModule;
 using ConstructoraController.Implementation.ParametersModule;
 using ConstructoraModel.Model;
 using PagedList;
+using System.Web.UI.WebControls;
 
 namespace Constructora.Controllers.ParametersModule
 {
     public class FinancialController : BaseController
     {
         private FinancialImplController capaNegocio = new FinancialImplController();
-        private FinancialImplController capaNegocioFinancial = new FinancialImplController();
+        private CustomerImplController capaNegocioCustomer = new CustomerImplController();
 
         // GET: Financial
-        public ActionResult Index(string Sorting_Order, string Search_Data, string Filter_Value, int? Page_No)//, string filter = "")
+        public ActionResult Index(string Sorting_Order, string Search_Data, string Filter_Value, int? Page_No, string filter = "")
         {
+            /**if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }**/
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
-                if (!this.VerificarSession())
-                {
-                    return RedirectToAction("Index", "Home");
-                }
                 ViewBag.SortingName = string.IsNullOrEmpty(Sorting_Order) ? "name" : Sorting_Order;
 
-                //FinancialModelMapper mapper = new FinancialModelMapper();
-                //IEnumerable<FinancialModel> FinancialList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
-                //FinancialList = FinancialList.Where(x => x.Name.ToUpper().Contains(Search_Data.ToUpper()));
-
+                FinancialModelMapper mapper = new FinancialModelMapper();
+                IEnumerable<FinancialModel> FinancialList = mapper.MapperT1T2(capaNegocio.RecordList(filter));
+                //return View(FinancialList);
                 //--------------------------------------
                 if (Search_Data != null)
                 {
@@ -48,22 +49,22 @@ namespace Constructora.Controllers.ParametersModule
 
                 ViewBag.FilterValue = Search_Data;
 
-                var FinancialList = from stu in db.PARAM_FINANCIAL select stu;
+                //var FinancialList = from stu in db.PARAM_FINANCIAL select stu;
 
                 if (!String.IsNullOrEmpty(Search_Data))
                 {
-                    FinancialList = FinancialList.Where(stu => stu.NAMEJOB.ToUpper().Contains(Search_Data.ToUpper()));
+                    FinancialList = FinancialList.Where(stu => stu.NameJob.ToUpper().Contains(Search_Data.ToUpper()));
                 }
                 //-----------------------------------------
 
                 switch (Sorting_Order)
                 {
                     case "name":
-                        FinancialList = FinancialList.OrderByDescending(financial => financial.NAMEJOB);
+                        FinancialList = FinancialList.OrderByDescending(financial => financial.NameJob);
                         break;
 
                     default:
-                        FinancialList = FinancialList.OrderBy(financial => financial.NAMEJOB);
+                        FinancialList = FinancialList.OrderBy(financial => financial.NameJob);
                         break;
                 }
                 int Size_Of_Page = 4;
@@ -75,21 +76,21 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Financial/Create
         public ActionResult Create()
         {
+            /**if (!this.VerificarSession())
+            {
+                return RedirectToAction("Index", "Home");
+            }**/
             FinancialModel financialModel = new FinancialModel();
-            IEnumerable<FinancialDTO> dtoList = capaNegocioFinancial.RecordList(string.Empty);
-            FinancialModelMapper mapper = new FinancialModelMapper();
-            //financialModel.FinancialList = mapper.MapperT1T2(dtoList);
+            IEnumerable<CustomerDTO> dtoList = capaNegocioCustomer.RecordList(string.Empty);
+            CustomerModelMapper mapper = new CustomerModelMapper();
+            financialModel.CustomerList = mapper.MapperT1T2(dtoList);
             return View(financialModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NameJob,PhoneJob,TotalInCome,TimeCurrentJob,NameFamilyRef,CellphoneFamilyRef,NamePersonalRef,CellphonePersonalRef")] FinancialModel model)
+        public ActionResult Create([Bind(Include = "NameJob,PhoneJob,TotalInCome,TimeCurrectJob,NameFamilyRef,CellphoneFamilyRef,NamePersonalRef,CellphonePersonalRef,CustomerId")] FinancialModel model)
         {
-            if (!this.VerificarSession())
-            {
-                return RedirectToAction("Index", "Home");
-            }
             if (ModelState.IsValid)
             {
                 FinancialModelMapper mapper = new FinancialModelMapper();
@@ -104,10 +105,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Financial/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (!this.VerificarSession())
+            /**if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }**/
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -118,8 +119,8 @@ namespace Constructora.Controllers.ParametersModule
                 return HttpNotFound();
             }
             FinancialModel financialModel = new FinancialModel();
-            IEnumerable<FinancialDTO> dtoList = capaNegocioFinancial.RecordList(string.Empty);
-            FinancialModelMapper mapperFinancial = new FinancialModelMapper();
+            IEnumerable<CustomerDTO> dtoList = capaNegocioCustomer.RecordList(string.Empty);
+            CustomerModelMapper mapperCustomer = new CustomerModelMapper();
             FinancialModelMapper mapper = new FinancialModelMapper();
             FinancialModel model = mapper.MapperT1T2(dto);
 
@@ -131,7 +132,7 @@ namespace Constructora.Controllers.ParametersModule
             financialModel.CellphoneFamilyRef = model.CellphoneFamilyRef;
             financialModel.NamePersonalRef = model.NamePersonalRef;
             financialModel.CellphonePersonalRef = model.CellphonePersonalRef;
-            //financialModel.FinancialList = mapperFinancial.MapperT1T2(dtoList);
+            financialModel.CustomerList = mapperCustomer.MapperT1T2(dtoList);
             return View(financialModel);
         }
 
@@ -140,8 +141,9 @@ namespace Constructora.Controllers.ParametersModule
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,NameJob,PhoneJob,TotalInCome,TimeCurrentJob,NameFamilyRef,CellphoneFamilyRef,NamePersonalRef,CellphonePersonalRef")] FinancialModel model)
+        public ActionResult Edit([Bind(Include = "Id,NameJob,PhoneJob,TotalInCome,TimeCurrectJob,NameFamilyRef,CellphoneFamilyRef,NamePersonalRef,CellphonePersonalRef,CustomerId,Removed")] FinancialModel model)
         {
+
             if (ModelState.IsValid)
             {
                 FinancialModelMapper mapper = new FinancialModelMapper();
@@ -156,10 +158,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Financial/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (!this.VerificarSession())
+            /**if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }**/
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -177,16 +179,13 @@ namespace Constructora.Controllers.ParametersModule
         // POST: Financial/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed([Bind(Include = "Id,NameJob,PhoneJob,TotalInCome,TimeCurrentJob,NameFamilyRef,CellphoneFamilyRef,NamePersonalRef,CellphonePersonalRef")] FinancialModel model)
+        public ActionResult DeleteConfirmed([Bind(Include = "Id,NameJob,PhoneJob,TotalInCome,TimeCurrectJob,NameFamilyRef,CellphoneFamilyRef,NamePersonalRef,CellphonePersonalRef,CustomerId,Removed")] FinancialModel model)
         {
             FinancialModelMapper mapper = new FinancialModelMapper();
             FinancialDTO dto = mapper.MapperT2T1(model);
             int response = capaNegocio.RecordRemove(dto);
             return this.ProcessResponse(response, model);
-
-
         }
-
 
         private ActionResult ProcessResponse(int response, FinancialModel model)
         {

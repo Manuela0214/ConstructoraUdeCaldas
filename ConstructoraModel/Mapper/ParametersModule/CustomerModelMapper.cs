@@ -11,14 +11,14 @@ namespace ConstructoraModel.Mapper.ParametersModule
 {
     class CustomerModelMapper : MapperBase<PARAM_CUSTOMER, CustomerDbModel>
     {
-        private CountryImplModel model = new CountryImplModel();
+        private CityImplModel model = new CityImplModel();
 
         public override CustomerDbModel MapperT1T2(PARAM_CUSTOMER input)
         {
             var city = input.PARAM_CITY;
-            var financial = input.PARAM_FINANCIAL;
             CityModelMapper cityMapper = new CityModelMapper();
-            FinancialModelMapper financialMapper = new FinancialModelMapper();
+
+            //IEnumerable<CityDbModel> countries = model.RecordList("");
 
             return new CustomerDbModel
             {
@@ -31,8 +31,7 @@ namespace ConstructoraModel.Mapper.ParametersModule
                 Cellphone = input.CELLPHONE,
                 Email = input.EMAIL,
                 Address = input.ADDRESS,
-                City = cityMapper.MapperT1T2(city),
-                Financial = financialMapper.MapperT1T2(financial)
+                City = cityMapper.MapperT1T2(city)
             };
         }
 
@@ -57,8 +56,7 @@ namespace ConstructoraModel.Mapper.ParametersModule
                 CELLPHONE = input.Cellphone,
                 EMAIL = input.Email,
                 ADDRESS = input.Address,
-                CITYID = input.CityId,
-                FINANCIALID = input.FinancialId
+                CITYID = input.CityId
             };
         }
 

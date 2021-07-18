@@ -1,4 +1,5 @@
 ﻿using ConstructoraModel.DbModel.ParametersModule;
+using ConstructoraModel.Implementation.ParametersModule;
 using ConstructoraModel.Model;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,16 @@ namespace ConstructoraModel.Mapper.ParametersModule
 {
     class FinancialModelMapper : MapperBase<PARAM_FINANCIAL, FinancialDbModel>
     {
+        private CustomerImplModel model = new CustomerImplModel();
+
         public override FinancialDbModel MapperT1T2(PARAM_FINANCIAL input)
         {
+            var customer = input.PARAM_CUSTOMER;
+            CustomerModelMapper customerMapper = new CustomerModelMapper();
 
-            return new FinancialDbModel()
+            //IEnumerable<CustomerDbModel> countries = model.RecordList("");
+
+            return new FinancialDbModel
             {
                 Id = input.ID,
                 NameJob = input.NAMEJOB,
@@ -23,27 +30,22 @@ namespace ConstructoraModel.Mapper.ParametersModule
                 NameFamilyRef = input.NAMEFAMILYREF,
                 CellphoneFamilyRef = input.CELLPHONEFAMILYREF,
                 NamePersonalRef = input.NAMEPERSONALREF,
-                CellphonePersonalRef = input.CELLPHONEPERSONALREF
+                CellphonePersonalRef = input.CELLPHONEPERSONALREF,
+                Customer = customerMapper.MapperT1T2(customer)
             };
         }
 
         public override IEnumerable<FinancialDbModel> MapperT1T2(IEnumerable<PARAM_FINANCIAL> input)
         {
-            foreach (var item in input)
+            foreach (var intem in input)
             {
-                yield return MapperT1T2(item);
+                yield return MapperT1T2(intem);
             }
         }
-        
-        /**internal object MapperT1T2(int FINANCIALID)
-        {
-            throw new NotImplementedException();
-        }**/
-
 
         public override PARAM_FINANCIAL MapperT2T1(FinancialDbModel input)
         {
-            return new PARAM_FINANCIAL()
+            return new PARAM_FINANCIAL
             {
                 ID = input.Id,
                 NAMEJOB = input.NameJob,
@@ -53,16 +55,16 @@ namespace ConstructoraModel.Mapper.ParametersModule
                 NAMEFAMILYREF = input.NameFamilyRef,
                 CELLPHONEFAMILYREF = input.CellphoneFamilyRef,
                 NAMEPERSONALREF = input.NamePersonalRef,
-                CELLPHONEPERSONALREF = input.CellphonePersonalRef
-
+                CELLPHONEPERSONALREF = input.CellphonePersonalRef,
+                CUSTOMERID = input.CustomerId
             };
         }
 
         public override IEnumerable<PARAM_FINANCIAL> MapperT2T1(IEnumerable<FinancialDbModel> input)
         {
-            foreach (var item in input)
+            foreach (var intem in input)
             {
-                yield return MapperT2T1(item);
+                yield return MapperT2T1(intem);
             }
         }
     }

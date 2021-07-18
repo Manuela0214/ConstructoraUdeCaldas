@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Constructora.Models.ParametersModule.ProjectModel>
+
+@{
     ViewBag.Title = "Home Page";
 }
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -10,8 +12,9 @@
     </div>
 </div>
 <br />
-<h1 class="text-right">Getting started</h1>
+<h1 class="text-center">Nuestros Proyectos</h1>
 <br />
+
 <div class="row">
     <div class="col-md-6">
         <img src="~/Helpers/casas.png" class="img-thumbnail">
@@ -49,6 +52,7 @@
         <img src="~/Helpers/constructoras.jpg" class="img-thumbnail">
     </div>
 </div>
+
 <br />
 <br />
 <footer class="navbar-default">

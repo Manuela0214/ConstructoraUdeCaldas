@@ -13,7 +13,6 @@ namespace Constructora.Mapper.ParametersModule
         public override CustomerModel MapperT1T2(CustomerDTO input)
         {
             CityModelMapper cityMapper = new CityModelMapper();
-            FinancialModelMapper financialMapper = new FinancialModelMapper();
             return new CustomerModel
             {
                 Id = input.Id,
@@ -25,8 +24,7 @@ namespace Constructora.Mapper.ParametersModule
                 Cellphone = input.Cellphone,
                 Email = input.Email,
                 Address = input.Address,
-                City = cityMapper.MapperT1T2(input.City),
-                Financial = financialMapper.MapperT1T2(input.Financial)
+                City = cityMapper.MapperT1T2(input.City)
             };
         }
 
@@ -51,8 +49,7 @@ namespace Constructora.Mapper.ParametersModule
                 Cellphone = input.Cellphone,
                 Email = input.Email,
                 Address = input.Address,
-                CityId = input.CityId,
-                FinancialId = input.FinancialId
+                CityId = input.CityId
 
             };
         }

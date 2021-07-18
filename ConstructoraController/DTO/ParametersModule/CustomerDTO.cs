@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace ConstructoraController.DTO.ParametersModule
 {
@@ -105,29 +104,6 @@ namespace ConstructoraController.DTO.ParametersModule
             set { cityList = value; }
         }
 
-        private int financialId;
-
-        public int FinancialId
-        {
-            get { return financialId; }
-            set { financialId = value; }
-        }
-
-        private FinancialDTO financial;
-
-        public FinancialDTO Financial
-        {
-            get { return financial; }
-            set { financial = value; }
-        }
-
-        private IEnumerable<FinancialDTO> financialList;
-
-        public IEnumerable<FinancialDTO> FinancialList
-        {
-            get { return financialList; }
-            set { financialList = value; }
-        }
 
     }
 }

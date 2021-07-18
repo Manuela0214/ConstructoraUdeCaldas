@@ -13,12 +13,10 @@ namespace ConstructoraController.Mapper.ParametersModule
     class CustomerDTOMapper : MapperBase<CustomerDbModel, CustomerDTO>
     {
         private CityImplController modelCity = new CityImplController();
-        private FinancialImplController modelFinancial = new FinancialImplController();
 
         public override CustomerDTO MapperT1T2(CustomerDbModel input)
         {
             CityDTOMapper cityMapper = new CityDTOMapper();
-            FinancialDTOMapper financialMapper = new FinancialDTOMapper();
 
             return new CustomerDTO
             {
@@ -31,8 +29,7 @@ namespace ConstructoraController.Mapper.ParametersModule
                 Cellphone = input.Cellphone,
                 Email = input.Email,
                 Address = input.Address,
-                City = cityMapper.MapperT1T2(input.City),
-                Financial = financialMapper.MapperT1T2(input.Financial)
+                City = cityMapper.MapperT1T2(input.City)
             };
         }
 
@@ -57,8 +54,7 @@ namespace ConstructoraController.Mapper.ParametersModule
                 Cellphone = input.Cellphone,
                 Email = input.Email,
                 Address = input.Address,
-                CityId = input.CityId,
-                FinancialId = input.FinancialId
+                CityId = input.CityId
             };
         }
 

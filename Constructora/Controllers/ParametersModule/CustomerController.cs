@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -14,7 +13,6 @@ using ConstructoraController.DTO.ParametersModule;
 using ConstructoraController.Implementation.ParametersModule;
 using ConstructoraModel.Model;
 using PagedList;
-using System.Web.UI.WebControls;
 
 namespace Constructora.Controllers.ParametersModule
 {
@@ -22,7 +20,6 @@ namespace Constructora.Controllers.ParametersModule
     {
         private CustomerImplController capaNegocio = new CustomerImplController();
         private CityImplController capaNegocioCity = new CityImplController();
-        private FinancialImplController capaNegocioFinancial = new FinancialImplController();
 
         // GET: Customer
         public ActionResult Index(string Sorting_Order, string Search_Data, string Filter_Value, int? Page_No, string filter = "")
@@ -82,18 +79,15 @@ namespace Constructora.Controllers.ParametersModule
                 return RedirectToAction("Index", "Home");
             }
             CustomerModel customerModel = new CustomerModel();
-            IEnumerable<CityDTO> dtoList1 = capaNegocioCity.RecordList(string.Empty);
-            IEnumerable<FinancialDTO> dtoList2 = capaNegocioFinancial.RecordList(string.Empty);
-            CityModelMapper mapper1 = new CityModelMapper();
-            FinancialModelMapper mapper2 = new FinancialModelMapper();
-            customerModel.CityList = mapper1.MapperT1T2(dtoList1);
-            customerModel.FinancialList = mapper2.MapperT1T2(dtoList2);
+            IEnumerable<CityDTO> dtoList = capaNegocioCity.RecordList(string.Empty);
+            CityModelMapper mapper = new CityModelMapper();
+            customerModel.CityList = mapper.MapperT1T2(dtoList);
             return View(customerModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Document,Name,LastName,DateBirth,Picture,Cellphone,Email,Address,CityId,FinancialId")] CustomerModel model)
+        public ActionResult Create([Bind(Include = "Document,Name,LastName,DateBirth,Picture,Cellphone,Email,Address,CityId")] CustomerModel model)
         {
             if (ModelState.IsValid)
             {
@@ -123,10 +117,8 @@ namespace Constructora.Controllers.ParametersModule
                 return HttpNotFound();
             }
             CustomerModel customerModel = new CustomerModel();
-            IEnumerable<CityDTO> dtoList1 = capaNegocioCity.RecordList(string.Empty);
-            IEnumerable<FinancialDTO> dtoList2 = capaNegocioFinancial.RecordList(string.Empty);
+            IEnumerable<CityDTO> dtoList = capaNegocioCity.RecordList(string.Empty);
             CityModelMapper mapperCity = new CityModelMapper();
-            FinancialModelMapper mapperFinancial = new FinancialModelMapper();
             CustomerModelMapper mapper = new CustomerModelMapper();
             CustomerModel model = mapper.MapperT1T2(dto);
 
@@ -136,10 +128,9 @@ namespace Constructora.Controllers.ParametersModule
             customerModel.DateBirth = model.DateBirth;
             customerModel.Picture = model.Picture;
             customerModel.Cellphone = model.Cellphone;
-            customerModel.Email = model.Cellphone;
+            customerModel.Email = model.Email;
             customerModel.Address = model.Address;
-            customerModel.CityList = mapperCity.MapperT1T2(dtoList1);
-            customerModel.FinancialList = mapperFinancial.MapperT1T2(dtoList2);
+            customerModel.CityList = mapperCity.MapperT1T2(dtoList);
             return View(customerModel);
         }
 
@@ -148,7 +139,7 @@ namespace Constructora.Controllers.ParametersModule
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Document,Name,LastName,DateBirth,Picture,Cellphone,Email,Address,CityId,FinancialId,Removed")] CustomerModel model)
+        public ActionResult Edit([Bind(Include = "Id,Document,Name,LastName,DateBirth,Picture,Cellphone,Email,Address,CityId,Removed")] CustomerModel model)
         {
 
             if (ModelState.IsValid)
@@ -186,7 +177,7 @@ namespace Constructora.Controllers.ParametersModule
         // POST: Customer/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed([Bind(Include = "Id,Code,Name,LastName,DateBirth,Picture,Cellphone,Email,Address,CityId,FinancialId,Removed")] CustomerModel model)
+        public ActionResult DeleteConfirmed([Bind(Include = "Id,Document,Name,LastName,DateBirth,Picture,Cellphone,Email,Address,CityId,Removed")] CustomerModel model)
         {
             CustomerModelMapper mapper = new CustomerModelMapper();
             CustomerDTO dto = mapper.MapperT2T1(model);
@@ -209,6 +200,5 @@ namespace Constructora.Controllers.ParametersModule
             }
             return RedirectToAction("Index");
         }
-
     }
 }

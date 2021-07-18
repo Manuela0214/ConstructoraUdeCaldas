@@ -16,8 +16,8 @@ namespace ConstructoraModel.Model
     {
         public PARAM_CITY()
         {
-            this.PARAM_PROJECT = new HashSet<PARAM_PROJECT>();
             this.PARAM_CUSTOMER = new HashSet<PARAM_CUSTOMER>();
+            this.PARAM_PROJECT = new HashSet<PARAM_PROJECT>();
         }
     
         public int ID { get; set; }
@@ -26,7 +26,7 @@ namespace ConstructoraModel.Model
         public int COUNTRYID { get; set; }
     
         public virtual PARAM_COUNTRY PARAM_COUNTRY { get; set; }
-        public virtual ICollection<PARAM_PROJECT> PARAM_PROJECT { get; set; }
         public virtual ICollection<PARAM_CUSTOMER> PARAM_CUSTOMER { get; set; }
+        public virtual ICollection<PARAM_PROJECT> PARAM_PROJECT { get; set; }
     }
 }

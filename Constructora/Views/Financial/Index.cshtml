@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<ConstructoraModel.Model.PARAM_FINANCIAL>
+﻿@model PagedList.IPagedList<Constructora.Models.ParametersModule.FinancialModel>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" />
 
@@ -47,6 +47,9 @@
                 Teléfono Ref.Personal
             </th>
             <th>
+                Cliente
+            </th>
+            <th>
                 Acciones
             </th>
         </tr>
@@ -54,38 +57,41 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NAMEJOB)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PHONEJOB)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TOTALINCOME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TIMECURRENTJOB)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NAMEFAMILYREF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CELLPHONEFAMILYREF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NAMEPERSONALREF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CELLPHONEPERSONALREF)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameJob)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneJob)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalInCome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeCurrentJob)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameFamilyRef)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CellphoneFamilyRef)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NamePersonalRef)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CellphonePersonalRef)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
 
 
-            </td>
-        </tr>
+                </td>
+            </tr>
         }
     </tbody>
 

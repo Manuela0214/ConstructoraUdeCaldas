@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace ConstructoraModel.DbModel.ParametersModule
 {
@@ -80,6 +81,30 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { cellphonePersonalRef = value; }
         }
 
-        
+        private CustomerDbModel customer;
+
+        public CustomerDbModel Customer
+        {
+            get { return customer; }
+            set { customer = value; }
+        }
+
+        private int customerId;
+
+        public int CustomerId
+        {
+            get { return customerId; }
+            set { customerId = value; }
+        }
+
+        private IEnumerable<CustomerDbModel> customerList;
+
+        public IEnumerable<CustomerDbModel> CustomerList
+        {
+            get { return customerList; }
+            set { customerList = value; }
+        }
+
+
     }
 }

@@ -14,12 +14,8 @@ namespace ConstructoraModel.Model
     
     public partial class PARAM_FINANCIAL
     {
-        public PARAM_FINANCIAL()
-        {
-            this.PARAM_CUSTOMER = new HashSet<PARAM_CUSTOMER>();
-        }
-    
         public int ID { get; set; }
+        public int CUSTOMERID { get; set; }
         public string NAMEJOB { get; set; }
         public string PHONEJOB { get; set; }
         public int TOTALINCOME { get; set; }
@@ -29,6 +25,6 @@ namespace ConstructoraModel.Model
         public string NAMEPERSONALREF { get; set; }
         public string CELLPHONEPERSONALREF { get; set; }
     
-        public virtual ICollection<PARAM_CUSTOMER> PARAM_CUSTOMER { get; set; }
+        public virtual PARAM_CUSTOMER PARAM_CUSTOMER { get; set; }
     }
 }

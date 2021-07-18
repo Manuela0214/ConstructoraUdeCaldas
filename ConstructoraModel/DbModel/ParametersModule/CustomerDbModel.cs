@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace ConstructoraModel.DbModel.ParametersModule
 {
@@ -104,30 +103,6 @@ namespace ConstructoraModel.DbModel.ParametersModule
         {
             get { return cityList; }
             set { cityList = value; }
-        }
-
-        private FinancialDbModel financial;
-
-        public FinancialDbModel Financial
-        {
-            get { return financial; }
-            set { financial = value; }
-        }
-
-        private int financialId;
-
-        public int FinancialId
-        {
-            get { return financialId; }
-            set { financialId = value; }
-        }
-
-        private IEnumerable<FinancialDbModel> financialList;
-
-        public IEnumerable<FinancialDbModel> FinancialList
-        {
-            get { return financialList; }
-            set { financialList = value; }
         }
 
 

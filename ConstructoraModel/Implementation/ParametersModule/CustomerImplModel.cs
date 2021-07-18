@@ -58,7 +58,6 @@ namespace ConstructoraModel.Implementation.ParametersModule
                     record.EMAIL = dbModel.Email;
                     record.ADDRESS = dbModel.Address;
                     record.CITYID = dbModel.CityId;
-                    record.FINANCIALID = dbModel.FinancialId;
 
                     db.Entry(record).State = EntityState.Modified;
                     db.SaveChanges();

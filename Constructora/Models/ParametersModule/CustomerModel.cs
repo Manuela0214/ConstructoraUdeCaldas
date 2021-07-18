@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 
 namespace Constructora.Models.ParametersModule
 {
@@ -60,8 +58,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string picture;
-        [DisplayName("Imagen")]
-        [Required()]
+        [DisplayName("Foto")]
         public string Picture
         {
             get { return picture; }
@@ -126,32 +123,5 @@ namespace Constructora.Models.ParametersModule
             set { cityList = value; }
         }
 
-        private int financialId;
-
-        [DisplayName("Información financiera")]
-        [Required()]
-        public int FinancialId
-        {
-            get { return financialId; }
-            set { financialId = value; }
-        }
-
-
-        private FinancialModel financial;
-
-        public FinancialModel Financial
-        {
-            get { return financial; }
-            set { financial = value; }
-        }
-
-
-        private IEnumerable<FinancialModel> financialList;
-
-        public IEnumerable<FinancialModel> FinancialList
-        {
-            get { return financialList; }
-            set { financialList = value; }
-        }
     }
 }

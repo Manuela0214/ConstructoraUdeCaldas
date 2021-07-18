@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace ConstructoraController.DTO.ParametersModule
 {
@@ -80,6 +81,29 @@ namespace ConstructoraController.DTO.ParametersModule
             set { cellphonePersonalRef = value; }
         }
 
+        private int customerId;
+
+        public int CustomerId
+        {
+            get { return customerId; }
+            set { customerId = value; }
+        }
+
+        private CustomerDTO customer;
+
+        public CustomerDTO Customer
+        {
+            get { return customer; }
+            set { customer = value; }
+        }
+
+        private IEnumerable<CustomerDTO> customerList;
+
+        public IEnumerable<CustomerDTO> CustomerList
+        {
+            get { return customerList; }
+            set { customerList = value; }
+        }
 
     }
 }
