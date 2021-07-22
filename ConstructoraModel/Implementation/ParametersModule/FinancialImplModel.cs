@@ -96,7 +96,7 @@ namespace ConstructoraModel.Implementation.ParametersModule
         {
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
-                var listaLambda = db.PARAM_FINANCIAL.Where(x => x.NAMEJOB.ToUpper().Contains(filter)).ToList();
+                var listaLambda = db.PARAM_FINANCIAL.Where(x => x.NAMEFAMILYREF.ToUpper().Contains(filter)).ToList();
                 FinancialModelMapper mapper = new FinancialModelMapper();
                 var listFinal = mapper.MapperT1T2(listaLambda);
 

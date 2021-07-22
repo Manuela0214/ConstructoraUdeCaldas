@@ -1,12 +1,12 @@
 ﻿@model Constructora.Models.ParametersModule.FinancialModel
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Eliminar";
 }
 
-<h2>Eliminar Información Financiera</h2>
+<h2>Eliminar un estado financiero</h2>
 
-<h3>¿Estás seguro de eliminar esta información?</h3>
+<h3>¿Estas seguro de eliminar esta información?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -89,7 +89,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
             @Html.ActionLink("Regresar", "Index")
         </div>
     }

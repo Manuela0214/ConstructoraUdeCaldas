@@ -53,18 +53,18 @@ namespace Constructora.Controllers.ParametersModule
 
                 if (!String.IsNullOrEmpty(Search_Data))
                 {
-                    FinancialList = FinancialList.Where(stu => stu.NameJob.ToUpper().Contains(Search_Data.ToUpper()));
+                    FinancialList = FinancialList.Where(stu => stu.NameFamilyRef.ToUpper().Contains(Search_Data.ToUpper()));
                 }
                 //-----------------------------------------
 
                 switch (Sorting_Order)
                 {
                     case "name":
-                        FinancialList = FinancialList.OrderByDescending(financial => financial.NameJob);
+                        FinancialList = FinancialList.OrderByDescending(financial => financial.NameFamilyRef);
                         break;
 
                     default:
-                        FinancialList = FinancialList.OrderBy(financial => financial.NameJob);
+                        FinancialList = FinancialList.OrderBy(financial => financial.NameFamilyRef);
                         break;
                 }
                 int Size_Of_Page = 4;
@@ -89,7 +89,7 @@ namespace Constructora.Controllers.ParametersModule
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NameJob,PhoneJob,TotalInCome,TimeCurrectJob,NameFamilyRef,CellphoneFamilyRef,NamePersonalRef,CellphonePersonalRef,CustomerId")] FinancialModel model)
+        public ActionResult Create([Bind(Include = "CustomerId,NameJob,PhoneJob,TotalInCome,TimeCurrentJob,NameFamilyRef,CellphoneFamilyRef,NamePersonalRef,CellphonePersonalRef")] FinancialModel model)
         {
             if (ModelState.IsValid)
             {
@@ -141,7 +141,7 @@ namespace Constructora.Controllers.ParametersModule
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,NameJob,PhoneJob,TotalInCome,TimeCurrectJob,NameFamilyRef,CellphoneFamilyRef,NamePersonalRef,CellphonePersonalRef,CustomerId,Removed")] FinancialModel model)
+        public ActionResult Edit([Bind(Include = "Id,CustomerId,NameJob,PhoneJob,TotalInCome,TimeCurrentJob,NameFamilyRef,CellphoneFamilyRef,NamePersonalRef,CellphonePersonalRef,Removed")] FinancialModel model)
         {
 
             if (ModelState.IsValid)
@@ -179,7 +179,7 @@ namespace Constructora.Controllers.ParametersModule
         // POST: Financial/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed([Bind(Include = "Id,NameJob,PhoneJob,TotalInCome,TimeCurrectJob,NameFamilyRef,CellphoneFamilyRef,NamePersonalRef,CellphonePersonalRef,CustomerId,Removed")] FinancialModel model)
+        public ActionResult DeleteConfirmed([Bind(Include = "Id,CustomerId,NameJob,PhoneJob,TotalInCome,TimeCurrentJob,NameFamilyRef,CellphoneFamilyRef,NamePersonalRef,CellphonePersonalRef,Removed")] FinancialModel model)
         {
             FinancialModelMapper mapper = new FinancialModelMapper();
             FinancialDTO dto = mapper.MapperT2T1(model);
@@ -197,7 +197,7 @@ namespace Constructora.Controllers.ParametersModule
                     ViewBag.Message = Messages.ExceptionMessage;
                     return View(model);
                 case 3:
-                    ViewBag.Message = Messages.alreadyExistMessage + model.NameJob;
+                    ViewBag.Message = Messages.alreadyExistMessage + model.NameFamilyRef;
                     return View(model);
             }
             return RedirectToAction("Index");

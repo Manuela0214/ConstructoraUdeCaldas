@@ -81,6 +81,7 @@ namespace ConstructoraModel.DbModel.ParametersModule
             set { cellphonePersonalRef = value; }
         }
 
+
         private CustomerDbModel customer;
 
         public CustomerDbModel Customer
@@ -104,6 +105,7 @@ namespace ConstructoraModel.DbModel.ParametersModule
             get { return customerList; }
             set { customerList = value; }
         }
+
 
 
     }

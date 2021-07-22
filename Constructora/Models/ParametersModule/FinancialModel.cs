@@ -20,7 +20,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string nameJob;
-        [DisplayName("Nombre del trabajo")]
+
         public string NameJob
         {
             get { return nameJob; }
@@ -28,7 +28,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string phoneJob;
-        [DisplayName("Teléfono del trabajo")]
+
         public string PhoneJob
         {
             get { return phoneJob; }
@@ -36,7 +36,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private int totalInCome;
-        [DisplayName("Total de ingresos")]
+
         public int TotalInCome
         {
             get { return totalInCome; }
@@ -44,8 +44,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private DateTime timeCurrentJob;
-        [DisplayName("Tiempo en el trabajo")]
-        [Required()]
+
         public DateTime TimeCurrentJob
         {
             get { return timeCurrentJob; }
@@ -53,7 +52,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string nameFamilyRef;
-        [DisplayName("Nombre de la referencia familiar")]
+
         public string NameFamilyRef
         {
             get { return nameFamilyRef; }
@@ -61,7 +60,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string cellphoneFamilyRef;
-        [DisplayName("Telefono de la referencia familiar")]
+
         public string CellphoneFamilyRef
         {
             get { return cellphoneFamilyRef; }
@@ -69,7 +68,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string namePersonalRef;
-        [DisplayName("Nombre de la referencia personal")]
+
         public string NamePersonalRef
         {
             get { return namePersonalRef; }
@@ -77,7 +76,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string cellphonePersonalRef;
-        [DisplayName("Telefono de la referencia personal")]
+
         public string CellphonePersonalRef
         {
             get { return cellphonePersonalRef; }
@@ -86,7 +85,7 @@ namespace Constructora.Models.ParametersModule
 
         private int customerId;
 
-        [DisplayName("Ciudad")]
+        [DisplayName("Cliente")]
         [Required()]
         public int CustomerId
         {
