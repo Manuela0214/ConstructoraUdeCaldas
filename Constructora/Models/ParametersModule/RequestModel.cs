@@ -27,13 +27,13 @@ namespace Constructora.Models.ParametersModule
             set { deliveryDate = value; }
         }
 
-        private DateTime approvedDate;
+        /**private DateTime approvedDate;
         [DisplayName("Fecha de aprobación")]
         public DateTime ApprovedDate
         {
             get { return approvedDate; }
             set { approvedDate = value; }
-        }
+        }**/
 
         private int economicOffer;
         [DisplayName("Oferta económica")]
@@ -44,13 +44,13 @@ namespace Constructora.Models.ParametersModule
         }
 
 
-        private int consignment;
+        /**private int consignment;
         [DisplayName("Consignación")]
         public int Consignment
         {
             get { return consignment; }
             set { consignment = value; }
-        }
+        }**/
 
 
         //Customer

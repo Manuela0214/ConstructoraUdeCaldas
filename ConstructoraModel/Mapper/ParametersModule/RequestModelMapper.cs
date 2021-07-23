@@ -28,9 +28,9 @@ namespace ConstructoraModel.Mapper.ParametersModule
             {
                 Id = input.ID,
                 DeliveryDate = input.DELIVERYDATE,
-                ApprovedDate = input.APPROVEDDATE,
+                //ApprovedDate = input.APPROVEDDATE,
                 EconomicOffer = input.ECONOMICOFFER,
-                Consignment = input.CONSIGNMENT,
+                //Consignment = input.CONSIGNMENT,
                 Customer = customerMapper.MapperT1T2(customer),
                 Property = propertyMapper.MapperT1T2(property),
                 RequestStatus = requestStatusMapper.MapperT1T2(requestStatus)
@@ -52,9 +52,9 @@ namespace ConstructoraModel.Mapper.ParametersModule
             {
                 ID = input.Id,
                 DELIVERYDATE = input.DeliveryDate,
-                APPROVEDDATE = input.ApprovedDate,
+                //APPROVEDDATE = input.ApprovedDate,
                 ECONOMICOFFER = input.EconomicOffer,
-                CONSIGNMENT = input.Consignment,
+                //CONSIGNMENT = input.Consignment,
                 CUSTOMERID = input.CustomerId,
                 PROPERTYID = input.PropertyId,
                 REQUEST_STATUSID = input.RequestStatusId

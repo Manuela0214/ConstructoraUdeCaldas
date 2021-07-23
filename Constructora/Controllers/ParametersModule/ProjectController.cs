@@ -25,10 +25,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Project
         public ActionResult Index(string Sorting_Order, string Search_Data, string Filter_Value, int? Page_No, string filter = "")
         {
-            if (!this.VerificarSession())
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (!this.VerificarSession())
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
                 ViewBag.SortingName = string.IsNullOrEmpty(Sorting_Order) ? "name" : Sorting_Order;
@@ -75,10 +75,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Project/Create
         public ActionResult Create()
         {
-            if (!this.VerificarSession())
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (!this.VerificarSession())
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
             ProjectModel projectModel = new ProjectModel();
             IEnumerable<CityDTO> dtoList = capaNegocioCity.RecordList(string.Empty);
             CityModelMapper mapper = new CityModelMapper();
@@ -104,10 +104,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Project/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (!this.VerificarSession())
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (!this.VerificarSession())
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -153,10 +153,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Project/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (!this.VerificarSession())
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (!this.VerificarSession())
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -205,20 +205,21 @@ namespace Constructora.Controllers.ParametersModule
         {
             try
             {
+                String filename = "";
                 if (file.ContentLength > 0)
                 {
                     string _FileName = Path.GetFileName(file.FileName);
                     string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
                     Console.WriteLine(_path);
                     file.SaveAs(_path);
+                    filename = _FileName;
                 }
-                ViewBag.Message = "Archivo cargado correctamente";
-                return View();
+                return Json(filename);
             }
             catch
             {
                 ViewBag.Message = "Error al cargar el archivo";
-                return View();
+                return Json("Error");
             }
         }
     }

@@ -50,9 +50,9 @@ namespace ConstructoraModel.Implementation.ParametersModule
                         return 3;
                     }
                     record.DELIVERYDATE = dbModel.DeliveryDate;
-                    record.APPROVEDDATE = dbModel.ApprovedDate;
+                    //record.APPROVEDDATE = dbModel.ApprovedDate;
                     record.ECONOMICOFFER = dbModel.EconomicOffer;
-                    record.CONSIGNMENT = dbModel.Consignment;
+                    //record.CONSIGNMENT = dbModel.Consignment;
                     record.CUSTOMERID = dbModel.CustomerId;
                     record.PROPERTYID = dbModel.PropertyId;
                     record.REQUEST_STATUSID = dbModel.RequestStatusId;

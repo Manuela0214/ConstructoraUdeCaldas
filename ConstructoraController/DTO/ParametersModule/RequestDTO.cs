@@ -25,13 +25,13 @@ namespace ConstructoraController.DTO.ParametersModule
             set { deliveryDate = value; }
         }
 
-        private DateTime approvedDate;
+        /**private DateTime approvedDate;
 
         public DateTime ApprovedDate
         {
             get { return approvedDate; }
             set { approvedDate = value; }
-        }
+        }**/
 
         private int economicOffer;
 
@@ -41,13 +41,13 @@ namespace ConstructoraController.DTO.ParametersModule
             set { economicOffer = value; }
         }
 
-        private int consignment;
+        /**private int consignment;
 
         public int Consignment
         {
             get { return consignment; }
             set { consignment = value; }
-        }
+        }**/
 
 
         //Customer

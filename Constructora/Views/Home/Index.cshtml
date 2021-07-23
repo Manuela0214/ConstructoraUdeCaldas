@@ -16,7 +16,7 @@
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="~/Helpers/banner.png" alt="First slide">
+            <img class="d-block w-100" src="~/Helpers/banner.PNG" alt="First slide">
         </div>
 
     </div>
@@ -24,22 +24,26 @@
 
 
 <br />
-<h1 class="text-center">Nuestros Proyectos</h1>
+<h1 class="text-center">NUESTROS PROYECTOS</h1>
 <br />
 @foreach (var item in Model)
 {
     <br />
-    <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+    <br />
     <div class="row">
         <div class="col-md-6">
             <img src="~/Helpers/casas.png" class="img-thumbnail">
         </div>
         <div class="col-md-6">
-            <p class="text-justify">@Html.DisplayFor(modelItem => item.Description) </p>
+            <br />
+            <h1>@Html.DisplayFor(modelItem => item.Name)</h1>
+            <br />
+            <h4 class="text-justify">@Html.DisplayFor(modelItem => item.Description) </h4>
 
         </div>
     </div>
 }
+
 
 <br />
 <h1 class="text-left">Getting started</h1>

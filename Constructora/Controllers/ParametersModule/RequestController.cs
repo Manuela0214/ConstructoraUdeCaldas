@@ -28,10 +28,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Request
         public ActionResult Index(string Sorting_Order, string Search_Data, string Filter_Value, int? Page_No, string filter = "")
         {
-            if (!this.VerificarSession())
+            /**if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }**/
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
                 ViewBag.SortingName = string.IsNullOrEmpty(Sorting_Order) ? "name" : Sorting_Order;
@@ -55,18 +55,18 @@ namespace Constructora.Controllers.ParametersModule
 
                 if (!String.IsNullOrEmpty(Search_Data))
                 {
-                    RequestList = RequestList.Where(stu => stu.Id.ToString().ToUpper().Contains(Search_Data.ToUpper()));
+                    RequestList = RequestList.Where(stu => stu.EconomicOffer.ToString().ToUpper().Contains(Search_Data.ToUpper()));
                 }
                 //-----------------------------------------
 
                 switch (Sorting_Order)
                 {
                     case "name":
-                        RequestList = RequestList.OrderByDescending(request => request.Id);
+                        RequestList = RequestList.OrderByDescending(request => request.EconomicOffer);
                         break;
 
                     default:
-                        RequestList = RequestList.OrderBy(request => request.Id);
+                        RequestList = RequestList.OrderBy(request => request.EconomicOffer);
                         break;
                 }
                 int Size_Of_Page = 4;
@@ -78,10 +78,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Request/Create
         public ActionResult Create()
         {
-            if (!this.VerificarSession())
+            /**if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }**/
             RequestModel requestModel = new RequestModel();
             IEnumerable<CustomerDTO> dtoList1 = capaNegocioCustomer.RecordList(string.Empty);
             IEnumerable<PropertyDTO> dtoList2 = capaNegocioProperty.RecordList(string.Empty);
@@ -113,10 +113,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Request/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (!this.VerificarSession())
+            /**if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }**/
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -136,10 +136,10 @@ namespace Constructora.Controllers.ParametersModule
             RequestModelMapper mapper = new RequestModelMapper();
             RequestModel model = mapper.MapperT1T2(dto);
 
-            requestModel.ApprovedDate = model.ApprovedDate;
+            //requestModel.ApprovedDate = model.ApprovedDate;
             requestModel.DeliveryDate = model.DeliveryDate;
             requestModel.EconomicOffer = model.EconomicOffer;
-            requestModel.Consignment = model.Consignment;
+            //requestModel.Consignment = model.Consignment;
             requestModel.CustomerList = mapperCustomer.MapperT1T2(dtoList1);
             requestModel.PropertyList = mapperProperty.MapperT1T2(dtoList2);
             requestModel.RequestStatusList = mapperRequestStatus.MapperT1T2(dtoList3);
@@ -168,10 +168,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Request/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (!this.VerificarSession())
+            /**if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }**/
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

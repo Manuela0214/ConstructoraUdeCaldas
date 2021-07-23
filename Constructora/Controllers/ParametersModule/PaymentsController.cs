@@ -26,10 +26,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Payments
         public ActionResult Index(string Sorting_Order, string Search_Data, string Filter_Value, int? Page_No, string filter = "")
         {
-            if (!this.VerificarSession())
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (!this.VerificarSession())
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
             using (ConstructoraDBEntities db = new ConstructoraDBEntities())
             {
                 ViewBag.SortingName = string.IsNullOrEmpty(Sorting_Order) ? "name" : Sorting_Order;
@@ -76,10 +76,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Payments/Create
         public ActionResult Create()
         {
-            if (!this.VerificarSession())
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (!this.VerificarSession())
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
             PaymentsModel paymentsModel = new PaymentsModel();
             IEnumerable<RequestDTO> dtoList = capaNegocioRequest.RecordList(string.Empty);
             RequestModelMapper mapper = new RequestModelMapper();
@@ -105,10 +105,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Payments/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (!this.VerificarSession())
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (!this.VerificarSession())
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -154,10 +154,10 @@ namespace Constructora.Controllers.ParametersModule
         // GET: Payments/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (!this.VerificarSession())
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (!this.VerificarSession())
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

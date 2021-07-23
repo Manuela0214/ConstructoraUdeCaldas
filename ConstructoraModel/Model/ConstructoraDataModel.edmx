@@ -99,9 +99,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DELIVERYDATE" Type="datetime" Nullable="false" />
-          <Property Name="APPROVEDDATE" Type="datetime" Nullable="false" />
           <Property Name="ECONOMICOFFER" Type="int" Nullable="false" />
-          <Property Name="CONSIGNMENT" Type="int" Nullable="false" />
           <Property Name="CUSTOMERID" Type="int" Nullable="false" />
           <Property Name="PROPERTYID" Type="int" Nullable="false" />
           <Property Name="REQUEST_STATUSID" Type="int" Nullable="false" />
@@ -178,7 +176,7 @@
           <Property Name="USERID" Type="int" Nullable="false" />
           <Property Name="ROLEID" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__PARAM_BLO__PROJE__1DE57479">
+        <Association Name="FK__PARAM_BLO__PROJE__236943A5">
           <End Role="PARAM_PROJECT" Type="Self.PARAM_PROJECT" Multiplicity="1" />
           <End Role="PARAM_BLOCK" Type="Self.PARAM_BLOCK" Multiplicity="*" />
           <ReferentialConstraint>
@@ -190,7 +188,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PARAM_CIT__COUNT__1273C1CD">
+        <Association Name="FK__PARAM_CIT__COUNT__17F790F9">
           <End Role="PARAM_COUNTRY" Type="Self.PARAM_COUNTRY" Multiplicity="1" />
           <End Role="PARAM_CITY" Type="Self.PARAM_CITY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -202,7 +200,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PARAM_CUS__CITYI__15502E78">
+        <Association Name="FK__PARAM_CUS__CITYI__1AD3FDA4">
           <End Role="PARAM_CITY" Type="Self.PARAM_CITY" Multiplicity="1" />
           <End Role="PARAM_CUSTOMER" Type="Self.PARAM_CUSTOMER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -214,7 +212,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PARAM_FIN__CUSTO__182C9B23">
+        <Association Name="FK__PARAM_FIN__CUSTO__1DB06A4F">
           <End Role="PARAM_CUSTOMER" Type="Self.PARAM_CUSTOMER" Multiplicity="1" />
           <End Role="PARAM_FINANCIAL" Type="Self.PARAM_FINANCIAL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -226,7 +224,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PARAM_PAY__REQUE__2A4B4B5E">
+        <Association Name="FK__PARAM_PAY__REQUE__2FCF1A8A">
           <End Role="PARAM_REQUEST" Type="Self.PARAM_REQUEST" Multiplicity="1" />
           <End Role="PARAM_PAYMENTS" Type="Self.PARAM_PAYMENTS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -238,7 +236,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PARAM_PRO__BLOCK__20C1E124">
+        <Association Name="FK__PARAM_PRO__BLOCK__2645B050">
           <End Role="PARAM_BLOCK" Type="Self.PARAM_BLOCK" Multiplicity="1" />
           <End Role="PARAM_PROPERTY" Type="Self.PARAM_PROPERTY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -250,7 +248,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PARAM_PRO__CITYI__1B0907CE">
+        <Association Name="FK__PARAM_PRO__CITYI__208CD6FA">
           <End Role="PARAM_CITY" Type="Self.PARAM_CITY" Multiplicity="1" />
           <End Role="PARAM_PROJECT" Type="Self.PARAM_PROJECT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -262,7 +260,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PARAM_REQ__CUSTO__25869641">
+        <Association Name="FK__PARAM_REQ__CUSTO__2B0A656D">
           <End Role="PARAM_CUSTOMER" Type="Self.PARAM_CUSTOMER" Multiplicity="1" />
           <End Role="PARAM_REQUEST" Type="Self.PARAM_REQUEST" Multiplicity="*" />
           <ReferentialConstraint>
@@ -274,7 +272,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PARAM_REQ__PROPE__267ABA7A">
+        <Association Name="FK__PARAM_REQ__PROPE__2BFE89A6">
           <End Role="PARAM_PROPERTY" Type="Self.PARAM_PROPERTY" Multiplicity="1" />
           <End Role="PARAM_REQUEST" Type="Self.PARAM_REQUEST" Multiplicity="*" />
           <ReferentialConstraint>
@@ -286,7 +284,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PARAM_REQ__REQUE__276EDEB3">
+        <Association Name="FK__PARAM_REQ__REQUE__2CF2ADDF">
           <End Role="PARAM_REQUEST_STATUS" Type="Self.PARAM_REQUEST_STATUS" Multiplicity="1" />
           <End Role="PARAM_REQUEST" Type="Self.PARAM_REQUEST" Multiplicity="*" />
           <ReferentialConstraint>
@@ -298,7 +296,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SEC_FORMS__FORM___5DCAEF64">
+        <Association Name="FK__SEC_FORMS__FORM___5629CD9C">
           <End Role="SEC_FORM" Type="Self.SEC_FORM" Multiplicity="1" />
           <End Role="SEC_FORMS_ROLE" Type="Self.SEC_FORMS_ROLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -310,7 +308,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SEC_FORMS__ROLE___5CD6CB2B">
+        <Association Name="FK__SEC_FORMS__ROLE___5535A963">
           <End Role="SEC_ROLE" Type="Self.SEC_ROLE" Multiplicity="1" />
           <End Role="SEC_FORMS_ROLE" Type="Self.SEC_FORMS_ROLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -322,7 +320,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SEC_USER___ROLEI__5812160E">
+        <Association Name="FK__SEC_USER___ROLEI__1A14E395">
           <End Role="SEC_ROLE" Type="Self.SEC_ROLE" Multiplicity="1" />
           <End Role="SEC_USER_ROLE" Type="Self.SEC_USER_ROLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -334,7 +332,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SEC_USER___USERI__571DF1D5">
+        <Association Name="FK__SEC_USER___USERI__1920BF5C">
           <End Role="SEC_USER" Type="Self.SEC_USER" Multiplicity="1" />
           <End Role="SEC_USER_ROLE" Type="Self.SEC_USER_ROLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -375,59 +373,59 @@
           <EntitySet Name="SEC_SESSION" EntityType="Self.SEC_SESSION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_USER" EntityType="Self.SEC_USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_USER_ROLE" EntityType="Self.SEC_USER_ROLE" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__PARAM_BLO__PROJE__1DE57479" Association="Self.FK__PARAM_BLO__PROJE__1DE57479">
+          <AssociationSet Name="FK__PARAM_BLO__PROJE__236943A5" Association="Self.FK__PARAM_BLO__PROJE__236943A5">
             <End Role="PARAM_PROJECT" EntitySet="PARAM_PROJECT" />
             <End Role="PARAM_BLOCK" EntitySet="PARAM_BLOCK" />
           </AssociationSet>
-          <AssociationSet Name="FK__PARAM_CIT__COUNT__1273C1CD" Association="Self.FK__PARAM_CIT__COUNT__1273C1CD">
+          <AssociationSet Name="FK__PARAM_CIT__COUNT__17F790F9" Association="Self.FK__PARAM_CIT__COUNT__17F790F9">
             <End Role="PARAM_COUNTRY" EntitySet="PARAM_COUNTRY" />
             <End Role="PARAM_CITY" EntitySet="PARAM_CITY" />
           </AssociationSet>
-          <AssociationSet Name="FK__PARAM_CUS__CITYI__15502E78" Association="Self.FK__PARAM_CUS__CITYI__15502E78">
+          <AssociationSet Name="FK__PARAM_CUS__CITYI__1AD3FDA4" Association="Self.FK__PARAM_CUS__CITYI__1AD3FDA4">
             <End Role="PARAM_CITY" EntitySet="PARAM_CITY" />
             <End Role="PARAM_CUSTOMER" EntitySet="PARAM_CUSTOMER" />
           </AssociationSet>
-          <AssociationSet Name="FK__PARAM_FIN__CUSTO__182C9B23" Association="Self.FK__PARAM_FIN__CUSTO__182C9B23">
+          <AssociationSet Name="FK__PARAM_FIN__CUSTO__1DB06A4F" Association="Self.FK__PARAM_FIN__CUSTO__1DB06A4F">
             <End Role="PARAM_CUSTOMER" EntitySet="PARAM_CUSTOMER" />
             <End Role="PARAM_FINANCIAL" EntitySet="PARAM_FINANCIAL" />
           </AssociationSet>
-          <AssociationSet Name="FK__PARAM_PAY__REQUE__2A4B4B5E" Association="Self.FK__PARAM_PAY__REQUE__2A4B4B5E">
+          <AssociationSet Name="FK__PARAM_PAY__REQUE__2FCF1A8A" Association="Self.FK__PARAM_PAY__REQUE__2FCF1A8A">
             <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
             <End Role="PARAM_PAYMENTS" EntitySet="PARAM_PAYMENTS" />
           </AssociationSet>
-          <AssociationSet Name="FK__PARAM_PRO__BLOCK__20C1E124" Association="Self.FK__PARAM_PRO__BLOCK__20C1E124">
+          <AssociationSet Name="FK__PARAM_PRO__BLOCK__2645B050" Association="Self.FK__PARAM_PRO__BLOCK__2645B050">
             <End Role="PARAM_BLOCK" EntitySet="PARAM_BLOCK" />
             <End Role="PARAM_PROPERTY" EntitySet="PARAM_PROPERTY" />
           </AssociationSet>
-          <AssociationSet Name="FK__PARAM_PRO__CITYI__1B0907CE" Association="Self.FK__PARAM_PRO__CITYI__1B0907CE">
+          <AssociationSet Name="FK__PARAM_PRO__CITYI__208CD6FA" Association="Self.FK__PARAM_PRO__CITYI__208CD6FA">
             <End Role="PARAM_CITY" EntitySet="PARAM_CITY" />
             <End Role="PARAM_PROJECT" EntitySet="PARAM_PROJECT" />
           </AssociationSet>
-          <AssociationSet Name="FK__PARAM_REQ__CUSTO__25869641" Association="Self.FK__PARAM_REQ__CUSTO__25869641">
+          <AssociationSet Name="FK__PARAM_REQ__CUSTO__2B0A656D" Association="Self.FK__PARAM_REQ__CUSTO__2B0A656D">
             <End Role="PARAM_CUSTOMER" EntitySet="PARAM_CUSTOMER" />
             <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
           </AssociationSet>
-          <AssociationSet Name="FK__PARAM_REQ__PROPE__267ABA7A" Association="Self.FK__PARAM_REQ__PROPE__267ABA7A">
+          <AssociationSet Name="FK__PARAM_REQ__PROPE__2BFE89A6" Association="Self.FK__PARAM_REQ__PROPE__2BFE89A6">
             <End Role="PARAM_PROPERTY" EntitySet="PARAM_PROPERTY" />
             <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
           </AssociationSet>
-          <AssociationSet Name="FK__PARAM_REQ__REQUE__276EDEB3" Association="Self.FK__PARAM_REQ__REQUE__276EDEB3">
+          <AssociationSet Name="FK__PARAM_REQ__REQUE__2CF2ADDF" Association="Self.FK__PARAM_REQ__REQUE__2CF2ADDF">
             <End Role="PARAM_REQUEST_STATUS" EntitySet="PARAM_REQUEST_STATUS" />
             <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
           </AssociationSet>
-          <AssociationSet Name="FK__SEC_FORMS__FORM___5DCAEF64" Association="Self.FK__SEC_FORMS__FORM___5DCAEF64">
+          <AssociationSet Name="FK__SEC_FORMS__FORM___5629CD9C" Association="Self.FK__SEC_FORMS__FORM___5629CD9C">
             <End Role="SEC_FORM" EntitySet="SEC_FORM" />
             <End Role="SEC_FORMS_ROLE" EntitySet="SEC_FORMS_ROLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__SEC_FORMS__ROLE___5CD6CB2B" Association="Self.FK__SEC_FORMS__ROLE___5CD6CB2B">
+          <AssociationSet Name="FK__SEC_FORMS__ROLE___5535A963" Association="Self.FK__SEC_FORMS__ROLE___5535A963">
             <End Role="SEC_ROLE" EntitySet="SEC_ROLE" />
             <End Role="SEC_FORMS_ROLE" EntitySet="SEC_FORMS_ROLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__SEC_USER___ROLEI__5812160E" Association="Self.FK__SEC_USER___ROLEI__5812160E">
+          <AssociationSet Name="FK__SEC_USER___ROLEI__1A14E395" Association="Self.FK__SEC_USER___ROLEI__1A14E395">
             <End Role="SEC_ROLE" EntitySet="SEC_ROLE" />
             <End Role="SEC_USER_ROLE" EntitySet="SEC_USER_ROLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__SEC_USER___USERI__571DF1D5" Association="Self.FK__SEC_USER___USERI__571DF1D5">
+          <AssociationSet Name="FK__SEC_USER___USERI__1920BF5C" Association="Self.FK__SEC_USER___USERI__1920BF5C">
             <End Role="SEC_USER" EntitySet="SEC_USER" />
             <End Role="SEC_USER_ROLE" EntitySet="SEC_USER_ROLE" />
           </AssociationSet>
@@ -449,7 +447,6 @@
           <EntitySet Name="PARAM_PAYMENTS" EntityType="ConstructoraDBModel.PARAM_PAYMENTS" />
           <EntitySet Name="PARAM_PROJECT" EntityType="ConstructoraDBModel.PARAM_PROJECT" />
           <EntitySet Name="PARAM_PROPERTY" EntityType="ConstructoraDBModel.PARAM_PROPERTY" />
-          <EntitySet Name="PARAM_REQUEST" EntityType="ConstructoraDBModel.PARAM_REQUEST" />
           <EntitySet Name="PARAM_REQUEST_STATUS" EntityType="ConstructoraDBModel.PARAM_REQUEST_STATUS" />
           <EntitySet Name="SEC_FORM" EntityType="ConstructoraDBModel.SEC_FORM" />
           <EntitySet Name="SEC_FORMS_ROLE" EntityType="ConstructoraDBModel.SEC_FORMS_ROLE" />
@@ -481,22 +478,6 @@
             <End Role="PARAM_CUSTOMER" EntitySet="PARAM_CUSTOMER" />
             <End Role="PARAM_FINANCIAL" EntitySet="PARAM_FINANCIAL" />
           </AssociationSet>
-          <AssociationSet Name="FK__PARAM_REQ__CUSTO__25869641" Association="ConstructoraDBModel.FK__PARAM_REQ__CUSTO__25869641">
-            <End Role="PARAM_CUSTOMER" EntitySet="PARAM_CUSTOMER" />
-            <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PARAM_PAY__REQUE__2A4B4B5E" Association="ConstructoraDBModel.FK__PARAM_PAY__REQUE__2A4B4B5E">
-            <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
-            <End Role="PARAM_PAYMENTS" EntitySet="PARAM_PAYMENTS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PARAM_REQ__PROPE__267ABA7A" Association="ConstructoraDBModel.FK__PARAM_REQ__PROPE__267ABA7A">
-            <End Role="PARAM_PROPERTY" EntitySet="PARAM_PROPERTY" />
-            <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PARAM_REQ__REQUE__276EDEB3" Association="ConstructoraDBModel.FK__PARAM_REQ__REQUE__276EDEB3">
-            <End Role="PARAM_REQUEST_STATUS" EntitySet="PARAM_REQUEST_STATUS" />
-            <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
-          </AssociationSet>
           <AssociationSet Name="FK__SEC_FORMS__FORM___5DCAEF64" Association="ConstructoraDBModel.FK__SEC_FORMS__FORM___5DCAEF64">
             <End Role="SEC_FORM" EntitySet="SEC_FORM" />
             <End Role="SEC_FORMS_ROLE" EntitySet="SEC_FORMS_ROLE" />
@@ -516,6 +497,23 @@
           <AssociationSet Name="FK__SEC_USER___USERI__571DF1D5" Association="ConstructoraDBModel.FK__SEC_USER___USERI__571DF1D5">
             <End Role="SEC_USER" EntitySet="SEC_USER" />
             <End Role="SEC_USER_ROLE" EntitySet="SEC_USER_ROLE" />
+          </AssociationSet>
+          <EntitySet Name="PARAM_REQUEST" EntityType="ConstructoraDBModel.PARAM_REQUEST" />
+          <AssociationSet Name="FK__PARAM_REQ__CUSTO__2B0A656D" Association="ConstructoraDBModel.FK__PARAM_REQ__CUSTO__2B0A656D">
+            <End Role="PARAM_CUSTOMER" EntitySet="PARAM_CUSTOMER" />
+            <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARAM_PAY__REQUE__2FCF1A8A" Association="ConstructoraDBModel.FK__PARAM_PAY__REQUE__2FCF1A8A">
+            <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
+            <End Role="PARAM_PAYMENTS" EntitySet="PARAM_PAYMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARAM_REQ__PROPE__2BFE89A6" Association="ConstructoraDBModel.FK__PARAM_REQ__PROPE__2BFE89A6">
+            <End Role="PARAM_PROPERTY" EntitySet="PARAM_PROPERTY" />
+            <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARAM_REQ__REQUE__2CF2ADDF" Association="ConstructoraDBModel.FK__PARAM_REQ__REQUE__2CF2ADDF">
+            <End Role="PARAM_REQUEST_STATUS" EntitySet="PARAM_REQUEST_STATUS" />
+            <End Role="PARAM_REQUEST" EntitySet="PARAM_REQUEST" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="PARAM_BLOCK">
@@ -567,7 +565,7 @@
           <Property Name="CITYID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PARAM_CITY" Relationship="ConstructoraDBModel.FK__PARAM_CUS__CITYI__15502E78" FromRole="PARAM_CUSTOMER" ToRole="PARAM_CITY" />
           <NavigationProperty Name="PARAM_FINANCIAL" Relationship="ConstructoraDBModel.FK__PARAM_FIN__CUSTO__182C9B23" FromRole="PARAM_CUSTOMER" ToRole="PARAM_FINANCIAL" />
-          <NavigationProperty Name="PARAM_REQUEST" Relationship="ConstructoraDBModel.FK__PARAM_REQ__CUSTO__25869641" FromRole="PARAM_CUSTOMER" ToRole="PARAM_REQUEST" />
+          <NavigationProperty Name="PARAM_REQUEST" Relationship="ConstructoraDBModel.FK__PARAM_REQ__CUSTO__2B0A656D" FromRole="PARAM_CUSTOMER" ToRole="PARAM_REQUEST" />
         </EntityType>
         <EntityType Name="PARAM_FINANCIAL">
           <Key>
@@ -594,7 +592,7 @@
           <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DATE" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="REQUESTID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PARAM_REQUEST" Relationship="ConstructoraDBModel.FK__PARAM_PAY__REQUE__2A4B4B5E" FromRole="PARAM_PAYMENTS" ToRole="PARAM_REQUEST" />
+          <NavigationProperty Name="PARAM_REQUEST" Relationship="ConstructoraDBModel.FK__PARAM_PAY__REQUE__2FCF1A8A" FromRole="PARAM_PAYMENTS" ToRole="PARAM_REQUEST" />
         </EntityType>
         <EntityType Name="PARAM_PROJECT">
           <Key>
@@ -619,24 +617,7 @@
           <Property Name="VALOR" Type="Int32" Nullable="false" />
           <Property Name="BLOCKID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PARAM_BLOCK" Relationship="ConstructoraDBModel.FK__PARAM_PRO__BLOCK__20C1E124" FromRole="PARAM_PROPERTY" ToRole="PARAM_BLOCK" />
-          <NavigationProperty Name="PARAM_REQUEST" Relationship="ConstructoraDBModel.FK__PARAM_REQ__PROPE__267ABA7A" FromRole="PARAM_PROPERTY" ToRole="PARAM_REQUEST" />
-        </EntityType>
-        <EntityType Name="PARAM_REQUEST">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DELIVERYDATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="APPROVEDDATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ECONOMICOFFER" Type="Int32" Nullable="false" />
-          <Property Name="CONSIGNMENT" Type="Int32" Nullable="false" />
-          <Property Name="CUSTOMERID" Type="Int32" Nullable="false" />
-          <Property Name="PROPERTYID" Type="Int32" Nullable="false" />
-          <Property Name="REQUEST_STATUSID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PARAM_CUSTOMER" Relationship="ConstructoraDBModel.FK__PARAM_REQ__CUSTO__25869641" FromRole="PARAM_REQUEST" ToRole="PARAM_CUSTOMER" />
-          <NavigationProperty Name="PARAM_PAYMENTS" Relationship="ConstructoraDBModel.FK__PARAM_PAY__REQUE__2A4B4B5E" FromRole="PARAM_REQUEST" ToRole="PARAM_PAYMENTS" />
-          <NavigationProperty Name="PARAM_PROPERTY" Relationship="ConstructoraDBModel.FK__PARAM_REQ__PROPE__267ABA7A" FromRole="PARAM_REQUEST" ToRole="PARAM_PROPERTY" />
-          <NavigationProperty Name="PARAM_REQUEST_STATUS" Relationship="ConstructoraDBModel.FK__PARAM_REQ__REQUE__276EDEB3" FromRole="PARAM_REQUEST" ToRole="PARAM_REQUEST_STATUS" />
+          <NavigationProperty Name="PARAM_REQUEST" Relationship="ConstructoraDBModel.FK__PARAM_REQ__PROPE__2BFE89A6" FromRole="PARAM_PROPERTY" ToRole="PARAM_REQUEST" />
         </EntityType>
         <EntityType Name="PARAM_REQUEST_STATUS">
           <Key>
@@ -645,7 +626,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PARAM_REQUEST" Relationship="ConstructoraDBModel.FK__PARAM_REQ__REQUE__276EDEB3" FromRole="PARAM_REQUEST_STATUS" ToRole="PARAM_REQUEST" />
+          <NavigationProperty Name="PARAM_REQUEST" Relationship="ConstructoraDBModel.FK__PARAM_REQ__REQUE__2CF2ADDF" FromRole="PARAM_REQUEST_STATUS" ToRole="PARAM_REQUEST" />
         </EntityType>
         <EntityType Name="SEC_FORM">
           <Key>
@@ -793,54 +774,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PARAM_REQ__CUSTO__25869641">
-          <End Type="ConstructoraDBModel.PARAM_CUSTOMER" Role="PARAM_CUSTOMER" Multiplicity="1" />
-          <End Type="ConstructoraDBModel.PARAM_REQUEST" Role="PARAM_REQUEST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PARAM_CUSTOMER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PARAM_REQUEST">
-              <PropertyRef Name="CUSTOMERID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PARAM_PAY__REQUE__2A4B4B5E">
-          <End Type="ConstructoraDBModel.PARAM_REQUEST" Role="PARAM_REQUEST" Multiplicity="1" />
-          <End Type="ConstructoraDBModel.PARAM_PAYMENTS" Role="PARAM_PAYMENTS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PARAM_REQUEST">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PARAM_PAYMENTS">
-              <PropertyRef Name="REQUESTID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PARAM_REQ__PROPE__267ABA7A">
-          <End Type="ConstructoraDBModel.PARAM_PROPERTY" Role="PARAM_PROPERTY" Multiplicity="1" />
-          <End Type="ConstructoraDBModel.PARAM_REQUEST" Role="PARAM_REQUEST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PARAM_PROPERTY">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PARAM_REQUEST">
-              <PropertyRef Name="PROPERTYID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PARAM_REQ__REQUE__276EDEB3">
-          <End Type="ConstructoraDBModel.PARAM_REQUEST_STATUS" Role="PARAM_REQUEST_STATUS" Multiplicity="1" />
-          <End Type="ConstructoraDBModel.PARAM_REQUEST" Role="PARAM_REQUEST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PARAM_REQUEST_STATUS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PARAM_REQUEST">
-              <PropertyRef Name="REQUEST_STATUSID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__SEC_FORMS__FORM___5DCAEF64">
           <End Type="ConstructoraDBModel.SEC_FORM" Role="SEC_FORM" Multiplicity="1" />
           <End Type="ConstructoraDBModel.SEC_FORMS_ROLE" Role="SEC_FORMS_ROLE" Multiplicity="*" />
@@ -898,6 +831,69 @@
             </Principal>
             <Dependent Role="SEC_USER_ROLE">
               <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PARAM_REQUEST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DELIVERYDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ECONOMICOFFER" Type="Int32" Nullable="false" />
+          <Property Name="CUSTOMERID" Type="Int32" Nullable="false" />
+          <Property Name="PROPERTYID" Type="Int32" Nullable="false" />
+          <Property Name="REQUEST_STATUSID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PARAM_CUSTOMER" Relationship="ConstructoraDBModel.FK__PARAM_REQ__CUSTO__2B0A656D" FromRole="PARAM_REQUEST" ToRole="PARAM_CUSTOMER" />
+          <NavigationProperty Name="PARAM_PAYMENTS" Relationship="ConstructoraDBModel.FK__PARAM_PAY__REQUE__2FCF1A8A" FromRole="PARAM_REQUEST" ToRole="PARAM_PAYMENTS" />
+          <NavigationProperty Name="PARAM_PROPERTY" Relationship="ConstructoraDBModel.FK__PARAM_REQ__PROPE__2BFE89A6" FromRole="PARAM_REQUEST" ToRole="PARAM_PROPERTY" />
+          <NavigationProperty Name="PARAM_REQUEST_STATUS" Relationship="ConstructoraDBModel.FK__PARAM_REQ__REQUE__2CF2ADDF" FromRole="PARAM_REQUEST" ToRole="PARAM_REQUEST_STATUS" />
+        </EntityType>
+        <Association Name="FK__PARAM_REQ__CUSTO__2B0A656D">
+          <End Type="ConstructoraDBModel.PARAM_CUSTOMER" Role="PARAM_CUSTOMER" Multiplicity="1" />
+          <End Type="ConstructoraDBModel.PARAM_REQUEST" Role="PARAM_REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PARAM_CUSTOMER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PARAM_REQUEST">
+              <PropertyRef Name="CUSTOMERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PARAM_PAY__REQUE__2FCF1A8A">
+          <End Type="ConstructoraDBModel.PARAM_REQUEST" Role="PARAM_REQUEST" Multiplicity="1" />
+          <End Type="ConstructoraDBModel.PARAM_PAYMENTS" Role="PARAM_PAYMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PARAM_REQUEST">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PARAM_PAYMENTS">
+              <PropertyRef Name="REQUESTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PARAM_REQ__PROPE__2BFE89A6">
+          <End Type="ConstructoraDBModel.PARAM_PROPERTY" Role="PARAM_PROPERTY" Multiplicity="1" />
+          <End Type="ConstructoraDBModel.PARAM_REQUEST" Role="PARAM_REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PARAM_PROPERTY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PARAM_REQUEST">
+              <PropertyRef Name="PROPERTYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PARAM_REQ__REQUE__2CF2ADDF">
+          <End Type="ConstructoraDBModel.PARAM_REQUEST_STATUS" Role="PARAM_REQUEST_STATUS" Multiplicity="1" />
+          <End Type="ConstructoraDBModel.PARAM_REQUEST" Role="PARAM_REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PARAM_REQUEST_STATUS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PARAM_REQUEST">
+              <PropertyRef Name="REQUEST_STATUSID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1003,20 +999,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PARAM_REQUEST">
-            <EntityTypeMapping TypeName="ConstructoraDBModel.PARAM_REQUEST">
-              <MappingFragment StoreEntitySet="PARAM_REQUEST">
-                <ScalarProperty Name="REQUEST_STATUSID" ColumnName="REQUEST_STATUSID" />
-                <ScalarProperty Name="PROPERTYID" ColumnName="PROPERTYID" />
-                <ScalarProperty Name="CUSTOMERID" ColumnName="CUSTOMERID" />
-                <ScalarProperty Name="CONSIGNMENT" ColumnName="CONSIGNMENT" />
-                <ScalarProperty Name="ECONOMICOFFER" ColumnName="ECONOMICOFFER" />
-                <ScalarProperty Name="APPROVEDDATE" ColumnName="APPROVEDDATE" />
-                <ScalarProperty Name="DELIVERYDATE" ColumnName="DELIVERYDATE" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PARAM_REQUEST_STATUS">
             <EntityTypeMapping TypeName="ConstructoraDBModel.PARAM_REQUEST_STATUS">
               <MappingFragment StoreEntitySet="PARAM_REQUEST_STATUS">
@@ -1092,6 +1074,18 @@
               <MappingFragment StoreEntitySet="SEC_USER_ROLE">
                 <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
                 <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARAM_REQUEST">
+            <EntityTypeMapping TypeName="ConstructoraDBModel.PARAM_REQUEST">
+              <MappingFragment StoreEntitySet="PARAM_REQUEST">
+                <ScalarProperty Name="REQUEST_STATUSID" ColumnName="REQUEST_STATUSID" />
+                <ScalarProperty Name="PROPERTYID" ColumnName="PROPERTYID" />
+                <ScalarProperty Name="CUSTOMERID" ColumnName="CUSTOMERID" />
+                <ScalarProperty Name="ECONOMICOFFER" ColumnName="ECONOMICOFFER" />
+                <ScalarProperty Name="DELIVERYDATE" ColumnName="DELIVERYDATE" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
