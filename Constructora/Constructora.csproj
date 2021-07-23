@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ParametersModule\RequestController.cs" />
     <Compile Include="Controllers\ParametersModule\CustomerController.cs" />
     <Compile Include="Controllers\ParametersModule\PropertyController.cs" />
     <Compile Include="Controllers\ParametersModule\RequestStatusController.cs" />
@@ -163,6 +164,7 @@
     </Compile>
     <Compile Include="Helpers\Messages.cs" />
     <Compile Include="Mapper\MapperBase.cs" />
+    <Compile Include="Mapper\ParametersModule\RequestModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\CustomerModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\PropertyModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\RequestStatusModelMapper.cs" />
@@ -175,6 +177,7 @@
     <Compile Include="Mapper\SecurityModule\RoleModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\UserModelMapper.cs" />
     <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\ParametersModule\RequestModel.cs" />
     <Compile Include="Models\ParametersModule\CustomerModel.cs" />
     <Compile Include="Models\ParametersModule\PropertyModel.cs" />
     <Compile Include="Models\ParametersModule\CityModel.cs" />
@@ -278,6 +281,10 @@
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Request\Create.cshtml" />
+    <Content Include="Views\Request\Delete.cshtml" />
+    <Content Include="Views\Request\Edit.cshtml" />
+    <Content Include="Views\Request\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

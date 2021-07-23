@@ -21,15 +21,17 @@ namespace Constructora.Controllers.SecurityModule
     public class UserController : BaseController
     {
         private UserImplController capaNegocio = new UserImplController();
-        private RoleImplController capaNegocioRole= new RoleImplController();
-        
+        private RoleImplController capaNegocioRole = new RoleImplController();
+
         // GET: User
         public ActionResult Index(string filter = "")
         {
+            /*
             if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
             }
+            */
             UserModelMapper mapper = new UserModelMapper();
             IEnumerable<UserModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter));
             return View(roleList);
@@ -38,10 +40,11 @@ namespace Constructora.Controllers.SecurityModule
         // GET: User/Create
         public ActionResult Create()
         {
+            /*
             if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
             return View();
         }
 
@@ -73,14 +76,15 @@ namespace Constructora.Controllers.SecurityModule
 
             return View(model);
         }
-        
+
         // GET: User/Edit/5
         public ActionResult Edit(int? id)
         {
+            /*
             if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -92,7 +96,7 @@ namespace Constructora.Controllers.SecurityModule
             }
             UserModelMapper mapper = new UserModelMapper();
             UserModel model = mapper.MapperT1T2(dto);
-            
+
             return View(model);
         }
 
@@ -131,7 +135,7 @@ namespace Constructora.Controllers.SecurityModule
         /// <param name="response">Representa la respuesta</param>
         /// <param name="model">Representa un objeto con informacion del rol</param>
         /// <returns>1: Ok, 2: Excepción, 3:Ya existe</returns>
-        private ActionResult ProcessResponse(int response,UserModel model)
+        private ActionResult ProcessResponse(int response, UserModel model)
         {
             switch (response)
             {
@@ -147,14 +151,15 @@ namespace Constructora.Controllers.SecurityModule
             return RedirectToAction("Index");
         }
 
-        
+
         // GET: User/Delete/5
         public ActionResult Delete(int? id)
         {
+            /*
             if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -193,10 +198,11 @@ namespace Constructora.Controllers.SecurityModule
 
         public ActionResult Roles(int? id)
         {
+            /*
             if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -213,7 +219,7 @@ namespace Constructora.Controllers.SecurityModule
             {
                 UserId = id.Value,
                 RoleList = roleList,
-                SelectedRoles = String.Join(",",selectedList)
+                SelectedRoles = String.Join(",", selectedList)
             };
 
             return View(model);
@@ -232,7 +238,7 @@ namespace Constructora.Controllers.SecurityModule
             bool response = capaNegocio.AssignRoles(roleList, model.UserId);
             if (response)
             {
-               return RedirectToAction("Index");                
+                return RedirectToAction("Index");
             }
             return View(model);
         }
@@ -243,15 +249,16 @@ namespace Constructora.Controllers.SecurityModule
             var response = Request["g-recaptcha-response"];
             string secretKey = "6LexxrMaAAAAALnJK8WwntzE4mOhtQQgikSE5NtQ";
             var client = new WebClient();
-            var result = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secretKey,response));
+            var result = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secretKey, response));
             var obj = JObject.Parse(result);
             var status = (bool)obj.SelectToken("success");
             ViewBag.Message = status ? "Google reCaptcha validation success" : "Google reCaptcha validation failed";
 
+            /*
             if (this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
             return View();
         }
 
@@ -261,7 +268,7 @@ namespace Constructora.Controllers.SecurityModule
         public ActionResult IdentifyUser([Bind(Include = "UserName, Password")] LoginModel model)
         {
             UserDTO dto = new UserDTO()
-            { 
+            {
                 Email = model.UserName,
                 Password = model.Password,
                 CurrentDate = DateTime.Now
@@ -276,31 +283,32 @@ namespace Constructora.Controllers.SecurityModule
             {
                 Session["username"] = model.UserName;
                 Session["token"] = login.Token;
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
-            
+
         }
 
         public ActionResult Logout()
         {
+            /*
             if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
             Session.Remove("username");
             Session.Remove("token");
             Session.Clear();
             Session.RemoveAll();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
-        
+
         public ActionResult PasswordReset(PasswordResetModel model)
         {
-            return View();            
+            return View();
         }
-        
-               
+
+
         [HttpPost, ActionName("PasswordReset")]
         public ActionResult SendEmailResetPass([Bind(Include = "UserName")] PasswordResetModel model)
         {
@@ -330,10 +338,11 @@ namespace Constructora.Controllers.SecurityModule
 
         public ActionResult ChangePassword(PasswordResetModel model)
         {
+            /*
             if (!this.VerificarSession())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
             return View();
         }
 
@@ -341,7 +350,7 @@ namespace Constructora.Controllers.SecurityModule
         public ActionResult ChangePass([Bind(Include = "Password, NewPassword")] ChangePasswordModel model)
         {
             if (ModelState.IsValid)
-            {   
+            {
                 ConstructoraDBEntities db = new ConstructoraDBEntities();
                 var record = db.SEC_USER.Where(x => x.USER_PASSWORD == model.Password).FirstOrDefault();
                 if (record != null)
@@ -370,7 +379,7 @@ namespace Constructora.Controllers.SecurityModule
                             return View(model);
                     }
                 }
-            }            
+            }
             return View(model);
         }
     }

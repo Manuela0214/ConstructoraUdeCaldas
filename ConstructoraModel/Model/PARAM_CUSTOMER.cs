@@ -16,8 +16,8 @@ namespace ConstructoraModel.Model
     {
         public PARAM_CUSTOMER()
         {
-            this.PARAM_REQUEST = new HashSet<PARAM_REQUEST>();
             this.PARAM_FINANCIAL = new HashSet<PARAM_FINANCIAL>();
+            this.PARAM_REQUEST = new HashSet<PARAM_REQUEST>();
         }
     
         public int ID { get; set; }
@@ -32,7 +32,7 @@ namespace ConstructoraModel.Model
         public int CITYID { get; set; }
     
         public virtual PARAM_CITY PARAM_CITY { get; set; }
-        public virtual ICollection<PARAM_REQUEST> PARAM_REQUEST { get; set; }
         public virtual ICollection<PARAM_FINANCIAL> PARAM_FINANCIAL { get; set; }
+        public virtual ICollection<PARAM_REQUEST> PARAM_REQUEST { get; set; }
     }
 }

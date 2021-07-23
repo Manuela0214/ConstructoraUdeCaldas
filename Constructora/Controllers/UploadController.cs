@@ -28,6 +28,7 @@ namespace Constructora.Controllers
                 {
                     string _FileName = Path.GetFileName(file.FileName);
                     string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
+                    Console.WriteLine(_path);
                     file.SaveAs(_path);
                 }
                 ViewBag.Message = "Archivo cargado correctamente";

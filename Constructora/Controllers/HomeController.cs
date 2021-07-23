@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Constructora.Mapper.ParametersModule;
+using Constructora.Models.ParametersModule;
+using ConstructoraController.Implementation.ParametersModule;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +11,14 @@ namespace Constructora.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private ProjectImplController capaNegocio = new ProjectImplController();
+        public ActionResult Index(string filter = "")
         {
-            return View();
+            ProjectModelMapper mapper = new ProjectModelMapper();
+            IEnumerable<ProjectModel> ProjectList = mapper.MapperT1T2(capaNegocio.RecordList(filter));
+            return View(ProjectList);
         }
+
 
         public ActionResult About()
         {

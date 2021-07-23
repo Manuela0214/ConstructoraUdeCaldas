@@ -1,0 +1,78 @@
+﻿@model Constructora.Models.ParametersModule.RequestModel
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar una solicitud</h2>
+
+<h3>¿Estas seguro de eliminar esta información?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EconomicOffer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EconomicOffer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Consignment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consignment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Property.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Property.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestStatus.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequestStatus.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

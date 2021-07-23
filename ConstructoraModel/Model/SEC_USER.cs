@@ -23,6 +23,7 @@ namespace ConstructoraModel.Model
         public int ID { get; set; }
         public string NAME { get; set; }
         public string LASTNAME { get; set; }
+        public string DOCUMENT { get; set; }
         public string CELLPHONE { get; set; }
         public string EMAIL { get; set; }
         public string USER_PASSWORD { get; set; }
@@ -33,7 +34,6 @@ namespace ConstructoraModel.Model
         public Nullable<int> REMOVE_USER_ID { get; set; }
         public Nullable<int> CREATE_USER_ID { get; set; }
         public Nullable<int> UPDATE_USER_ID { get; set; }
-        public string DOCUMENT { get; set; }
     
         public virtual ICollection<SEC_SESSION> SEC_SESSION { get; set; }
         public virtual ICollection<SEC_USER_ROLE> SEC_USER_ROLE { get; set; }

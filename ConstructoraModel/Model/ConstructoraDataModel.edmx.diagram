@@ -4,45 +4,39 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="990ff3813a034128bcb61fe65a41f2ea" Name="Diagram1" ZoomLevel="81">
-        <EntityTypeShape EntityType="ConstructoraDBModel.SEC_ROLE" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.SEC_SESSION" Width="1.5" PointX="2.875" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.SEC_USER" Width="1.5" PointX="0.5" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.SEC_USER_ROLE" Width="1.5" PointX="2.625" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__SEC_USER___ROLEI__1A14E395" ManuallyRouted="false" />
-        <AssociationConnector Association="ConstructoraDBModel.USERID_SEC_SESSION_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__SEC_USER___USERI__1920BF5C" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.SEC_FORM" Width="1.5" PointX="8.25" PointY="1.875" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.SEC_FORMS_ROLE" Width="1.5" PointX="5.375" PointY="1.75" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__SEC_FORMS__FORM___5629CD9C" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__SEC_FORMS__ROLE___5535A963" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_BLOCK" Width="1.5" PointX="2.5" PointY="14.5" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_CITY" Width="1.5" PointX="4.875" PointY="9.5" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_COUNTRY" Width="1.5" PointX="4.875" PointY="12.875" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_CUSTOMER" Width="1.5" PointX="7.5" PointY="8.125" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_PAYMENTS" Width="1.5" PointX="14.125" PointY="11" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_PROJECT" Width="1.5" PointX="2.5" PointY="10.5" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_PROPERTY" Width="1.5" PointX="7.75" PointY="16.25" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_REQUEST" Width="1.5" PointX="11.375" PointY="10.5" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_REQUEST_STATUS" Width="1.5" PointX="10.75" PointY="8.125" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_BLO__PROJE__236943A5" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_PRO__BLOCK__2645B050" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_CIT__COUNT__17F790F9" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_CUS__CITYI__1AD3FDA4" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_PRO__CITYI__208CD6FA" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_REQ__CUSTO__2B0A656D" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_PAY__REQUE__2FCF1A8A" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_REQ__REQUE__2CF2ADDF" />
-        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_FINANCIAL" Width="1.75" PointX="7.625" PointY="12.25" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_FIN__CUSTO__1DB06A4F" />
-        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_REQ__PROPE__2BFE89A6" ManuallyRouted="true" >
-          <ConnectorPoint PointX="9.21875" PointY="16.25" />
-          <ConnectorPoint PointX="9.21875" PointY="15.7813868515625" />
-          <ConnectorPoint PointX="10.172710932528156" PointY="15.7813868515625" />
-          <ConnectorPoint PointX="10.172710932528156" PointY="11.946848958333334" />
-          <ConnectorPoint PointX="11.375" PointY="11.946848958333334" />
-        </AssociationConnector>
-        </Diagram>
+      <Diagram DiagramId="990ff3813a034128bcb61fe65a41f2ea" Name="Diagram1" ZoomLevel="28">
+        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_BLOCK" Width="1.5" PointX="7.5" PointY="3.25" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_CITY" Width="1.5" PointX="3" PointY="5.375" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_COUNTRY" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_CUSTOMER" Width="1.5" PointX="5.25" PointY="6.5" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_FINANCIAL" Width="1.5" PointX="7.5" PointY="10.75" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_PAYMENTS" Width="1.5" PointX="14.25" PointY="5.625" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_PROJECT" Width="1.5" PointX="5.25" PointY="3.25" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_PROPERTY" Width="1.5" PointX="9.75" PointY="3.25" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_REQUEST" Width="1.5" PointX="12" PointY="5" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.PARAM_REQUEST_STATUS" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.SEC_FORM" Width="1.5" PointX="9.75" PointY="19.5" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.SEC_FORMS_ROLE" Width="1.5" PointX="12" PointY="14.375" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.SEC_ROLE" Width="1.5" PointX="9.75" PointY="11.375" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.SEC_SESSION" Width="1.5" PointX="12" PointY="18.125" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.SEC_USER" Width="1.5" PointX="9.75" PointY="14.375" />
+        <EntityTypeShape EntityType="ConstructoraDBModel.SEC_USER_ROLE" Width="1.5" PointX="12" PointY="11.375" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_BLO__PROJE__1DE57479" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_PRO__BLOCK__20C1E124" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_CIT__COUNT__1273C1CD" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_CUS__CITYI__15502E78" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_PRO__CITYI__1B0907CE" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_FIN__CUSTO__182C9B23" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_REQ__CUSTO__25869641" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_PAY__REQUE__2A4B4B5E" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_REQ__PROPE__267ABA7A" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__PARAM_REQ__REQUE__276EDEB3" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__SEC_FORMS__FORM___5DCAEF64" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__SEC_FORMS__ROLE___5CD6CB2B" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__SEC_USER___ROLEI__5812160E" />
+        <AssociationConnector Association="ConstructoraDBModel.USERID_SEC_SESSION_FK" />
+        <AssociationConnector Association="ConstructoraDBModel.FK__SEC_USER___USERI__571DF1D5" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -30,7 +30,7 @@ namespace ConstructoraModel.Model
     
         public virtual PARAM_CUSTOMER PARAM_CUSTOMER { get; set; }
         public virtual ICollection<PARAM_PAYMENTS> PARAM_PAYMENTS { get; set; }
-        public virtual PARAM_REQUEST_STATUS PARAM_REQUEST_STATUS { get; set; }
         public virtual PARAM_PROPERTY PARAM_PROPERTY { get; set; }
+        public virtual PARAM_REQUEST_STATUS PARAM_REQUEST_STATUS { get; set; }
     }
 }

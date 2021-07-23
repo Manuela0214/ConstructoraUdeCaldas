@@ -26,21 +26,22 @@
             {
 
 
-                <div id="mySidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a>@Html.ActionLink("Roles", "Index", "Role")</a>
-                    <a>@Html.ActionLink("Usuarios", "Index", "User")</a>
-                    <a>@Html.ActionLink("Paises", "Index", "Country")</a>
-                    <a>@Html.ActionLink("Ciudades", "Index", "City")</a>
-                    <a>@Html.ActionLink("Proyectos", "Index", "Project")</a>
-                    <a>@Html.ActionLink("Bloques", "Index", "Block")</a>
-                    <a>@Html.ActionLink("Propiedades", "Index", "Property")</a>
-                    <a>@Html.ActionLink("Archivos", "UploadFile", "Upload")</a>
-                    <a>@Html.ActionLink("Información financiera", "Index", "Financial")</a>
-                    <a>@Html.ActionLink("Estado de solicitudes", "Index", "RequestStatus")</a>
-                    <a>@Html.ActionLink("Clientes", "Index", "Customer")</a>
-                    <a>@Html.ActionLink("Estados Financieros", "Index", "Financial")</a>
-                </div>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a>@Html.ActionLink("Roles", "Index", "Role")</a>
+                <a>@Html.ActionLink("Usuarios", "Index", "User")</a>
+                <a>@Html.ActionLink("Paises", "Index", "Country")</a>
+                <a>@Html.ActionLink("Ciudades", "Index", "City")</a>
+                <a>@Html.ActionLink("Proyectos", "Index", "Project")</a>
+                <a>@Html.ActionLink("Bloques", "Index", "Block")</a>
+                <a>@Html.ActionLink("Propiedades", "Index", "Property")</a>
+                <a>@Html.ActionLink("Archivos", "UploadFile", "Upload")</a>
+                <a>@Html.ActionLink("Información financiera", "Index", "Financial")</a>
+                <a>@Html.ActionLink("Estado de solicitudes", "Index", "RequestStatus")</a>
+                <a>@Html.ActionLink("Clientes", "Index", "Customer")</a>
+                <a>@Html.ActionLink("Solicitudes", "Index", "Request")</a>
+                <a>@Html.ActionLink("Estados Financieros", "Index", "Financial")</a>
+            </div>
                 <li>@Html.ActionLink("Cambio de contraseña", "PasswordReset", "User")</li>
                 <li>@Html.ActionLink("Cerrar sesión", "Logout", "User")</li>
 
@@ -73,12 +74,7 @@
   
     
     <div class="container body-content" style="background-color: ##ffffff">
-        @if (Session.Count > 0)
-        {
-            <div class="sessionBar"style="background-color: ##ffffff">
-                Bienvenido, <strong>@Session["username"]</strong>
-            </div>
-        }
+        
         @RenderBody()
         <hr />
         <footer>

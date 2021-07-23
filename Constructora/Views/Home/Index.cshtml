@@ -3,6 +3,16 @@
 @{
     ViewBag.Title = "Home Page";
 }
+
+<div class="container body-content" style="background-color: ##ffffff">
+    @if (Session.Count > 0)
+    {
+        <div class="sessionBar" style="background-color: ##ffffff">
+            Bienvenido, <strong>@Session["username"]</strong>
+        </div>
+    }
+    <hr />
+</div>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -11,27 +21,26 @@
 
     </div>
 </div>
+
+
 <br />
 <h1 class="text-center">Nuestros Proyectos</h1>
 <br />
+@foreach (var item in Model)
+{
+    <br />
+    <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/Helpers/casas.png" class="img-thumbnail">
+        </div>
+        <div class="col-md-6">
+            <p class="text-justify">@Html.DisplayFor(modelItem => item.Description) </p>
 
-<div class="row">
-    <div class="col-md-6">
-        <img src="~/Helpers/casas.png" class="img-thumbnail">
+        </div>
     </div>
-    <div class="col-md-6">
-        <br />
-        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p class="text-justify">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet consectetur dolor. Phasellus «
-            ut lacus » tellus. In pretium lobortis blandit.
-        </p>
-        <p class="text-justify">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet consectetur dolor. Phasellus ut
-            lacus tellus. In pretium lobortis blandit.
-        </p>
-    </div>
-</div>
+}
+
 <br />
 <h1 class="text-left">Getting started</h1>
 <br />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -197,5 +198,28 @@ namespace Constructora.Controllers.ParametersModule
             return RedirectToAction("Index");
         }
 
+
+
+        [HttpPost]
+        public ActionResult UploadFile(HttpPostedFileBase file)
+        {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
+                    Console.WriteLine(_path);
+                    file.SaveAs(_path);
+                }
+                ViewBag.Message = "Archivo cargado correctamente";
+                return View();
+            }
+            catch
+            {
+                ViewBag.Message = "Error al cargar el archivo";
+                return View();
+            }
+        }
     }
 }

@@ -16,8 +16,8 @@ namespace ConstructoraModel.Model
     {
         public SEC_ROLE()
         {
-            this.SEC_USER_ROLE = new HashSet<SEC_USER_ROLE>();
             this.SEC_FORMS_ROLE = new HashSet<SEC_FORMS_ROLE>();
+            this.SEC_USER_ROLE = new HashSet<SEC_USER_ROLE>();
         }
     
         public int ID { get; set; }
@@ -25,7 +25,7 @@ namespace ConstructoraModel.Model
         public bool REMOVED { get; set; }
         public string DESCRIPTION { get; set; }
     
-        public virtual ICollection<SEC_USER_ROLE> SEC_USER_ROLE { get; set; }
         public virtual ICollection<SEC_FORMS_ROLE> SEC_FORMS_ROLE { get; set; }
+        public virtual ICollection<SEC_USER_ROLE> SEC_USER_ROLE { get; set; }
     }
 }
