@@ -97,6 +97,7 @@
     <Compile Include="DbModel\SecurityModule\FormDbModel.cs" />
     <Compile Include="DbModel\SecurityModule\UserDbModel.cs" />
     <Compile Include="DbModel\SecurityModule\RoleDbModel.cs" />
+    <Compile Include="Implementation\ParametersModule\PaymentsImplModel.cs" />
     <Compile Include="Implementation\ParametersModule\RequestImplModel.cs" />
     <Compile Include="Implementation\ParametersModule\CustomerImplModel.cs" />
     <Compile Include="Implementation\ParametersModule\PropertyImplModel.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Implementation\SecurityModule\UserImplModel.cs" />
     <Compile Include="Implementation\SecurityModule\RoleImplModel.cs" />
     <Compile Include="Mapper\MapperBase.cs" />
+    <Compile Include="Mapper\ParametersModule\PaymentsModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\RequestModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\CustomerModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\PropertyModelMapper.cs" />

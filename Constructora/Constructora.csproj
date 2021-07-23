@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ParametersModule\PaymentsController.cs" />
     <Compile Include="Controllers\ParametersModule\RequestController.cs" />
     <Compile Include="Controllers\ParametersModule\CustomerController.cs" />
     <Compile Include="Controllers\ParametersModule\PropertyController.cs" />
@@ -164,6 +165,7 @@
     </Compile>
     <Compile Include="Helpers\Messages.cs" />
     <Compile Include="Mapper\MapperBase.cs" />
+    <Compile Include="Mapper\ParametersModule\PaymentsModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\RequestModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\CustomerModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\PropertyModelMapper.cs" />
@@ -177,6 +179,7 @@
     <Compile Include="Mapper\SecurityModule\RoleModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\UserModelMapper.cs" />
     <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\ParametersModule\PaymentsModel.cs" />
     <Compile Include="Models\ParametersModule\RequestModel.cs" />
     <Compile Include="Models\ParametersModule\CustomerModel.cs" />
     <Compile Include="Models\ParametersModule\PropertyModel.cs" />
