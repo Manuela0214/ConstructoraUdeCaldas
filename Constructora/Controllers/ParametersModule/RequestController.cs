@@ -15,6 +15,8 @@ using ConstructoraController.Implementation.ParametersModule;
 using ConstructoraModel.Model;
 using PagedList;
 using System.Web.UI.WebControls;
+using Constructora.Models.SecurityModule;
+using ConstructoraController.Services;
 
 namespace Constructora.Controllers.ParametersModule
 {
@@ -143,6 +145,7 @@ namespace Constructora.Controllers.ParametersModule
             requestModel.CustomerList = mapperCustomer.MapperT1T2(dtoList1);
             requestModel.PropertyList = mapperProperty.MapperT1T2(dtoList2);
             requestModel.RequestStatusList = mapperRequestStatus.MapperT1T2(dtoList3);
+
             return View(requestModel);
         }
 
@@ -158,6 +161,10 @@ namespace Constructora.Controllers.ParametersModule
             {
                 RequestModelMapper mapper = new RequestModelMapper();
                 RequestDTO dto = mapper.MapperT2T1(model);
+                if (dto.RequestStatusId.Equals(3))
+                {
+                    RequestResponse(dto);
+                }
                 int response = capaNegocio.RecordUpdate(dto);
                 this.ProcessResponse(response, model);
                 return RedirectToAction("Index");
@@ -211,6 +218,35 @@ namespace Constructora.Controllers.ParametersModule
                     return View(model);
             }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult RequestResponse(RequestDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+                ConstructoraDBEntities db = new ConstructoraDBEntities();
+                //var record = db.PARAM_CUSTOMER.Where(x => x.ID == model.CustomerId).FirstOrDefault();
+                var email = (from customer in db.PARAM_CUSTOMER
+                             where customer.ID.Equals(model.CustomerId)
+                             select customer.EMAIL).FirstOrDefault();
+                if (email != null)
+                {
+                    Console.WriteLine("Correo enviado a ", email);
+                    String content = String.Format("Hola, " +
+                    "<br /> Hemos recibido su solicitud de separacion de un inmueblede la Contructora UdeC S.A.S. " +
+                    "Le informamos el estado de su solicitud. <br/>" +
+                    " <ul>" +
+                    "<li> Su solicitud ha sido ACEPTADA</li>" +
+                    "</ul>" +
+                    "<br /> Cordial saludo, <br />" +
+                    "Equipo Contructora UdeC S.A.S.");
+                    //new Notifications().SendEmail("Cambio de contraseña usuario UdeC", content, email,email);
+                    //new Notifications().SendEmail("Restablecimiento de contraseña", "Su contraseña temporal: "+newPassword, email, "angie.1701812633@ucaldas.edu.co");
+                    string From = System.Configuration.ConfigurationSettings.AppSettings["EmailFromSendGrid"];
+                    new Notifications().SendEmail("Respuesta a solicitud", content, email, From);
+                }
+            }
+            return View(model);
         }
 
     }
