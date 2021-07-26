@@ -161,10 +161,8 @@ namespace Constructora.Controllers.ParametersModule
             {
                 RequestModelMapper mapper = new RequestModelMapper();
                 RequestDTO dto = mapper.MapperT2T1(model);
-                if (dto.RequestStatusId.Equals(3))
-                {
-                    RequestResponse(dto);
-                }
+                RequestResponse(dto);
+
                 int response = capaNegocio.RecordUpdate(dto);
                 this.ProcessResponse(response, model);
                 return RedirectToAction("Index");
@@ -222,8 +220,22 @@ namespace Constructora.Controllers.ParametersModule
 
         public ActionResult RequestResponse(RequestDTO model)
         {
+            string estado = "";
             if (ModelState.IsValid)
             {
+
+                if (model.RequestStatusId.Equals(3))
+                {
+                    estado = "ACEPTADA";
+                }
+                else if (model.RequestStatusId.Equals(2))
+                {
+                    estado = "DENEGADA";
+                }
+                else
+                {
+                    return View(model);
+                }
                 ConstructoraDBEntities db = new ConstructoraDBEntities();
                 //var record = db.PARAM_CUSTOMER.Where(x => x.ID == model.CustomerId).FirstOrDefault();
                 var email = (from customer in db.PARAM_CUSTOMER
@@ -236,7 +248,7 @@ namespace Constructora.Controllers.ParametersModule
                     "<br /> Hemos recibido su solicitud de separacion de un inmueblede la Contructora UdeC S.A.S. " +
                     "Le informamos el estado de su solicitud. <br/>" +
                     " <ul>" +
-                    "<li> Su solicitud ha sido ACEPTADA</li>" +
+                    "<li> Su solicitud ha sido " + estado + "</li>" +
                     "</ul>" +
                     "<br /> Cordial saludo, <br />" +
                     "Equipo Contructora UdeC S.A.S.");
