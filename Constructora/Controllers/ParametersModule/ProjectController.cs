@@ -14,6 +14,7 @@ using ConstructoraController.DTO.ParametersModule;
 using ConstructoraController.Implementation.ParametersModule;
 using ConstructoraModel.Model;
 using PagedList;
+using System.Web.Helpers;
 
 namespace Constructora.Controllers.ParametersModule
 {
@@ -90,6 +91,11 @@ namespace Constructora.Controllers.ParametersModule
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Code,Name,Description,Picture,CityId")] ProjectModel model)
         {
+
+            //HttpPostedFileBase FileBase = Request.Files[0];
+            //WebImage image = new WebImage(FileBase.InputStream);
+            //model.Picture = image.GetBytes().ToString();
+
             if (ModelState.IsValid)
             {
                 ProjectModelMapper mapper = new ProjectModelMapper();
@@ -221,6 +227,32 @@ namespace Constructora.Controllers.ParametersModule
                 ViewBag.Message = "Error al cargar el archivo";
                 return Json("Error");
             }
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ProjectDTO dto = capaNegocio.RecordSearch(id.Value);
+            if (dto == null)
+            {
+                return HttpNotFound();
+            }
+            ProjectModelMapper mapper = new ProjectModelMapper();
+            ProjectModel model = mapper.MapperT1T2(dto);
+            return View(model);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DetailsConfirmed([Bind(Include = "Id,Code,Name,Description,Picture,City,Removed")] ProjectModel model)
+        {
+            ProjectModelMapper mapper = new ProjectModelMapper();
+            ProjectDTO dto = mapper.MapperT2T1(model);
+            int response = capaNegocio.RecordRemove(dto);
+            return this.ProcessResponse(response, model);
         }
     }
 }

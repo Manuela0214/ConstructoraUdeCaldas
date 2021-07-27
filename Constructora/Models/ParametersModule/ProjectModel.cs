@@ -43,7 +43,6 @@ namespace Constructora.Models.ParametersModule
 
         [DisplayName("Descripción")]
         [Required()]
-        [MaxLength(100)]
         public string Description
         {
             get { return description; }

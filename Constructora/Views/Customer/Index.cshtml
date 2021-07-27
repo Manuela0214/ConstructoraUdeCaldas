@@ -70,7 +70,8 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateBirth)
+                @*Html.DisplayFor(modelItem => item.DateBirth)*@
+                @item.DateBirth.ToString("dd/MM/yyyy")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Picture)

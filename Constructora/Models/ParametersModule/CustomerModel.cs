@@ -50,6 +50,8 @@ namespace Constructora.Models.ParametersModule
 
         private DateTime dateBirth;
         [DisplayName("Fecha de nacimiento")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:yyy-MM-dd}", ApplyFormatInEditMode =true)]
         [Required()]
         public DateTime DateBirth
         {

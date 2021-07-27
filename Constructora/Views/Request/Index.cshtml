@@ -28,17 +28,17 @@
                 Fecha de envío
             </th>
             @*<th>
-                @Html.ActionLink("Id", "Index", new { Sorting_Order = ViewBag.SortingName })
-            </th>*@
+                    @Html.ActionLink("Id", "Index", new { Sorting_Order = ViewBag.SortingName })
+                </th>*@
             @*<th>
-                Fecha de aprobación
-            </th>*@
+                    Fecha de aprobación
+                </th>*@
             <th>
                 @Html.ActionLink("Oferta económica", "Index", new { Sorting_Order = ViewBag.SortingName })
             </th>
             @*<th>
-                Consignación
-            </th>*@
+                    Consignación
+                </th>*@
             <th>
                 Cliente
             </th>
@@ -59,17 +59,19 @@
             <tr>
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.DeliveryDate)
+                    @*Html.DisplayFor(modelItem => item.DeliveryDate)*@
+
+                    @item.DeliveryDate.ToString("dd/MM/yyyy")
                 </td>
                 @*<td>
-                    @Html.DisplayFor(modelItem => item.ApprovedDate)
-                </td>*@
+                        @Html.DisplayFor(modelItem => item.ApprovedDate)
+                    </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.EconomicOffer)
                 </td>
                 @*<td>
-                    @Html.DisplayFor(modelItem => item.Consignment)
-                </td>*@
+                        @Html.DisplayFor(modelItem => item.Consignment)
+                    </td>*@
 
                 <td>
                     @Html.DisplayFor(modelItem => item.Customer.Name)

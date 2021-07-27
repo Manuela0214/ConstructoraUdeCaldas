@@ -5,10 +5,10 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" />
 
 @{
-    ViewBag.Title = "Listado de Proyectos";
+    ViewBag.Title = "Listado de Bloques";
 }
 
-<h2>Proyectos</h2>
+<h2>Bloques</h2>
 
 @using (Html.BeginForm())
 {
@@ -19,7 +19,7 @@
 }
 
 <p>
-    @Html.ActionLink("Crear proyecto", "Create", new { }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Crear bloque", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <thead>

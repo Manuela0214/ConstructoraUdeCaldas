@@ -1,16 +1,13 @@
 ﻿@model IEnumerable<Constructora.Models.ParametersModule.ProjectModel>
 
-@{
-    ViewBag.Title = "Home Page";
-}
+@{ ViewBag.Title = "Home Page"; }
 
 <div class="container body-content" style="background-color: ##ffffff">
     @if (Session.Count > 0)
     {
-        <div class="sessionBar" style="background-color: ##ffffff">
-            Bienvenido, <strong>@Session["username"]</strong>
-        </div>
-    }
+<div class="sessionBar" style="background-color: ##ffffff">
+    Bienvenido, <strong>@Session["username"]</strong>
+</div>}
     <hr />
 </div>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -28,41 +25,45 @@
 <br />
 @foreach (var item in Model)
 {
-    <br />
-    <br />
-    <div class="row">
-        <div class="col-md-6">
-            <img src="~/Helpers/casas.png" class="img-thumbnail">
-        </div>
-        <div class="col-md-6">
-            <br />
-            <h1>@Html.DisplayFor(modelItem => item.Name)</h1>
-            <br />
-            <h4 class="text-justify">@Html.DisplayFor(modelItem => item.Description) </h4>
+<br />
+                <br />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <script>
+                                            @*var fotos= @Html.DisplayFor(modelItem => item.Picture)*@
+                                        </script>
 
-        </div>
-    </div>
-}
+                                        <img src="~/Helpers/Tierra Luna.jpg" class="img-thumbnail">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <br />
+                                        <h1>@Html.DisplayFor(modelItem => item.Name)</h1>
+                                        <br />
+                                        <h4 class="text-justify">@Html.DisplayFor(modelItem => item.Description) </h4>
+                                        <br /><br />
+                                        @Html.ActionLink("Detalles", "Details", "Project", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                    </div>
+                                </div>}
 
 
 <br />
-<h1 class="text-left">Getting started</h1>
+<h1 class="text-left">Tu hogar, a tu manera</h1>
 <br />
 <div class="row">
     <div class="col-md-6">
         <br />
-        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p class="text-justify">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet consectetur dolor. Phasellus «
-            ut lacus » tellus. In pretium lobortis blandit.
-        </p>
-        <p class="text-justify">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet consectetur dolor. Phasellus ut
-            lacus tellus. In pretium lobortis blandit.
-        </p>
+        <h3 class="text-justify">Diseña tu espacio.</h3>
+        <h4 class="text-justify">
+            Vive en un lugar en donde la naturaleza y la ciudad se fusionan para crear un espacio llamado hogar.
+        </h4>
+        <h3 class="text-justify">Acabados y materiales.</h3>
+        <h4 class="text-justify">
+            Recolectamos los mejores acabados y materiales para diseñar tu hogar perfecto.
+        </h4>
+        <a >¡Agenda tu cita ahora!</a>
     </div>
     <div class="col-md-6">
-        <img src="~/Helpers/constructoras.jpg" class="img-thumbnail">
+        <img src="~/Helpers/diseño de interiores.jpg" class="img-thumbnail">
     </div>
 </div>
 
@@ -72,28 +73,26 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-3 item">
-                <h3>Services</h3>
+                <h3>Contacténos</h3>
                 <ul>
-                    <li><a href="#">Web design</a></li>
-                    <li><a href="#">Development</a></li>
-                    <li><a href="#">Hosting</a></li>
+                    <li><a href="#">constructoraudec@ucaldas.edu.co</a></li>
+                    <li><a href="#">(6) 889 4455</a></li>
+                    <li><a href="#">Línea Gratuita 01800 930930</a></li>
                 </ul>
             </div>
             <div class="col-sm-6 col-md-3 item">
-                <h3>About</h3>
+                <h3>Beneficios</h3>
                 <ul>
-                    <li><a href="#">Company</a></li>
-                    <li><a href="#">Team</a></li>
-                    <li><a href="#">Careers</a></li>
+                    <li>Compras en línea</li>
+                    <li>Proyectos ideales</li>
                 </ul>
             </div>
             <div class="col-md-6 item text">
-                <h3>Company Name</h3>
-                <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+                <h3>Constructora UdeC</h3>
+                <img src="~/Helpers/logo_transparent.png" width="90 px" height="90 px" />
+                <p>Construyendo tus sueños.</p>
             </div>
             <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
         </div>
-        <p class="copyright">Company Name © 2018</p>
     </div>
 </footer>
-

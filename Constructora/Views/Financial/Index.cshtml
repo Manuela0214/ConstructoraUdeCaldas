@@ -19,7 +19,7 @@
 }
 
 <p>
-    @Html.ActionLink("Crear", "Create", new { }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Crear estado financiero", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <thead>
@@ -59,41 +59,43 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameJob)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneJob)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalInCome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeCurrentJob)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameFamilyRef)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CellphoneFamilyRef)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NamePersonalRef)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CellphonePersonalRef)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameJob)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneJob)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalInCome)
+                </td>
+                <td>
+                    @*Html.DisplayFor(modelItem => item.TimeCurrentJob)*@
+
+                    @item.TimeCurrentJob.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameFamilyRef)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CellphoneFamilyRef)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NamePersonalRef)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CellphonePersonalRef)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
 
 
-            </td>
-        </tr>
+                </td>
+            </tr>
         }
     </tbody>
 

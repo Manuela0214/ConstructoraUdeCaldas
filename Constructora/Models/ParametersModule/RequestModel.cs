@@ -21,6 +21,9 @@ namespace Constructora.Models.ParametersModule
 
         private DateTime deliveryDate;
         [DisplayName("Fecha de envío")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required()]
         public DateTime DeliveryDate
         {
             get { return deliveryDate; }

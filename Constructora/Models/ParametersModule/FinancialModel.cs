@@ -20,7 +20,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string nameJob;
-
+        [DisplayName("Nombre del trabajo")]
         public string NameJob
         {
             get { return nameJob; }
@@ -28,7 +28,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string phoneJob;
-
+        [DisplayName("Telefono laboral")]
         public string PhoneJob
         {
             get { return phoneJob; }
@@ -36,14 +36,18 @@ namespace Constructora.Models.ParametersModule
         }
 
         private int totalInCome;
-
+        [DisplayName("Total de ingresos")]
         public int TotalInCome
         {
             get { return totalInCome; }
             set { totalInCome = value; }
         }
-
         private DateTime timeCurrentJob;
+        [DisplayName("Tiempo actual de trabajo")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required()]
+
 
         public DateTime TimeCurrentJob
         {
@@ -52,7 +56,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string nameFamilyRef;
-
+        [DisplayName("Nombre Referencia familiar")]
         public string NameFamilyRef
         {
             get { return nameFamilyRef; }
@@ -60,7 +64,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string cellphoneFamilyRef;
-
+        [DisplayName("Teléfono Referencia familiar")]
         public string CellphoneFamilyRef
         {
             get { return cellphoneFamilyRef; }
@@ -68,7 +72,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string namePersonalRef;
-
+        [DisplayName("Nombre Referencia personal")]
         public string NamePersonalRef
         {
             get { return namePersonalRef; }
@@ -76,7 +80,7 @@ namespace Constructora.Models.ParametersModule
         }
 
         private string cellphonePersonalRef;
-
+        [DisplayName("Teléfono Referencia personal")]
         public string CellphonePersonalRef
         {
             get { return cellphonePersonalRef; }

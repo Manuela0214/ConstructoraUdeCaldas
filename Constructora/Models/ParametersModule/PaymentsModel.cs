@@ -46,8 +46,9 @@ namespace Constructora.Models.ParametersModule
         private DateTime date;
 
         [DisplayName("Fecha")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Required()]
-        [MaxLength(50)]
         public DateTime Date
         {
             get { return date; }
